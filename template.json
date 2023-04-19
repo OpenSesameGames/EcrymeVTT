@@ -6,7 +6,7 @@
     "templates": {
       "biodata": {
         "biodata": {
-          "age": 0,
+          "age": "",
           "size": "",
           "lieunaissance": "",
           "nationalite": "",
@@ -18,73 +18,104 @@
           "sexe": "",
           "yeux": "",
           "enfance": "",
-          "adulte": "",
-          "loisirs": "",
-          "singularite": "",
-          "politique": "",
-          "religion": "",
-          "fantastique": "",
           "description": "",
           "gmnotes": ""
         }
       },
       "core": {
         "subactors": [],
-        "lamesdestin": [],
-        "pointdestin": 1,
-        "fluide": 5,
-        "mpmb": 0,
-        "mpmn": 0,
-        "attributs": {
-          "constitution": {
-            "label": "Constitution",
-            "abbrev": "constitution",
-            "value": 0,
-            "hasmax": true,
-            "max": 0
+        "skills": {
+          "physical": {
+            "name": "ECRY.ui.physical",
+            "skilllist": {
+              "athletics": {
+                "name": "ECRY.ui.athletics",
+                "max": 0,
+                "value": 0
+              },
+              "driving": {
+                "name": "ECRY.ui.driving",
+                "max": 0,
+                "value": 0
+              },
+              "fencing": {
+                "name": "ECRY.ui.fencing",
+                "max": 0,
+                "value": 0
+              },
+              "brawl": {
+                "name": "ECRY.ui.brawl",
+                "max": 0,
+                "value": 0
+              },
+              "shoot": {
+                "name": "ECRY.ui.shoot",
+                "max": 0,
+                "value": 0
+              }
+            }
           },
-          "physique": {
-            "label": "Aptitudes Physiques",
-            "abbrev": "physique",
-            "value": 0,
-            "max": 0
+          "mental": {
+            "name": "ECRY.ui.mental",
+            "skilllist": {
+              "anthropomechanicologys": {
+                "name": "ECRY.ui.anthropomechanicologys",
+                "value": 0,
+                "max": 10
+              },
+              "ecrymology": {
+                "name": "ECRY.ui.ecrymology",
+                "value": 0,
+                "max": 10
+              },
+              "traumatology": {
+                "name": "ECRY.ui.traumatology",
+                "value": 0,
+                "max": 10
+              },
+              "traversology": {
+                "name": "ECRY.ui.traversology",
+                "value": 0,
+                "max": 10
+              },
+              "urbatechnology": {
+                "name": "ECRY.ui.urbatechnology",
+                "value": 0,
+                "max": 10
+              }
+            }
           },
-          "culturegenerale": {
-            "label": "Culture Générale",
-            "abbrev": "culturegenerale",
-            "value": 0,
-            "max": 0
-          },
-          "habilite": {
-            "label": "Habilité",
-            "abbrev": "habilite",
-            "value": 0,
-            "max": 0
-          },
-          "perception": {
-            "label": "Perception",
-            "abbrev": "perception",
-            "value": 0,
-            "max": 0
-          },
-          "spiritualite": {
-            "label": "Spiritualite",
-            "abbrev": "spiritualite",
-            "hasmax": false,
-            "iscard": true,
-            "value": 0,
-            "max": 0
-          },
-          "rationnalite": {
-            "label": "Rationnalite",
-            "abbrev": "rationnalite",
-            "hasmax": false,
-            "iscard": true,
-            "value": 0,
-            "max": 0
+          "social": {
+            "name": "ECRY.ui.social",
+            "skilllist": {
+              "quibble": {
+                "name": "ECRY.ui.quibble",
+                "value": 0,
+                "max": 10
+              },
+              "creativity": {
+                "name": "ECRY.ui.creativity",
+                "value": 0,
+                "max": 10
+              },
+              "loquacity": {
+                "name": "ECRY.ui.loquacity",
+                "value": 0,
+                "max": 10
+              },
+              "skulduggery": {
+                "name": "ECRY.ui.skulduggery",
+                "value": 0,
+                "max": 10
+              },
+              "performance": {
+                "name": "ECRY.ui.performance",
+                "value": 0,
+                "max": 10
+              }
+            }
           }
-        },
-        "equipementlibre": ""
+        }
       },
       "npccore": {
         "npctype": "",
@@ -99,48 +130,54 @@
     }
   },
   "Item": {
-    "types": [
-      "arme",
-      "equipement",
-      "archetype",
-      "tarot",
-      "sortilege",
-      "elementbio"
-    ],
-    "templates": {},
-    "elementbio": {
-      "description": ""
+    "types": ["item", "trait", "weapon", "scar", "specialization","anence", "boheme", "contact"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
     },
-    "equipement": {
-      "description": ""
+    "item": {
+      "templates": ["base"],
+      "quantity": 1,
+      "weight": 0
     },
-    "tarot": {
-      "tarottype": "",
-      "numericvalueup": 0,
-      "numericvaluedown": 0,
-      "isdualside": false,
-      "ispositif": true,
-      "isgm": false,
-      "description": ""
+    "trait": {
+      "templates": ["base"],
+      "traitype": "basic",
+      "value": 1,
+      "min": -2,
+      "max": 2
     },
-    "archetype":  {
-      "lametutelaire": "",
-      "description": ""
+    "weapon": {
+      "templates": ["base"],
+      "effectLevel": 1
     },
-    "sortilege":  {
-      "seuil": 0,
-      "description": ""
+    "specialization": {
+      "templates": ["base"],
+      "skillname": ""
     },
-    "arme": {
-      "armetype": "",
-      "porteecourte": "",
-      "porteemoyenne": "",
-      "dommagenormale": 0,
-      "dommagepart": 0,
-      "dommagecritique": 0,
-      "dommagecritiqueKO": false,
-      "dommagecritiquemort": false,
-      "description": ""
+    "scar": {
+      "templates": ["base"],
+      "skillcategory": ["physical", "mental", "social", "cephalie"],
+      "scarLevel": 1
+    },
+    "anence": {
+      "templates": ["base"],
+      "collective": false,
+      "multiple": false,
+      "improvements": ""
+    },
+    "boheme": {
+      "templates": ["base"],
+      "ideals": "",
+      "political": ""
+    },
+    "contact": {
+      "templates": ["base"],
+      "attitude": "neutral",
+      "organization": "",
+      "location":""
     }
   }
+
 }
