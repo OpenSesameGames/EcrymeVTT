@@ -1,0 +1,45 @@
+<form class="skill-roll-dialog">
+  <header class="roll-dialog-header">
+    {{#if img}}
+    <img class="actor-icon" src="{{img}}" data-edit="img" title="{{name}}" />
+    {{/if}}
+    <h1 class="dialog-roll-title roll-dialog-header">{{title}}</h1>
+  </header>
+
+    <div class="flexcol">
+      
+      <div class="flexrow">
+        <span class="roll-dialog-label">{{attr.label}} : </span>
+        <span class="roll-dialog-label">
+          {{attr.value}}
+        </span>
+      </div>
+      
+      <div class="flexrow">
+        <span class="roll-dialog-label">Degré de la confrontation : </span>
+        <select id="confrontationDegre" name="confrontationDegre">
+          {{#select confrontationDegre}} 
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          {{/select}}
+        </select>        
+      </div>
+
+      <div class="flexrow">
+        <span class="roll-dialog-label">Modificateur de confrontation : </span>
+        <select id="confrontationModif" name="confrontationModif">
+          {{#select confrontationModif}} 
+            <option value="-1">-1</option>
+            <option value="0">0</option>
+            <option value="1">+1</option>
+          {{/select}}
+        </select>        
+      </div>
+
+  </div>
+
+</form>

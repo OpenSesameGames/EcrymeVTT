@@ -1,0 +1,13 @@
+{
+  "ACTOR": {
+    "TypePersonnage": "Personnage"
+  },
+  "ITEM": {
+    "TypeArme": "Arme",
+    "TypeEquipement": "Equipement",
+    "TypeTarot": "Tarot",
+    "TypeElementbio": "Element Biographique",
+    "TypeArchetype": "Archetype",
+    "TypeSortilege": "Sortilège"
+  }
+}

@@ -1,0 +1,86 @@
+<form class="{{cssClass}} flexcol character-summary-container" autocomplete="off">
+
+  <ol class="items-list">
+
+    <li class="item flexrow item-header">
+      <div class="item-field item-name item-name-label-long">Nom</div>
+      {{#each config.attributs as |attr key|}}
+      <div class="item-field  item-name-label-short">{{attr}}</div>
+      {{/each}}
+      <div class="item-field item-name-label-short">Destin</div>
+      <div class="item-field item-name-label-short">Fluide</div>
+      <div class="item-field item-name-label-short">MPMB</div>
+      <div class="item-field item-name-label-short">MPMN</div>
+      </div>
+    </li>
+
+    {{#each pcs as |pc key|}}
+    <li class="item flexrow" data-actor-id="{{pc.id}}">
+        <div class="item-field item-name item-name-label-long">
+          <a class="actor-open character-summary-rollable">{{pc.name}}</a>
+        </div>
+        {{#each pc.system.attributs as |attr key|}}
+        <div class="item-field flex2 item-name-label-short">
+          <a class="summary-roll character-summary-rollable" data-type="attribut" data-key="{{key}}">{{attr.value}}</a>
+        </div>
+        {{/each}}
+        <div class="item-field flex item-name-label-short">
+          <a class="summary-roll" data-type="destin" data-key="pointdestin">{{pc.system.pointdestin}}</a>
+        </div>
+        <div class="item-field flex item-name-label-short">
+          <a class="summary-roll" data-type="fluide" data-key="fluide">{{pc.system.fluide}}</a>
+        </div>
+        <div class="item-field flex item-name-label-short">
+          <a class="summary-roll" data-type="mpmb" data-key="mpmb">{{pc.system.mpmb}}</a>
+        </div>
+        <div class="item-field flex item-name-label-short">
+          <a class="summary-roll" data-type="mpmn" data-key="mpmn">{{pc.system.mpmn}}</a>
+        </div>
+        </div>
+      </li>
+    {{/each}}
+
+    <li class="item flexrow item-header">
+      <div class="item-field item-name item-name-label-long">PNJs</div>
+      {{#each config.attributs as |attr key|}}
+      <div class="item-field flex2  item-name-label-short">attr</div>
+      {{/each}}
+      <div class="item-field flex2 item-name-label-short">Destin</div>
+      <div class="item-field flex2 item-name-label-short">Fluide</div>
+      <div class="item-field flex2 item-name-label-short">MPMB</div>
+      <div class="item-field flex2 item-name-label-short">MPMN</div>
+      </div>
+  </li>
+
+    {{#each npcs as |pc key|}}
+    <li class="item flexrow" data-actor-id="{{pc.id}}">
+        <div class="item-field item-name item-name-label-long">
+          <a class="actor-open character-summary-rollable">{{pc.name}}</a>
+        </div>
+        {{#each pc.system.attributs as |attr key|}}
+        <div class="item-field flex2 item-name-label-short">
+          <a class="summary-roll character-summary-rollable" data-type="attribute" data-key="{{key}}">{{attr.value}}</a>
+        </div>
+        {{/each}}
+        <div class="item-field flex item-name-label-short">
+          <a class="summary-roll" data-type="destin" data-key="pointdestin">{{pc.system.pointdestin}}</a>
+        </div>
+        <div class="item-field flex item-name-label-short">
+          <a class="summary-roll" data-type="fluide" data-key="fluide">{{pc.system.fluide}}</a>
+        </div>
+        <div class="item-field flex item-name-label-short">
+          <a class="summary-roll" data-type="mpmb" data-key="mpmb">{{pc.system.mpmb}}</a>
+        </div>
+        <div class="item-field flex item-name-label-short">
+          <a class="summary-roll" data-type="mpmn" data-key="mpmn">{{pc.system.mpmn}}</a>
+        </div>
+        </div>
+        <div class="item-field flex1 right">
+          <a class="item-control actor-delete" title="{{localize "BOL.ui.delete"}}"><i class="fas fa-trash"></i></a>
+        </div>
+      </li>
+    {{/each}}
+    
+  </ol>
+
+</form>

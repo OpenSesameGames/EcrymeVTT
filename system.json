@@ -1,0 +1,48 @@
+{
+  "description": "Ecryme",
+  "esmodules": [
+    "modules/ecryme-main.js"
+  ],
+  "gridDistance": 1,
+  "gridUnits": "u",
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "French",
+      "path": "lang/fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    }
+  ],
+  "authors": [
+    {
+      "name": "Uberwald",
+      "flags": {}
+    }
+  ],
+  "packs": [
+  ],
+  "license": "LICENSE.txt",
+  "manifest": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme/raw/branch/master/system.json",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10"
+  },
+  "id": "fvtt-ecryme",
+  "primaryTokenAttribute": "secondary.health",
+  "secondaryTokenAttribute": "secondary.delirium",
+  "socket": true,
+  "styles": [
+    "styles/ecryme.css"
+  ],
+  "title": "Ecryme, le Jeu de Rôles",
+  "url": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme",
+  "version": "10.0.0",
+  "download": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme/archive/fvtt-ecryme-v10.0.0.zip",
+  "background": "systems/fvtt-ecryme/images/ui/accueil_01.webp"
+}

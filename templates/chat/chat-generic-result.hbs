@@ -1,0 +1,76 @@
+<div class="chat-message-header">
+  {{#if actorImg}}
+  <img class="actor-icon" src="{{actorImg}}" alt="{{alias}}" />
+  {{/if}}
+  <h4 class="chat-actor-name">{{alias}}</h4>
+</div>
+
+  <hr>
+  
+  {{#if img}}
+  <div >
+    <img class="chat-icon" src="{{img}}" alt="{{name}}" />
+  </div>
+  {{/if}}
+
+  <div class="flexcol">
+    </div>
+
+    <div>
+      <ul>
+        {{#if attr}}
+        <li>{{attr.label}} : {{attr.value}} 
+        </li>
+        {{/if}}
+
+        <li>Bonus/Malus perso: {{bonusMalusPerso}} </li>
+        <li>Bonus/Malus situation: {{bonusMalusSituation}} </li>
+        <li>Seuil final: {{target}} </li>
+        <li>Resultat {{roll.total}} </li>
+
+        {{#if isSuccess}}
+          {{#if isCritical}}
+            <li><label class="chat-result-text chat-result-success ">Réussite Critique !</label></li>
+            {{#if arme}}
+              {{#if arme.system.dommagecritiquemort}}
+                <li><label class="chat-result-success">La victime est morte !</label></li>
+              {{else}}
+                {{#if arme.system.dommagecritiqueko}}
+                  <li><label class="chat-result-text chat-result-success ">La victime est KO !</label></li>
+                {{/if}}
+                <li><label class="chat-result-success ">La victime subit {{arme.system.dommagecritique}} dommages</label></li>
+              {{/if}}
+            {{/if}}
+          {{else}}  
+            {{#if isPart}}
+              <li><label class="chat-result-text chat-result-success ">Réussite Particulière !</label></li>
+              {{#if arme}}
+                <li><label class="chat-result-success ">La victime subit {{arme.system.dommagepart}} dommages</label></li>
+              {{/if}}        
+
+            {{else}}
+              <li><label class="chat-result-text chat-result-success ">Succés !</label></li>
+              {{#if arme}}
+                <li><label class="chat-result-success ">La victime subit {{arme.system.dommagenormale}} dommages</label></li>
+              {{/if}}        
+            {{/if}}        
+          {{/if}}
+        {{else}}
+          {{#if isFumble}}
+            <li><label class="chat-result-text chat-result-failure ">Echec Critique !</label></li>
+          {{else}}
+            <li><label class="chat-result-text chat-result-failure">Echec !</label></li>
+          {{/if}}
+        {{/if}}
+
+        {{#if isReroll}}
+        {{else}}
+          {{#if (gt destin 0)}}
+            <button class="chat-card-button roll-destin">Relancer (1 Destin)</button>
+          {{/if}}
+        {{/if}}
+
+      </ul>  
+    </div>
+
+  </div>

@@ -1,0 +1,6 @@
+[Dolphin]
+SortRole=modificationtime
+Timestamp=2023,2,26,15,32,34.892
+Version=4
+ViewMode=1
+VisibleRoles=Details_text,Details_size,Details_modificationtime,Details_creationtime,CustomizedDetails

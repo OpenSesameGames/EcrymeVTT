@@ -1,0 +1,93 @@
+<form class="skill-roll-dialog">
+  <header class="roll-dialog-header">
+    {{#if img}}
+    <img class="actor-icon" src="{{img}}" data-edit="img" title="{{name}}" />
+    {{/if}}
+    <h1 class="dialog-roll-title roll-dialog-header">{{title}}</h1>
+  </header>
+
+    <div class="flexcol">
+      
+      {{#if attr}}
+      <div class="flexrow">
+        <span class="roll-dialog-label">{{attr.label}} : </span>
+        <span class="roll-dialog-label">
+          {{attr.value}}
+          {{#if (eq attr.abbrev "physique")}}
+            {{#if phyMalus}}
+              ({{phyMalus}})
+            {{/if}}
+          {{/if}}          
+        </span>
+      </div>
+      {{/if}}
+      
+      <div class="flexcol">
+        <span class="roll-dialog-label">Rappel des élements biographiques : </span>
+        <ul class="ul-level1 item-list alternate-list">
+          {{#each elementsbio as |elem key|}}
+            <li class="item flexrow">
+              <span class="roll-dialog-label">{{elem.name}}</span>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="flexrow">
+        <span class="roll-dialog-label">Bonus/Malus biographique : </span>
+        <select id="bonusMalusPerso" name="bonusMalusPerso">
+          {{#select bonusMalusPerso}} 
+            <option value="-3">-3</option>
+            <option value="-2">-2</option>
+            <option value="-1">-1</option>
+            <option value="0">0</option>
+            <option value="1">+1</option>
+            <option value="2">+2</option>
+            <option value="3">+3</option>
+          {{/select}}
+        </select>        
+      </div>
+
+      <div class="flexrow">
+        <span class="roll-dialog-label">Bonus/Malus de situation : </span>
+        <select id="bonusMalusSituation" name="bonusMalusSituation">
+          {{#select bonusMalusSituation}} 
+            <option value="-3">-3</option>
+            <option value="-2">-2</option>
+            <option value="-1">-1</option>
+            <option value="0">0</option>
+            <option value="1">+1</option>
+            <option value="2">+2</option>
+            <option value="3">+3</option>
+          {{/select}}
+        </select>        
+      </div>
+
+      {{#if arme}}
+      <div class="flexrow">
+        <span class="roll-dialog-label">Défense : </span>
+        <select id="bonusMalusDef" name="bonusMalusDef">
+          {{#select bonusMalusDef}} 
+            <option value="-3">-6 (réussite critique)</option>
+            <option value="-3">-3 (réussite)</option>
+            <option value="0">0 (echec ou pas d'esquive)</option>
+            <option value="3">+3 (echec critique)</option>
+          {{/select}}
+        </select>        
+      </div>
+
+      <div class="flexrow">
+        <span class="roll-dialog-label">Portée : </span>
+        <select id="bonusMalusPortee" name="bonusMalusPortee">
+          {{#select bonusMalusPortee}} 
+            <option value="1">+1 (Portée courte)</option>
+            <option value="0">0 (Portée moyenne)</option>
+            <option value="-1">-1 (Portée longue)</option>
+          {{/select}}
+        </select>        
+      </div>
+      {{/if}}
+
+  </div>
+
+</form>

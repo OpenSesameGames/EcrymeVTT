@@ -1,0 +1,30 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+      <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+      <div class="header-fields">
+          <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+      </div>
+  </header>
+  
+  {{> systems/fvtt-ecryme/templates/items/partial-item-nav.hbs}}
+
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{> systems/fvtt-ecryme/templates/items/partial-item-description.hbs}}
+    
+    <div class="tab details" data-group="primary" data-tab="details">
+
+      <div class="tab" data-group="primary">
+        <ul>
+          <li class="flexrow">
+            <label class="item-field-label-long">Seuil de Fluide</label>
+            <input type="input" class="item-field-label-short" name="system.seuil" value="{{system.seuil}}" data-dtype="Number" />
+          </li>
+        </ul>
+    </div>
+  </div>
+
+  </section>
+</form>

@@ -1,0 +1,146 @@
+{
+  "Actor": {
+    "types": [
+      "personnage"
+    ],
+    "templates": {
+      "biodata": {
+        "biodata": {
+          "age": 0,
+          "size": "",
+          "lieunaissance": "",
+          "nationalite": "",
+          "profession": "",
+          "residence": "",
+          "milieusocial": "",
+          "poids": "",
+          "cheveux": "",
+          "sexe": "",
+          "yeux": "",
+          "enfance": "",
+          "adulte": "",
+          "loisirs": "",
+          "singularite": "",
+          "politique": "",
+          "religion": "",
+          "fantastique": "",
+          "description": "",
+          "gmnotes": ""
+        }
+      },
+      "core": {
+        "subactors": [],
+        "lamesdestin": [],
+        "pointdestin": 1,
+        "fluide": 5,
+        "mpmb": 0,
+        "mpmn": 0,
+        "attributs": {
+          "constitution": {
+            "label": "Constitution",
+            "abbrev": "constitution",
+            "value": 0,
+            "hasmax": true,
+            "max": 0
+          },
+          "physique": {
+            "label": "Aptitudes Physiques",
+            "abbrev": "physique",
+            "value": 0,
+            "max": 0
+          },
+          "culturegenerale": {
+            "label": "Culture Générale",
+            "abbrev": "culturegenerale",
+            "value": 0,
+            "max": 0
+          },
+          "habilite": {
+            "label": "Habilité",
+            "abbrev": "habilite",
+            "value": 0,
+            "max": 0
+          },
+          "perception": {
+            "label": "Perception",
+            "abbrev": "perception",
+            "value": 0,
+            "max": 0
+          },
+          "spiritualite": {
+            "label": "Spiritualite",
+            "abbrev": "spiritualite",
+            "hasmax": false,
+            "iscard": true,
+            "value": 0,
+            "max": 0
+          },
+          "rationnalite": {
+            "label": "Rationnalite",
+            "abbrev": "rationnalite",
+            "hasmax": false,
+            "iscard": true,
+            "value": 0,
+            "max": 0
+          }
+        },
+        "equipementlibre": ""
+      },
+      "npccore": {
+        "npctype": "",
+        "description": ""
+      }
+    },
+    "personnage": {
+      "templates": [
+        "biodata",
+        "core"
+      ]
+    }
+  },
+  "Item": {
+    "types": [
+      "arme",
+      "equipement",
+      "archetype",
+      "tarot",
+      "sortilege",
+      "elementbio"
+    ],
+    "templates": {},
+    "elementbio": {
+      "description": ""
+    },
+    "equipement": {
+      "description": ""
+    },
+    "tarot": {
+      "tarottype": "",
+      "numericvalueup": 0,
+      "numericvaluedown": 0,
+      "isdualside": false,
+      "ispositif": true,
+      "isgm": false,
+      "description": ""
+    },
+    "archetype":  {
+      "lametutelaire": "",
+      "description": ""
+    },
+    "sortilege":  {
+      "seuil": 0,
+      "description": ""
+    },
+    "arme": {
+      "armetype": "",
+      "porteecourte": "",
+      "porteemoyenne": "",
+      "dommagenormale": 0,
+      "dommagepart": 0,
+      "dommagecritique": 0,
+      "dommagecritiqueKO": false,
+      "dommagecritiquemort": false,
+      "description": ""
+    }
+  }
+}

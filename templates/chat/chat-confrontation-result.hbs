@@ -1,0 +1,37 @@
+<div class="chat-message-header">
+  {{#if actorImg}}
+  <img class="actor-icon" src="{{actorImg}}" alt="{{alias}}" />
+  {{/if}}
+  <h4 class="chat-actor-name">{{alias}}</h4>
+</div>
+
+  <hr>
+  
+  {{#if img}}
+  <div >
+    <img class="chat-icon" src="{{img}}" alt="{{name}}" />
+  </div>
+  {{/if}}
+
+  <div class="flexcol">
+    </div>
+
+    <div>
+      <ul>
+        <li>Confrontation de {{attr.label}} : {{attr.value}} 
+        </li>
+        <li>Degré de la confrontation: {{confrontationDegre}} </li>
+        <li>Ajustement spécial : {{confrontationModif}} </li>
+        <li>Seuil final : {{target}} </li>
+        <li>Valeur de la carte : {{total}} </li>
+
+        {{#if isSuccess}}
+          <li><label class="chat-result-text chat-result-success ">Réussite !</label> Votre {{attr.label}} augmente de {{gainAttr}} points.</li>
+        {{else}}
+          <li><label class="chat-result-text chat-result-success ">Echec !</label> Votre {{attr.label}} diminue de {{gainAttr}} points.</li>
+        {{/if}}
+
+      </ul>  
+    </div>
+
+  </div>
