@@ -9,8 +9,6 @@ export class EcrymeCommands {
   static init() {
     if (!game.system.ecryme.commands) {
       const commands = new EcrymeCommands();
-      commands.registerCommand({ path: ["/tirage"], func: (content, msg, params) => EcrymeCommands.createTirage(msg), descr: "Tirage des tarots" });
-      commands.registerCommand({ path: ["/carte"], func: (content, msg, params) => EcrymeCommands.tirerCarte(msg), descr: "Tirer une carte" });
       commands.registerCommand({ path: ["/resume"], func: (content, msg, params) => EcrymeCharacterSummary.displayPCSummary(), descr: "Affiche la liste des PJs!" });
       game.system.ecryme.commands = commands;
     }
@@ -102,44 +100,6 @@ export class EcrymeCommands {
     msg.whisper = [game.user.id];
     msg.content = content;
     ChatMessage.create(msg);
-  }
-
-  /* --------------------------------------------- */
-  static async createTirage(msg) {
-    if (game.user.isGM) {
-      let tirageData = {
-        state: 'select-player',
-        nbCard: 0,
-        maxPlayerCard: 4,
-        maxSecretCard: 1,
-        cards: [],
-        players: duplicate(game.users),
-        secretCards: [],
-        deck: EcrymeUtility.getTarots()
-      }
-      for (let i = 0; i < 4; i++) {
-        tirageData.cards.push({ name: "???", img: "systems/fvtt-ecryme/images/tarots/background.webp" })
-      }
-      tirageData.secretCards.push({ name: "???", img: "systems/fvtt-ecryme/images/tarots/background.webp" })
-
-      let tirageDialog = await EcrymeTirageTarotDialog.create(this, tirageData)
-      tirageDialog.render(true)
-    }
-  }
-  /* --------------------------------------------- */
-  static async tirerCarte(msg) {
-    let deck =  EcrymeUtility.getTarots()
-    let index = Math.round(Math.random() * (deck.length-1))
-    let selectedCard = deck[index]
-    selectedCard.system.ispositif = true
-    if ( selectedCard.system.isdualside) { // Cas des cartes pouvant avoir 2 sens
-      selectedCard.system.ispositif = (Math.random() > 0.5)
-    }
-    selectedCard.system.isgm = false
-    selectedCard.value = (selectedCard.system.ispositif)? selectedCard.system.numericvalueup : selectedCard.system.numericvaluedown
-    EcrymeUtility.createChatMessage(game.user.name, "", {
-      content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/display-tarot-card.hbs`, selectedCard) 
-    })
   }
 
 }

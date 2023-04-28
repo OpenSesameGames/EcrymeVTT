@@ -1,19 +1,15 @@
-import { MaleficesUtility } from "./malefices-utility.js";
+import { EcrymeUtility } from "./ecryme-utility.js";
 
 export const defaultItemImg = {
-  arme: "systems/fvtt-malefices/images/icons/arme.webp",
-  equipement: "systems/fvtt-malefices/images/icons/equipement.webp",
-  elementbio: "systems/fvtt-malefices/images/icons/wisdom.webp",
-  archetype: "systems/fvtt-malefices/images/icons/archetype.webp",
-  tarot: "systems/fvtt-malefices/images/icons/tarot.webp",
-  sortilege: "systems/fvtt-malefices/images/icons/sortilege.webp",
+  weapon: "systems/fvtt-ecryme/images/icons/weapon.webp",
+  equipement: "systems/fvtt-ecryme/images/icons/equipement.webp"
 }
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class MaleficesItem extends Item {
+export class EcrymeItem extends Item {
 
   constructor(data, context) {
     if (!data.img) {

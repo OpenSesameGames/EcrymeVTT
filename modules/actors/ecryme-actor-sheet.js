@@ -35,15 +35,10 @@ export class EcrymeActorSheet extends ActorSheet {
       cssClass: this.isEditable ? "editable" : "locked",
       system: duplicate(this.object.system),
       limited: this.object.limited,
-      armes: duplicate(this.actor.getArmes()),
-      tarots: duplicate(this.actor.getTarots()),
-      tarotsCache: duplicate(this.actor.getHiddenTarots()),
+      weapons: duplicate(this.actor.getWeapons()),
       archetype: duplicate(this.actor.getArchetype()),
       equipements: duplicate(this.actor.getEquipements()),
       subActors: duplicate(this.actor.getSubActors()),
-      phyMalus: this.actor.getPhysiqueMalus(),
-      elementsbio: this.actor.getElementsBio(),
-      sorts: this.actor.getSorts(),
       description: await TextEditor.enrichHTML(this.object.system.description, { async: true }),
       notes: await TextEditor.enrichHTML(this.object.system.notes, { async: true }),
       equipementlibre: await TextEditor.enrichHTML(this.object.system.equipementlibre, { async: true }),
@@ -109,20 +104,11 @@ export class EcrymeActorSheet extends ActorSheet {
       this.actor.incDecQuantity( li.data("item-id"), +1 );
     } );
 
-    html.find('.ammo-minus').click(event => {
-      const li = $(event.currentTarget).parents(".item")
-      this.actor.incDecAmmo( li.data("item-id"), -1 );
-    } );
-    html.find('.ammo-plus').click(event => {
-      const li = $(event.currentTarget).parents(".item")
-      this.actor.incDecAmmo( li.data("item-id"), +1 )
-    } );
-            
-    html.find('.roll-attribut').click((event) => {
+    html.find('.roll-skill').click((event) => {
       let attrKey = $(event.currentTarget).data("attr-key")
       this.actor.rollAttribut(attrKey)
     });    
-    html.find('.roll-arme').click((event) => {
+    html.find('.roll-weapon').click((event) => {
       const armeId = $(event.currentTarget).data("arme-id")
       this.actor.rollArme(armeId)
     });
@@ -131,17 +117,11 @@ export class EcrymeActorSheet extends ActorSheet {
       this.options.editScore = !this.options.editScore;
       this.render(true);
     });    
-    html.find('.item-link a').click((event) => {
-      const itemId = $(event.currentTarget).data("item-id");
-      const item = this.actor.getOwnedItem(itemId);
-      item.sheet.render(true);
-    });    
     html.find('.item-equip').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
       this.actor.equipItem( li.data("item-id") );
       this.render(true);      
     });
-
     html.find('.update-field').change(ev => {
       const fieldName = $(ev.currentTarget).data("field-name");
       let value = Number(ev.currentTarget.value);

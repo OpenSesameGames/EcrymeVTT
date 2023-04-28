@@ -43,13 +43,13 @@
                 "max": 0,
                 "value": 0
               },
-              "brawl": {
-                "name": "ECRY.ui.brawl",
+              "brawling": {
+                "name": "ECRY.ui.brawling",
                 "max": 0,
                 "value": 0
               },
-              "shoot": {
-                "name": "ECRY.ui.shoot",
+              "shooting": {
+                "name": "ECRY.ui.shooting",
                 "max": 0,
                 "value": 0
               }
@@ -58,8 +58,8 @@
           "mental": {
             "name": "ECRY.ui.mental",
             "skilllist": {
-              "anthropomechanicologys": {
-                "name": "ECRY.ui.anthropomechanicologys",
+              "anthropomecanology": {
+                "name": "ECRY.ui.anthropomecanology",
                 "value": 0,
                 "max": 10
               },
@@ -88,8 +88,8 @@
           "social": {
             "name": "ECRY.ui.social",
             "skilllist": {
-              "quibble": {
-                "name": "ECRY.ui.quibble",
+              "quibbling": {
+                "name": "ECRY.ui.quibbling",
                 "value": 0,
                 "max": 10
               },
@@ -103,8 +103,8 @@
                 "value": 0,
                 "max": 10
               },
-              "skulduggery": {
-                "name": "ECRY.ui.skulduggery",
+              "guile": {
+                "name": "ECRY.ui.guile",
                 "value": 0,
                 "max": 10
               },
@@ -130,7 +130,7 @@
     }
   },
   "Item": {
-    "types": ["item", "trait", "weapon", "scar", "specialization","anence", "boheme", "contact"],
+    "types": ["item", "trait", "weapon", "scar", "specialization","annency", "boheme", "contact"],
     "templates": {
       "base": {
         "description": ""

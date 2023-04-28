@@ -75,19 +75,9 @@ export class EcrymeActor extends Actor {
     super._preUpdate(changed, options, user);
   }
 
-  /*_onUpdateEmbeddedDocuments( embeddedName, ...args ) {
-    this.rebuildSkills()
-    super._onUpdateEmbeddedDocuments(embeddedName, ...args)
-  }*/
-
   /* -------------------------------------------- */
   getMoneys() {
     let comp = this.items.filter(item => item.type == 'money');
-    EcrymeUtility.sortArrayObjectsByName(comp)
-    return comp;
-  }
-  getSorts() {
-    let comp = this.items.filter(item => item.type == 'sortilege');
     EcrymeUtility.sortArrayObjectsByName(comp)
     return comp;
   }
@@ -100,26 +90,8 @@ export class EcrymeActor extends Actor {
     return comp;
   }
   /* -------------------------------------------- */
-  getElementsBio() {
-    let comp = duplicate(this.items.filter(item => item.type == 'elementbio') || [])
-    EcrymeUtility.sortArrayObjectsByName(comp)
-    return comp;
-  }
-  /* -------------------------------------------- */
-  getTarots() {
-    let comp = duplicate(this.items.filter(item => item.type == 'tarot' && !item.system.isgm) || [])
-    EcrymeUtility.sortArrayObjectsByName(comp)
-    return comp;
-  }
-  /* -------------------------------------------- */
-  getHiddenTarots() {
-    let comp = duplicate(this.items.filter(item => item.type == 'tarot' && item.system.isgm) || [])
-    EcrymeUtility.sortArrayObjectsByName(comp)
-    return comp;
-  }
-  /* -------------------------------------------- */
-  getArmes() {
-    let comp = duplicate(this.items.filter(item => item.type == 'arme') || [])
+  getWeapons() {
+    let comp = duplicate(this.items.filter(item => item.type == 'weapon') || [])
     EcrymeUtility.sortArrayObjectsByName(comp)
     return comp;
   }
@@ -153,17 +125,6 @@ export class EcrymeActor extends Actor {
       let update = { _id: item.id, "system.equipped": !item.system.equipped };
       await this.updateEmbeddedDocuments('Item', [update]); // Updates one EmbeddedEntity
     }
-  }
-
-  /* -------------------------------------------- */
-  compareName(a, b) {
-    if (a.name < b.name) {
-      return -1;
-    }
-    if (a.name > b.name) {
-      return 1;
-    }
-    return 0;
   }
 
   /* ------------------------------------------- */
@@ -272,29 +233,7 @@ export class EcrymeActor extends Actor {
       await this.createEmbeddedDocuments('Item', [newItem]);
     }
   }
-  /* -------------------------------------------- */
-  incDecFluide(value) {
-    let fluide = this.system.fluide + value
-    this.update( {'system.fluide': fluide} )
-  }
-  incDecDestin(value) {
-    let destin = this.system.pointdestin + value
-    this.update( {'system.pointdestin': destin} )
-  }
-  incDecMPMB(value) {
-    let mpmb = this.system.mpmb + value
-    this.update( {'system.mpmb': mpmb} )
-  }
-  incDecMPMN(value) {
-    let mpmn = this.system.mpmn + value
-    this.update( {'system.mpmn': mpmn} )
-  }
-  /* -------------------------------------------- */
-  incDecAttr(attrKey, value) {
-    let attr = duplicate(this.system.attributs[attrKey])
-    attr.value += value
-    this.update( { [`system.attributs.${attrKey}`]: attr})    
-  }
+
   /* -------------------------------------------- */
   async incDecQuantity(objetId, incDec = 0) {
     let objetQ = this.items.get(objetId)
@@ -305,81 +244,48 @@ export class EcrymeActor extends Actor {
       }
     }
   }
-  /* -------------------------------------------- */
-  async incDecAmmo(objetId, incDec = 0) {
-    let objetQ = this.items.get(objetId)
-    if (objetQ) {
-      let newQ = objetQ.system.ammocurrent + incDec;
-      if (newQ >= 0 && newQ <= objetQ.system.ammomax) {
-        const updated = await this.updateEmbeddedDocuments('Item', [{ _id: objetQ.id, 'system.ammocurrent': newQ }]); // pdates one EmbeddedEntity
-      }
-    }
-  }
 
-  /* -------------------------------------------- */
-  getAtttributImage( attrKey) {
-    return `systems/fvtt-ecryme/images/icons/${attrKey}.webp`
-  }
 
-  /* -------------------------------------------- */
-  incDecDestin( value) {
-    let newValue = Math.max( this.system.pointdestin + value, 0)    
-    this.update( {'system.pointdestin': newValue})
-  }
-  
   /* -------------------------------------------- */
   getCommonRollData() {
-
     let rollData = EcrymeUtility.getBasicRollData()
     rollData.alias = this.name
     rollData.actorImg = this.img
     rollData.actorId = this.id
     rollData.img = this.img
-    rollData.phyMalus = this.getPhysiqueMalus()
-    rollData.elementsbio = this.getElementsBio()
-    rollData.destin = this.system.pointdestin
     rollData.isReroll = false
-    rollData.confrontationDegre = 0
-    rollData.confrontationModif = 0
 
     console.log("ROLLDATA", rollData)
 
     return rollData
   }
-  /* -------------------------------------------- */
-  getPhysiqueMalus() {
-    if ( this.system.attributs.constitution.value <= 8) {
-      return -(9 - this.system.attributs.constitution.value)
-    }
-    return 0
-  }
 
   /* -------------------------------------------- */
-  rollAttribut(attrKey) {
-    let attr = this.system.attributs[attrKey]
+  rollSkill(attrKey, skillKey) {
+    let skill = this.system.skills[attrKey].skilllist[skillKey]
     let rollData = this.getCommonRollData()
-    rollData.attr = duplicate(attr)
-    rollData.mode = "attribut"
-    rollData.title = attr.label 
-    rollData.img = this.getAtttributImage(attrKey)
+    rollData.skill = duplicate(skill)
+    rollData.mode = "skill"
+    rollData.title = game.i18n.localize(skill.name)
+    rollData.img = skill.img
     this.startRoll(rollData)
   }
 
   /* -------------------------------------------- */
-  rollArme(weaponId) {
-    let arme = this.items.get(weaponId)
-    if (arme) {
-      arme = duplicate(arme)
+  rollWeapon(weaponId) {
+    let weapon = this.items.get(weaponId)
+    if (weapon) {
+      weapon = duplicate(weapon)
       let rollData = this.getCommonRollData()
-      if (arme.system.armetype == "mainsnues" || arme.system.armetype == "epee") {
+      if (weapon.system.armetype == "mainsnues" || weapon.system.armetype == "epee") {
         rollData.attr = { label: "(Physique+Habilité)/2", value: Math.floor( (this.getPhysiqueMalus()+this.system.attributs.physique.value+this.system.attributs.habilite.value) / 2) }
       } else {
         rollData.attr = duplicate(this.system.attributs.habilite)
       }
-      rollData.mode = "arme"
-      rollData.arme = arme
-      rollData.img = arme.img
-      rollData.title = arme.name
+      rollData.mode = "weapon"
+      rollData.weapon = weapon
+      rollData.img = weapon.img
+      rollData.title = weapon.name
       this.startRoll(rollData)
     } else {
       ui.notifications.warn("Impossible de trouver l'arme concernée ")

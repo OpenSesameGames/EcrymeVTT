@@ -9,7 +9,7 @@ export class EcrymeCharacterSummary extends Application {
     if (game.user.isGM) {
       game.system.ecryme.charSummary.render(true)
     } else {
-      ui.notifications.info("Commande /tirage réservée au MJ !")
+      ui.notifications.info("Commande /summary réservée au MJ !")
     }
   }
 

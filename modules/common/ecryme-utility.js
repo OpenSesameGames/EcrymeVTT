@@ -44,31 +44,12 @@ export class EcrymeUtility {
       return parseInt(a) + parseInt(b);
     })
 
-    game.settings.register("world", "character-summary-data", {
-      name: "character-summary-data",
-      scope: "world",
-      config: false,
-      default: { npcList: [], x: 200, y: 200 },
-      type: Object
-    })
-
-    const tarots = await EcrymeUtility.loadCompendium("fvtt-ecryme.ecryme-tarots")
-    this.tarots = tarots.map(i => i.toObject())
-
   }
 
   /*-------------------------------------------- */
   static upperFirst(text) {
     if (typeof text !== 'string') return text
     return text.charAt(0).toUpperCase() + text.slice(1)
-  }
-
-  /*-------------------------------------------- */
-  static getTarots() {
-    return duplicate(this.tarots)
-  }
-  static getTarot(tId) {
-    return  this.tarots.find(t => t._id == tId)
   }
 
   /* -------------------------------------------- */
@@ -93,14 +74,6 @@ export class EcrymeUtility {
       }
     }
     return actor
-  }
-  /* -------------------------------------------- */
-  static drawDeckCard(msgId) {
-    if (game.user.isGM) {
-      game.system.ecryme.currentTirage.addCard(msgId)
-    } else {
-      game.socket.emit( "system.fvtt-ecryme", {name: "msg-draw-card", data: {msgId: msgId}})
-    }
   }
 
   /* -------------------------------------------- */
@@ -269,75 +242,6 @@ export class EcrymeUtility {
   }
 
   /* -------------------------------------------- */
-  static processSpecialCard(actor, rollData) {
-    if (rollData.selectedCard.name.toLowerCase().includes("archange")) {
-      let actorCard = actor.items.find( c => c.type =="tarot" && c.name.toLowerCase().includes("archange"))
-      if (actorCard) {
-        EcrymeUtility.createChatMessage(actor.name, "gmroll", {
-          content: `Conséquence supplémentaire ! <br>L'Archange : ${actor.name} gagne 1 point de Spiritualité.` })
-        actor.incDecAttr("spiritualite", 1)
-      }
-    }
-    if (rollData.selectedCard.name.toLowerCase().includes("vicaire")) {
-      let actorCard = actor.items.find( c => c.type =="tarot" && c.name.toLowerCase().includes("vicaire"))
-      if (actorCard) {
-        EcrymeUtility.createChatMessage(actor.name, "blindroll", {
-          content: `Conséquence supplémentaire ! <br>Le Vicaire : ${actor.name} vient de gagner 1 point en Pratique de la Magie Blanche (MPMB, secret).` })
-        actor.incDecMPMB(1)
-      }
-    }
-    if (rollData.selectedCard.name.toLowerCase().includes("chance")) {
-      let actorCard = actor.items.find( c => c.type =="tarot" && c.name.toLowerCase().includes("chance"))
-      if (actorCard) {
-        EcrymeUtility.createChatMessage(actor.name, "gmroll", {
-          content: `Conséquence supplémentaire ! <br>La Chance : ${actor.name} a gagné 1 point de Destin.` })
-        actor.incDecDestin(1)
-      }
-    }
-    if (rollData.selectedCard.name.toLowerCase().includes("mort")) {
-      let actorCard = actor.items.find( c => c.type =="tarot" && c.name.toLowerCase().includes("mort"))
-      if (actorCard) {
-        EcrymeUtility.createChatMessage(actor.name, "gmroll", {
-          content: `Conséquence supplémentaire ! <br>La Mort : ${actor.name} est pétrifié par la peur.` })
-        actor.incDecDestin(1)
-      }
-    }
-    if (rollData.selectedCard.name.toLowerCase().includes("diable")) {
-      let actorCard = actor.items.find( c => c.type =="tarot" && c.name.toLowerCase().includes("diable"))
-      if (actorCard) {
-        EcrymeUtility.createChatMessage(actor.name, "gmroll", {
-          content: `Conséquence supplémentaire ! <br>Le Diable : ${actor.name} gagne 1 point de Rationnalité.` })
-        actor.incDecAttr("rationnalite", 1)
-      }
-    }
-    if (rollData.selectedCard.name.toLowerCase().includes("lune noire")) {
-      let actorCard = actor.items.find( c => c.type =="tarot" && c.name.toLowerCase().includes("lune noire"))
-      if (actorCard) {
-        EcrymeUtility.createChatMessage(actor.name, "blindroll", {
-          content: `Conséquence supplémentaire ! <br>La Lune Noire : ${actor.name} vient de gagner 1 point de Fluide (secret).` })
-        actor.incDecFluide(1)
-      }
-    }
-    if (rollData.selectedCard.name.toLowerCase().includes("grand livre")) {
-      let actorCard = actor.items.find( c => c.type =="tarot" && c.name.toLowerCase().includes("grand livre"))
-      if (actorCard) {
-        EcrymeUtility.createChatMessage(actor.name, "blindroll", {
-          content: `Conséquence supplémentaire ! <br>La Lune Noire : ${actor.name} vient de gagner 1 point de Fluide (secret).` })
-        actor.incDecFluide(1)
-      }
-    }
-    if (rollData.selectedCard.name.toLowerCase().includes("sorcier")) {
-      let actorCard = actor.items.find( c => c.type =="tarot" && c.name.toLowerCase().includes("sorcier"))
-      if (actorCard) {
-        EcrymeUtility.createChatMessage(actor.name, "blindroll", {
-          content: `Conséquence supplémentaire ! <br>Le Vicaire : ${actor.name} vient de gagner 1 point en Pratique de la Magie Noire (MPMN, secret).` })
-        actor.incDecMPMN(1)
-      }
-    }
-
-  }  
-
-  /* -------------------------------------------- */
   static computeResults(rollData) {
     rollData.isSuccess = false
     if (rollData.total <= rollData.target) {
@@ -355,38 +259,7 @@ export class EcrymeUtility {
       rollData.isPart = true
     }
   }
-  /* -------------------------------------------- */
-  static async tirageConfrontationEcryme(rollData) {
-    let actor = game.actors.get(rollData.actorId)
 
-    rollData.target = rollData.attr.value - rollData.confrontationDegre + rollData.confrontationModif
-
-    let deck = this.getTarots()
-    let index = Math.round(Math.random() * (deck.length-1))
-    let selectedCard = deck[index]
-    selectedCard.system.ispositif = (Math.random() > 0.5)
-    selectedCard.value = (selectedCard.system.ispositif)? selectedCard.system.numericvalueup : selectedCard.system.numericvaluedown
-    rollData.total = selectedCard.value
-    rollData.selectedCard = selectedCard
-    await EcrymeUtility.createChatMessage(actor.name, "gmroll", {
-      content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/display-tarot-card.hbs`, selectedCard) 
-    })
-
-    this.computeResults(rollData)
-
-    if (rollData.isSuccess) {
-      rollData.gainAttr = Math.ceil(rollData.confrontationDegre/2) + ((rollData.isCritical ) ? 1 : 0)
-      actor.incDecAttr(rollData.attr.abbrev, rollData.gainAttr )
-    } else {
-      rollData.gainAttr = rollData.confrontationDegre
-      actor.incDecAttr(rollData.attr.abbrev, -rollData.gainAttr )
-    }
-
-    await EcrymeUtility.createChatMessage(actor.name, "gmroll", {
-      content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-confrontation-result.hbs`, rollData) 
-    })
-    this.processSpecialCard(actor, rollData)  
-  }
   /* -------------------------------------------- */
   static async rollEcryme(rollData) {
 

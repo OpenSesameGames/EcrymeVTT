@@ -14,7 +14,7 @@ export class EcrymeHotbar {
     if (documentData.type == "Item") {
       console.log("Drop done !!!", bar, documentData, slot)
       let item = documentData.data
-      let command = `game.system.Ecryme.EcrymeHotbar.rollMacro("${item.name}", "${item.type}");`
+      let command = `game.system.ecryme.EcrymeHotbar.rollMacro("${item.name}", "${item.type}");`
       let macro = game.macros.contents.find(m => (m.name === item.name) && (m.command === command))
       if (!macro) {
         macro = await Macro.create({
