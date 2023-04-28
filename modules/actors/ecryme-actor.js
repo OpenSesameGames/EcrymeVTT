@@ -1,6 +1,6 @@
 /* -------------------------------------------- */
-import { EcrymeUtility } from "./common/ecryme-utility.js";
-import { EcrymeRollDialog } from "./dialogs/ecryme-roll-dialog.js";
+import { EcrymeUtility } from "../common/ecryme-utility.js";
+import { EcrymeRollDialog } from "../dialogs/ecryme-roll-dialog.js";
 
 
 /* -------------------------------------------- */

@@ -1,0 +1,26 @@
+{
+  "ACTOR": {
+    "TypePersonnage": "PC"
+  },
+  "ITEM": {
+    "TypeTrait": "Trait",
+    "TypeWeapon": "Weapon",
+    "TypeEquipment": "Equipment"
+  },
+  "ECRY": {
+    "ui": {
+      "traitType": "Trait type",
+      "niveauTrait": "Trait level",
+      "weight": "Weight",
+      "cost": "Cost",
+      "costunit": "Unit",
+      "effect": "Incidence",
+      "ingot": "Ingot",
+      "ingotin": "Ingotin",
+      "goldcoin": "Gold coin",
+      "lige": "Lige",
+      "hurle": "Howl",
+      "coin": "Coin"
+    }
+  }
+}

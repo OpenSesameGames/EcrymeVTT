@@ -3,7 +3,7 @@
  * @extends {ActorSheet}
  */
 
-import { EcrymeUtility } from "./common/ecryme-utility.js";
+import { EcrymeUtility } from "../common/ecryme-utility.js";
 
 /* -------------------------------------------- */
 export class EcrymeActorSheet extends ActorSheet {

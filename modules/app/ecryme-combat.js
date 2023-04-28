@@ -1,4 +1,4 @@
-import { EcrymeUtility } from "./common/ecryme-utility.js";
+import { EcrymeUtility } from "../common/ecryme-utility.js";
 
 /* -------------------------------------------- */
 export class EcrymeCombat extends Combat {

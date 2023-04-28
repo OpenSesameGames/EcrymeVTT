@@ -1,13 +1,27 @@
 {
   "ACTOR": {
-    "TypePersonnage": "Personnage"
+    "TypePersonnage": "PC"
   },
   "ITEM": {
-    "TypeArme": "Arme",
-    "TypeEquipement": "Equipement",
-    "TypeTarot": "Tarot",
-    "TypeElementbio": "Element Biographique",
-    "TypeArchetype": "Archetype",
-    "TypeSortilege": "Sortilège"
+    "TypeTrait": "Trait",
+    "TypeWeapon": "Weapon",
+    "TypeEquipment": "Equipment"
+  },
+  "ECRY": {
+    "ui": {
+      "traitType": "Type de trait",
+      "niveauTrait": "Niveau du trait",
+      "effect": "Effect",
+      "weight": "Poids",
+      "cost": "Prix",
+      "costUnit": "Unité",
+      "ingot": "Lingot",
+      "ingotin": "Lingotin",
+      "goldcoin": "Pièce d'or",
+      "lige": "Lige",
+      "hurle": "Hurle",
+      "coin": "Sous"
+
+    }
   }
 }

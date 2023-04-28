@@ -1,5 +1,5 @@
 /* -------------------------------------------- */
-import { EcrymeUtility } from "./common/ecryme-utility.js";
+import { EcrymeUtility } from "../common/ecryme-utility.js";
 
 /* -------------------------------------------- */
 export class EcrymeCharacterSummary extends Application {
@@ -38,7 +38,7 @@ export class EcrymeCharacterSummary extends Application {
   constructor() {
     super();
     //game.settings.set("world", "character-summary-data", {npcList: [], x:0, y:0})
-    this.settings = game.settings.get("world", "character-summary-data")
+    //this.settings = game.settings.get("world", "character-summary-data")
   }
 
   /* -------------------------------------------- */

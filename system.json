@@ -4,7 +4,7 @@
     "modules/ecryme-main.js"
   ],
   "gridDistance": 1,
-  "gridUnits": "u",
+  "gridUnits": "m",
   "languages": [
     {
       "lang": "fr",
@@ -42,7 +42,7 @@
   ],
   "title": "Ecryme, le Jeu de Rôles",
   "url": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme",
-  "version": "10.0.0",
+  "version": "10.0.3",
   "download": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme/archive/fvtt-ecryme-v10.0.0.zip",
   "background": "systems/fvtt-ecryme/images/ui/accueil_01.webp"
 }

@@ -1,7 +1,7 @@
 {
   "Actor": {
     "types": [
-      "personnage"
+      "pc"
     ],
     "templates": {
       "biodata": {
@@ -122,7 +122,7 @@
         "description": ""
       }
     },
-    "personnage": {
+    "pc": {
       "templates": [
         "biodata",
         "core"
@@ -130,50 +130,53 @@
     }
   },
   "Item": {
-    "types": ["item", "trait", "weapon", "scar", "specialization","annency", "boheme", "contact"],
+    "types": ["equipment", "trait", "weapon", "scar", "specialization","annency", "boheme", "contact"],
     "templates": {
-      "base": {
+      "common": {
         "description": ""
+      },
+      "equipement": {
+        "weight": 0,
+        "cost": 0,
+        "costunit": ""
       }
     },
-    "item": {
-      "templates": ["base"],
+    "equipment": {
+      "templates": ["common","equipement"],
       "quantity": 1,
       "weight": 0
     },
     "trait": {
-      "templates": ["base"],
-      "traitype": "basic",
-      "value": 1,
-      "min": -2,
-      "max": 2
+      "templates": ["common"],
+      "traitype": "normal",
+      "level": 1
     },
     "weapon": {
-      "templates": ["base"],
-      "effectLevel": 1
+      "templates": ["common", "equipement"],
+      "effect": 0
     },
     "specialization": {
-      "templates": ["base"],
+      "templates": ["common"],
       "skillname": ""
     },
     "scar": {
-      "templates": ["base"],
+      "templates": ["common"],
       "skillcategory": ["physical", "mental", "social", "cephalie"],
       "scarLevel": 1
     },
-    "anence": {
-      "templates": ["base"],
+    "annency": {
+      "templates": ["common"],
       "collective": false,
       "multiple": false,
       "improvements": ""
     },
     "boheme": {
-      "templates": ["base"],
+      "templates": ["common"],
       "ideals": "",
       "political": ""
     },
     "contact": {
-      "templates": ["base"],
+      "templates": ["common"],
       "attitude": "neutral",
       "organization": "",
       "location":""

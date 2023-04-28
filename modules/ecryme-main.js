@@ -11,13 +11,12 @@
 import { EcrymeActor } from "./actors/ecryme-actor.js";
 import { EcrymeItemSheet } from "./items/ecryme-item-sheet.js";
 import { EcrymeActorSheet } from "./actors/ecryme-actor-sheet.js";
-import { EcrymeNPCSheet } from "./actors/ecryme-npc-sheet.js";
 import { EcrymeUtility } from "./common/ecryme-utility.js";
 import { EcrymeCombat } from "./app/ecryme-combat.js";
 import { EcrymeItem } from "./items/ecryme-item.js";
 import { EcrymeHotbar } from "./app/ecryme-hotbar.js"
 import { EcrymeCharacterSummary } from "./app/ecryme-summary-app.js"
-import { MALEFICES_CONFIG } from "./common/ecryme-config.js"
+import { ECRYME_CONFIG } from "./common/ecryme-config.js"
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -58,8 +57,8 @@ Hooks.once("init", async function () {
   /* -------------------------------------------- */
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("fvtt-ecryme", EcrymeActorSheet, { types: ["personnage"], makeDefault: true });
-  Actors.registerSheet("fvtt-ecryme", EcrymeNPCSheet, { types: ["pnj"], makeDefault: false });
+  Actors.registerSheet("fvtt-ecryme", EcrymeActorSheet, { types: ["pc"], makeDefault: true });
+  //Actors.registerSheet("fvtt-ecryme", EcrymeNPCSheet, { types: ["pnj"], makeDefault: false });
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("fvtt-ecryme", EcrymeItemSheet, { makeDefault: true });

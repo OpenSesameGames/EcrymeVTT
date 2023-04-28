@@ -1,7 +1,7 @@
 /* -------------------------------------------- */
 
-import { EcrymeUtility } from "./common/ecryme-utility.js";
-import { EcrymeCharacterSummary } from "./app/ecryme-summary-app.js"
+import { EcrymeUtility } from "../common/ecryme-utility.js";
+import { EcrymeCharacterSummary } from "../app/ecryme-summary-app.js"
 
 /* -------------------------------------------- */
 export class EcrymeCommands {

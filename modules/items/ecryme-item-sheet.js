@@ -1,4 +1,4 @@
-import { EcrymeUtility } from "./common/ecryme-utility.js";
+import { EcrymeUtility } from "../common/ecryme-utility.js";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications

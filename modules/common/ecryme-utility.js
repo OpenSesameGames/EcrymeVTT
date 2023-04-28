@@ -1,5 +1,5 @@
 /* -------------------------------------------- */
-import { EcrymeCommands } from "./ecryme-commands.js";
+import { EcrymeCommands } from "../app/ecryme-commands.js";
 
 
 /* -------------------------------------------- */
@@ -101,6 +101,7 @@ export class EcrymeUtility {
     const templatePaths = [
       'systems/fvtt-ecryme/templates/actors/editor-notes-gm.hbs',
       'systems/fvtt-ecryme/templates/items/partial-item-nav.hbs',
+      'systems/fvtt-ecryme/templates/items/partial-item-equipment.hbs',
       'systems/fvtt-ecryme/templates/items/partial-item-description.hbs'
     ]
     return loadTemplates(templatePaths);

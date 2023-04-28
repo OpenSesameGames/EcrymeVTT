@@ -1,0 +1,34 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+      <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+      <div class="header-fields">
+          <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+      </div>
+  </header>
+  
+  {{> systems/fvtt-ecryme/templates/items/partial-item-nav.hbs}}
+
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{> systems/fvtt-ecryme/templates/items/partial-item-description.hbs}}
+    
+    <div class="tab details" data-group="primary" data-tab="details">
+
+      <div class="tab" data-group="primary">
+        <ul>
+
+          <li class="flexrow">
+            <label class="item-field-label-long">{{localize "ECRY.ui.effect"}}</label>
+            <input type="text" class="item-field-label-short" name="system.effect" value="{{system.effect}}" data-dtype="Number"/>          
+          </li>
+      
+          {{> systems/fvtt-ecryme/templates/items/partial-item-equipment.hbs}}
+
+        </ul>
+    </div>
+  </div>
+
+  </section>
+</form>

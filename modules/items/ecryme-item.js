@@ -1,4 +1,4 @@
-import { EcrymeUtility } from "./ecryme-utility.js";
+import { EcrymeUtility } from "../common/ecryme-utility.js";
 
 export const defaultItemImg = {
   weapon: "systems/fvtt-ecryme/images/icons/weapon.webp",
