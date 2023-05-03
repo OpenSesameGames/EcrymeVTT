@@ -89,6 +89,23 @@ export class EcrymeActor extends Actor {
 
     return comp;
   }
+
+  /* -------------------------------------------- */
+  getSpecializations(skillKey) {
+    return this.items.filter(it => it.type == "specialization" && it.system.skillkey == skillKey)
+  }
+  /* -------------------------------------------- */
+  prepareSkills() {
+    let skills = duplicate(this.system.skills)
+    for (let categKey in  skills) {
+      let category = skills[categKey]
+      for (let skillKey in category.skilllist)  {
+        let skill = category.skilllist[skillKey]
+        skill.spec = this.getSpecializations(skillKey)
+      }
+    }
+    return skills
+  }
   /* -------------------------------------------- */
   getWeapons() {
     let comp = duplicate(this.items.filter(item => item.type == 'weapon') || [])
@@ -255,14 +272,12 @@ export class EcrymeActor extends Actor {
     rollData.img = this.img
     rollData.isReroll = false
 
-    console.log("ROLLDATA", rollData)
-
     return rollData
   }
 
   /* -------------------------------------------- */
-  rollSkill(attrKey, skillKey) {
-    let skill = this.system.skills[attrKey].skilllist[skillKey]
+  rollSkill(categKey, skillKey) {
+    let skill = this.system.skills[categKey].skilllist[skillKey]
     let rollData = this.getCommonRollData()
     rollData.skill = duplicate(skill)
     rollData.mode = "skill"
@@ -294,6 +309,7 @@ export class EcrymeActor extends Actor {
   
   /* -------------------------------------------- */
   async startRoll(rollData) {
+    console.log("ROLLDATA", rollData)
     let rollDialog = await EcrymeRollDialog.create(this, rollData)
     rollDialog.render(true)
   }

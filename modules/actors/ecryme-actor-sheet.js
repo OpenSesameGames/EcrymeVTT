@@ -14,7 +14,7 @@ export class EcrymeActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["fvtt-ecryme", "sheet", "actor"],
       template: "systems/fvtt-ecryme/templates/actors/actor-sheet.hbs",
-      width: 640,
+      width: 860,
       height:680,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "skills" }],
       dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
@@ -35,6 +35,9 @@ export class EcrymeActorSheet extends ActorSheet {
       cssClass: this.isEditable ? "editable" : "locked",
       system: duplicate(this.object.system),
       limited: this.object.limited,
+      skills: this.actor.prepareSkills(),
+      system: duplicate(this.object.system),
+      config: duplicate(game.system.ecryme.config),
       weapons: duplicate(this.actor.getWeapons()),
       archetype: duplicate(this.actor.getArchetype()),
       equipements: duplicate(this.actor.getEquipements()),
@@ -105,8 +108,9 @@ export class EcrymeActorSheet extends ActorSheet {
     } );
 
     html.find('.roll-skill').click((event) => {
-      let attrKey = $(event.currentTarget).data("attr-key")
-      this.actor.rollAttribut(attrKey)
+      let categKey = $(event.currentTarget).data("category-key")
+      let skillKey = $(event.currentTarget).data("skill-key")
+      this.actor.rollSkill(categKey, skillKey)
     });    
     html.find('.roll-weapon').click((event) => {
       const armeId = $(event.currentTarget).data("arme-id")

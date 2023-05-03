@@ -25,12 +25,12 @@
 
     --actor-label-font-size: 0.8rem;
     --actor-label-font-weight: 700;
-    --actor-label-color: rgba(70,67,49,0.76863);
+    --actor-label-color: #464331c4;
 
   /* =================== 2. DEBUGGING HIGHLIGHTERS ============ */ 
-    --debug-background-color-red: rgba(255,0,0,0.32941);
-    --debug-background-color-blue: rgba(29,0,255,0.32941);
-    --debug-background-color-green: rgba(84,255,0,0.32941);
+    --debug-background-color-red: #ff000054;
+    --debug-background-color-blue: #1d00ff54;
+    --debug-background-color-green: #54ff0054;
 
     --debug-box-shadow-red: inset 0 0 2px red;
     --debug-box-shadow-blue: inset 0 0 2px blue;
@@ -95,7 +95,6 @@ table {border: 1px solid #7a7971;}
   display: grid;
   grid-column: span 2 / span 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-gap: 10px;
   gap: 10px;
   margin: 10px 0;
   padding: 0;
@@ -154,24 +153,36 @@ table {border: 1px solid #7a7971;}
 .flex-group-center,
 .flex-group-left,
 .flex-group-right {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   text-align: center;
   padding: 5px;
 }
 
 .flex-group-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
   text-align: left;
 }
 
 .flex-group-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
   text-align: right;
 }
 
 .flex-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   text-align: center;
 }
@@ -181,6 +192,8 @@ table {border: 1px solid #7a7971;}
 }
 
 .flex-between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -190,26 +203,36 @@ table {border: 1px solid #7a7971;}
 
 /* Styles limited to sheets */
 .fvtt-ecryme .sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 210px;
   flex: 0 0 210px;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
 
 .fvtt-ecryme .sheet-header .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 128px;
   flex: 0 0 128px;
   width: 128px;
   height: auto;
   max-height:128px;
   margin-top: 0px;
   margin-right: 10px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 50% 0;
-     object-position: 50% 0;
+  object-fit: cover;
+  object-position: 50% 0;
   border-width: 0px;
 }
 .profile-img-container {
@@ -249,6 +272,8 @@ table {border: 1px solid #7a7971;}
 }
 
 .fvtt-ecryme .sheet-header .header-fields {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
 }
 
@@ -268,6 +293,8 @@ table {border: 1px solid #7a7971;}
 }
 
 .fvtt-ecryme .sheet-tabs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
   flex: 0;
   font-family: MailartRubberstamp;
   font-size: 2.2rem;
@@ -347,6 +374,8 @@ table {border: 1px solid #7a7971;}
 }
 
 .fvtt-ecryme .items-list .item .item-image {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 24px;
   flex: 0 0 24px;
   margin-right: 5px;
 }
@@ -360,6 +389,8 @@ table {border: 1px solid #7a7971;}
 }
 
 .fvtt-ecryme .items-list .item-controls {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 86px;
   flex: 0 0 86px;
   text-align: right;
 }
@@ -428,10 +459,8 @@ select {
 section.sheet-body{padding: 0.25rem 0.5rem;}
 
 .sheet header.sheet-header .profile-img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 50% 0;
-     object-position: 50% 0;
+  object-fit: cover;
+  object-position: 50% 0;
   margin: 0.5rem 0 0.5rem  0.5rem;
   padding: 0;
 }
@@ -716,9 +745,7 @@ ul, li {
   left: 4rem;
 }
 .control-icon.tokenhudicon {
-  width: -moz-fit-content;
   width: fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   min-width: 6rem;
   flex-basis: auto;
@@ -739,7 +766,7 @@ ul, li {
 /* ======================================== */
 .item-checkbox {
   height: 25px;
-  border: 1px solid rgba(115,105,83,0.65098);
+  border: 1px solid #736953a6;
   border-left: none;
   font-weight: 500;
   font-size: 1rem;
@@ -948,8 +975,7 @@ ul, li {
   border-radius: 0;
   background: rgba(30, 25, 20, 1);
   background-origin: padding-box;
-  -o-border-image: url(img/ui/footer-button.png) 10 repeat;
-     border-image: url(img/ui/footer-button.png) 10 repeat;
+  border-image: url(img/ui/footer-button.png) 10 repeat;
   border-image-width: 4px;
   border-image-outset: 0px;
 }
@@ -957,8 +983,7 @@ ul, li {
 #controls .scene-control.active, #controls .control-tool.active, #controls .scene-control:hover, #controls .control-tool:hover {
   background: rgba(72, 46, 28, 1);
   background-origin: padding-box;
-  -o-border-image: url(img/ui/footer-button.png) 10 repeat;
-     border-image: url(img/ui/footer-button.png) 10 repeat;
+  border-image: url(img/ui/footer-button.png) 10 repeat;
   border-image-width: 4px;
   border-image-outset: 0px;
   box-shadow: 0 0 3px #ff6400;
@@ -970,8 +995,7 @@ ul, li {
 }
 
 #hotbar #action-bar .macro {
-  -o-border-image: url(img/ui/bg_control.jpg) 21 repeat;
-     border-image: url(img/ui/bg_control.jpg) 21 repeat;
+  border-image: url(img/ui/bg_control.jpg) 21 repeat;
   border-image-slice: 6 6 6 6 fill;
   border-image-width: 6px 6px 6px 6px;
   border-image-outset: 0px 0px 0px 0px;
@@ -984,8 +1008,7 @@ ul, li {
 }
 
 #players {
-  -o-border-image: url(img/ui/footer-button.png) 10 repeat;
-     border-image: url(img/ui/footer-button.png) 10 repeat;
+  border-image: url(img/ui/footer-button.png) 10 repeat;
   border-image-width: 4px;
   border-image-outset: 0px;
   background: rgba(30, 25, 20, 1);
@@ -998,8 +1021,7 @@ ul, li {
 #navigation #scene-list .scene.nav-item {
   background: rgba(30, 25, 20, 1);
   background-origin: padding-box;
-  -o-border-image: url(img/ui/footer-button.png) 10 repeat;
-     border-image: url(img/ui/footer-button.png) 10 repeat;
+  border-image: url(img/ui/footer-button.png) 10 repeat;
   border-image-width: 4px;
   border-image-outset: 0px;
 }
@@ -1007,8 +1029,7 @@ ul, li {
 #navigation #scene-list .scene.view, #navigation #scene-list .scene.context {
   background: rgba(72, 46, 28, 1);
   background-origin: padding-box;
-  -o-border-image: url(img/ui/footer-button.png) 10 repeat;
-     border-image: url(img/ui/footer-button.png) 10 repeat;
+  border-image: url(img/ui/footer-button.png) 10 repeat;
   border-image-width: 4px;
   border-image-outset: 0px;
   box-shadow: 0 0 3px #ff6400;
@@ -1017,8 +1038,7 @@ ul, li {
 #navigation #nav-toggle {
   background: rgba(30, 25, 20, 1);
   background-origin: padding-box;
-  -o-border-image: url(img/ui/footer-button.png) 10 repeat;
-     border-image: url(img/ui/footer-button.png) 10 repeat;
+  border-image: url(img/ui/footer-button.png) 10 repeat;
   border-image-width: 4px;
   border-image-outset: 0px;
 }
@@ -1062,8 +1082,8 @@ ul, li {
 
 .chat-card-button {
   box-shadow: inset 0px 1px 0px 0px #a6827e;
-  background: linear-gradient(to bottom, rgba(33,55,74,0.98824) 5%, rgba(21,40,51,0.67059) 100%);
-  background-color: rgba(125,93,59,0);
+  background: linear-gradient(to bottom, #21374afc 5%, #152833ab 100%);
+  background-color: #7d5d3b00;
   border-radius: 3px;
   border: 2px ridge #846109;
   display: inline-block;
@@ -1088,8 +1108,8 @@ ul, li {
 
 .plus-minus-button {
   box-shadow: inset 0px 1px 0px 0px #a6827e;
-  background: linear-gradient(to bottom, rgba(33,55,74,0.98824) 5%, rgba(21,40,51,0.67059) 100%);
-  background-color: rgba(125,93,59,0);
+  background: linear-gradient(to bottom, #21374afc 5%, #152833ab 100%);
+  background-color: #7d5d3b00;
   border-radius: 2px;
   border: 1px ridge #846109;
   display: inline-block;

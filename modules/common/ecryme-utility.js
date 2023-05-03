@@ -43,7 +43,20 @@ export class EcrymeUtility {
     Handlebars.registerHelper('add', function (a, b) {
       return parseInt(a) + parseInt(b);
     })
+    this.buildSkillConfig()
+  }
 
+  /*-------------------------------------------- */
+  static buildSkillConfig() {
+    game.system.ecryme.config.skills = { }
+    for (let categKey in  game.data.template.Actor.templates.core.skills) {
+      let category = game.data.template.Actor.templates.core.skills[categKey]
+      for(let skillKey in category.skilllist) {
+        let skill = duplicate(category.skilllist[skillKey])
+        skill.categKey = categKey // Auto reference the category
+        game.system.ecryme.config.skills[skillKey] = skill
+      }
+    }
   }
 
   /*-------------------------------------------- */

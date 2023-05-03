@@ -157,7 +157,7 @@
     },
     "specialization": {
       "templates": ["common"],
-      "skillname": ""
+      "skillkey": ""
     },
     "scar": {
       "templates": ["common"],

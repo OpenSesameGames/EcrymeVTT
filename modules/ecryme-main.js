@@ -74,13 +74,10 @@ function welcomeMessage() {
       user: game.user.id,
       whisper: [game.user.id],
       content: `<div id="welcome-message-ecryme"><span class="rdd-roll-part">
-      <strong>Bienvenu dans Ecryme, le JDR qui sent le souffre !</strong>
-      <p>Le Livre de Base de Maléfices v4 est nécessaire pour jouer : https://arkhane-asylum.fr/en/ecryme/</p>
-      <p>Maléfices et un jeu de rôle publié par Arkhane Asylum Publishing, tout les droits leur appartiennent.</p>
-      <p>Système développé par LeRatierBretonnien avec l'aide de la Dame du Lac et Malik, support sur le <a href="https://discord.gg/pPSDNJk">Discord FR de Foundry</a>.</p>
-      <p>Commandes : /tirage pour le tirage des tarots, /carte pour tirer une simple carte et /resume pour le résumé des PJs (MJ seulement)` });
+      <strong>Bienvenu dans Ecryme !</strong>` });
   }
 }
+
 /* -------------------------------------------- */
 // Register world usage statistics
 function registerUsageCount(registerKey) {
@@ -121,7 +118,7 @@ Hooks.once("ready", function () {
     });
   }
 
-  registerUsageCount('fvtt-ecryme')
+  registerUsageCount(game.system.id)
   welcomeMessage();
   EcrymeUtility.ready()
   EcrymeCharacterSummary.ready()

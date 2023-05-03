@@ -20,8 +20,31 @@
       "goldcoin": "Pièce d'or",
       "lige": "Lige",
       "hurle": "Hurle",
-      "coin": "Sous"
-
+      "coin": "Sous",
+      "notes": "Notes",
+      "bio": "Bio",
+      "skills": "Compétences",
+      "traits": "Traits",
+      "equipment": "Equipement",
+      "physical": "Physiques",
+      "mental": "Mentales",
+      "social": "Sociales",
+      "athletics": "Athlétisme",
+      "driving": "Conduite",
+      "fencing": "Escrime",
+      "brawling": "Pugilat",
+      "shooting": "Tir",
+      "anthropomecanology": "Anthropo-Mécanologie",
+      "ecrymology": "Écrymologie",
+      "traumatology": "Traumatologie",
+      "traversology": "Traversologie",
+      "urbatechnology": "Urbatechnologie", 
+      "quibbling": "Argutie",
+      "creativity": "Créativité",
+      "loquacity": "Faconde",
+      "guile": "Maraude",
+      "performance" :"Représentation",
+      "skill": "Compétence"
     }
   }
 }
