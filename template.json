@@ -130,7 +130,7 @@
     }
   },
   "Item": {
-    "types": ["equipment", "trait", "weapon", "scar", "specialization","annency", "boheme", "contact"],
+    "types": ["equipment", "trait", "weapon", "specialization","annency", "boheme", "contact"],
     "templates": {
       "common": {
         "description": ""

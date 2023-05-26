@@ -14,6 +14,14 @@ export const ECRYME_CONFIG = {
     {value: +2, text: "+2"},
     {value: +3, text: "+3"}
   ],
+  difficulty: {
+    "-1": {difficulty: "ECRY.ui.none", frequency: "ECRY.ui.none", value: "-"},
+    "8": { difficulty: "ECRY.ui.troublesome", frequency: "ECRY.ui.occasional", value: 8 },
+    "10": { difficulty: "ECRY.ui.difficult", frequency: "ECRY.ui.uncommon", value: 10 },
+    "12": { difficulty: "ECRY.ui.verydifficult", frequency: "ECRY.ui.rare", value: 12 },
+    "14": { difficulty: "ECRY.ui.extremdifficult", frequency: "ECRY.ui.veryrare", value: 14 },
+    "16": { difficulty: "ECRY.ui.increddifficult", frequency: "ECRY.ui.exceptrare", value: 16 },
+  },
   skillLevel: {
     "0": "0",
     "1": "1",

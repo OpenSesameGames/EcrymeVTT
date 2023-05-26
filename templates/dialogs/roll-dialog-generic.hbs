@@ -6,56 +6,97 @@
     <h1 class="dialog-roll-title roll-dialog-header">{{title}}</h1>
   </header>
 
-    <div class="flexcol">
-      
-      {{#if skill}}
-      <div class="flexrow">
-        <span class="roll-dialog-label">{{localize skill.name}} : </span>
-        <span class="roll-dialog-label">
-          {{skill.value}}
-        </span>
-      </div>
-      {{/if}}
-      
-      <div class="flexrow">
-        <span class="roll-dialog-label">Bonus/Malus : </span>
-        <select id="bonusMalusPerso" name="bonusMalusPerso">
-          {{#select bonusMalusPerso}} 
-            <option value="-3">-3</option>
-            <option value="-2">-2</option>
-            <option value="-1">-1</option>
-            <option value="0">0</option>
-            <option value="1">+1</option>
-            <option value="2">+2</option>
-            <option value="3">+3</option>
-          {{/select}}
-        </select>        
-      </div>
+  <div class="flexcol">
 
-      {{#if weapon}}
-      <div class="flexrow">
-        <span class="roll-dialog-label">Défense : </span>
-        <select id="bonusMalusDef" name="bonusMalusDef">
-          {{#select bonusMalusDef}} 
-            <option value="-3">-6 (réussite critique)</option>
-            <option value="-3">-3 (réussite)</option>
-            <option value="0">0 (echec ou pas d'esquive)</option>
-            <option value="3">+3 (echec critique)</option>
-          {{/select}}
-        </select>        
-      </div>
+    {{#if skill}}
+    <div class="flexrow">
+      <span class="roll-dialog-label">{{localize skill.name}} : </span>
+      <span class="roll-dialog-label">
+        {{skill.value}}
+      </span>
+    </div>
 
-      <div class="flexrow">
-        <span class="roll-dialog-label">Portée : </span>
-        <select id="bonusMalusPortee" name="bonusMalusPortee">
-          {{#select bonusMalusPortee}} 
-            <option value="1">+1 (Portée courte)</option>
-            <option value="0">0 (Portée moyenne)</option>
-            <option value="-1">-1 (Portée longue)</option>
-          {{/select}}
-        </select>        
-      </div>
-      {{/if}}
+    <div class="flexrow">
+      <span class="roll-dialog-label">{{localize "ECRY.ui.skilltranscendence"}} : </span>
+      <select class="" id="roll-select-transcendence" data-type="Number">
+        {{#select skillTranscendence}}
+          {{#for 0 skill.value 1}}
+            <option value="{{this}}">{{this}}</option>
+          {{/for}}
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="flexrow">
+      <span class="roll-dialog-label">{{localize "ECRY.ui.spec"}} : </span>
+      <select class="" id="roll-specialization" data-type="String" multiple>
+        {{#each skill.spec as | spec idx|}}
+          <option value="{{spec._id}}">{{spec.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    {{#if spleen}}
+    <div class="flexrow">
+      <span class="roll-dialog-label">{{localize "ECRY.ui.applyspleen"}} {{spleen.name}}</span>
+      <input type="checkbox" class="item-field-label-short" id="roll-use-spleen" {{checked useSpleen}} />
+    </div>
+    {{/if}}
+    
+    {{#if ideal}}
+    <div class="flexrow">
+      <span class="roll-dialog-label">{{localize "ECRY.ui.applyideal"}} {{ideal.name}}</span>
+      <input type="checkbox" class="item-field-label-short" id="roll-use-ideal" {{checked useIdeal}} />
+    </div>
+    {{/if}}
+
+    <div class="flexrow">
+      <span class="roll-dialog-label">{{localize "ECRY.ui.traitbonus"}} : </span>
+      <select class="" id="roll-trait-bonus" data-type="String" multiple>
+        {{#each traits as | trait idx|}}
+          <option value="{{trait._id}}">{{trait.name}} ({{trait.system.level}})</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="flexrow">
+      <span class="roll-dialog-label">{{localize "ECRY.ui.traitmalus"}} : </span>
+      <select class="" id="roll-trait-malus" data-type="String" multiple>
+        {{#each traits as | trait idx|}}
+          <option value="{{trait._id}}">{{trait.name}} ({{trait.system.level}})</option>
+        {{/each}}
+      </select>
+    </div>
+
+    {{/if}}
+
+
+    <div class="flexrow">
+      <span class="roll-dialog-label">Bonus/Malus : </span>
+      <select id="bonusMalusPerso" name="bonusMalusPerso">
+        {{#select bonusMalusPerso}}
+        <option value="-3">-3</option>
+        <option value="-2">-2</option>
+        <option value="-1">-1</option>
+        <option value="0">0</option>
+        <option value="1">+1</option>
+        <option value="2">+2</option>
+        <option value="3">+3</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="flexrow">
+      <span class="roll-dialog-label">Difficulté : </span>
+      <select class="" type="text" id="roll-difficulty" value="{{difficulty}}" data-dtype="Number">
+        {{#select difficulty}}
+        {{#each config.difficulty as |diffData value| }}
+        <option value="{{diffData.value}}">{{localize diffData.difficulty}} / {{localize diffData.frequency}}
+          ({{diffData.value}})</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
 
   </div>
 

@@ -18,55 +18,41 @@
 
     <div>
       <ul>
-        {{#if attr}}
-        <li>{{attr.label}} : {{attr.value}} 
-        </li>
+        {{#if skill}}
+          <li>{{localize skill.name}}: {{skill.value}} </li>
+          {{#if spec}}
+            <li>{{localize "ECRY.chat.specialization"}} {{spec.name}} (+2) </li>
+          {{/if}}
         {{/if}}
 
-        <li>Bonus/Malus perso: {{bonusMalusPerso}} </li>
-        <li>Bonus/Malus situation: {{bonusMalusSituation}} </li>
-        <li>Seuil final: {{target}} </li>
-        <li>Resultat {{roll.total}} </li>
+        {{#if skillTranscendence}}
+          <li>{{localize "ECRY.ui.skilltranscendence"}}: {{skillTranscendence}} </li>
 
-        {{#if isSuccess}}
-          {{#if isCritical}}
-            <li><label class="chat-result-text chat-result-success ">Réussite Critique !</label></li>
-            {{#if arme}}
-              {{#if arme.system.dommagecritiquemort}}
-                <li><label class="chat-result-success">La victime est morte !</label></li>
-              {{else}}
-                {{#if arme.system.dommagecritiqueko}}
-                  <li><label class="chat-result-text chat-result-success ">La victime est KO !</label></li>
-                {{/if}}
-                <li><label class="chat-result-success ">La victime subit {{arme.system.dommagecritique}} dommages</label></li>
-              {{/if}}
-            {{/if}}
-          {{else}}  
-            {{#if isPart}}
-              <li><label class="chat-result-text chat-result-success ">Réussite Particulière !</label></li>
-              {{#if arme}}
-                <li><label class="chat-result-success ">La victime subit {{arme.system.dommagepart}} dommages</label></li>
-              {{/if}}        
+        {{/if}}
 
-            {{else}}
-              <li><label class="chat-result-text chat-result-success ">Succés !</label></li>
-              {{#if arme}}
-                <li><label class="chat-result-success ">La victime subit {{arme.system.dommagenormale}} dommages</label></li>
-              {{/if}}        
-            {{/if}}        
-          {{/if}}
-        {{else}}
-          {{#if isFumble}}
-            <li><label class="chat-result-text chat-result-failure ">Echec Critique !</label></li>
+        {{#if traitsBonusList}}
+          {{#each traitsBonusList as |trait idx|}}
+          <li>{{localize "ECRY.chat.traitbonus"}}: {{trait.name}} ({{trait.system.level}}) </li>
+          {{/each}}
+        {{/if}}
+        {{#if traitsMalusList}}
+          {{#each traitsMalusList as |trait idx|}}
+            <li>{{localize "ECRY.chat.traitmalus"}}: {{trait.name}} ({{trait.system.level}}) </li>
+          {{/each}}
+        {{/if}}
+        {{#if bonusMalusTraits}}
+          <li>{{localize "ECRY.chat.bonusmalustraits"}}: {{bonusMalusTraits}} </li>
+        {{/if}}
+
+        <li>{{localize "ECRY.chat.formula"}}: {{diceFormula}} </li>
+        <li>{{localize "ECRY.chat.dicesum"}}: {{diceSum}} </li>
+        <li>{{localize "ECRY.chat.result"}}: {{total}} </li>
+        {{#if difficulty}}
+          <li>{{localize "ECRY.chat.difficulty"}}: {{difficulty}} - {{localize "ECRY.chat.margin"}}: {{margin}} </li>
+          {{#if isSuccess}}
+            <li><label class="chat-result-text chat-result-success ">{{localize "ECRY.chat.success"}}</label></li>
           {{else}}
-            <li><label class="chat-result-text chat-result-failure">Echec !</label></li>
-          {{/if}}
-        {{/if}}
-
-        {{#if isReroll}}
-        {{else}}
-          {{#if (gt destin 0)}}
-            <button class="chat-card-button roll-destin">Relancer (1 Destin)</button>
+            <li><label class="chat-result-text chat-result-failure">{{localize "ECRY.chat.failure"}}</label></li>
           {{/if}}
         {{/if}}
 

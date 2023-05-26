@@ -8,6 +8,7 @@ export class EcrymeUtility {
   /* -------------------------------------------- */
   static async init() {
     Hooks.on('renderChatLog', (log, html, data) => EcrymeUtility.chatListeners(html));
+    Hooks.on("getChatLogEntryContext", (html, options) => EcrymeUtility.chatMenuManager(html, options));
 
     this.rollDataStore = {}
     this.defenderStore = {}
@@ -43,15 +44,22 @@ export class EcrymeUtility {
     Handlebars.registerHelper('add', function (a, b) {
       return parseInt(a) + parseInt(b);
     })
+    Handlebars.registerHelper('for', function (from, to, incr, block) {
+      var accum = '';
+      for (var i = from; i <= to; i += incr)
+        accum += block.fn(i);
+      return accum;
+    })
     this.buildSkillConfig()
+
   }
 
   /*-------------------------------------------- */
   static buildSkillConfig() {
-    game.system.ecryme.config.skills = { }
-    for (let categKey in  game.data.template.Actor.templates.core.skills) {
+    game.system.ecryme.config.skills = {}
+    for (let categKey in game.data.template.Actor.templates.core.skills) {
       let category = game.data.template.Actor.templates.core.skills[categKey]
-      for(let skillKey in category.skilllist) {
+      for (let skillKey in category.skilllist) {
         let skill = duplicate(category.skilllist[skillKey])
         skill.categKey = categKey // Auto reference the category
         game.system.ecryme.config.skills[skillKey] = skill
@@ -90,6 +98,32 @@ export class EcrymeUtility {
   }
 
   /* -------------------------------------------- */
+  static chatMenuManager(html, options) {
+    let canTranscendRoll = []
+    for(let i=1; i<=10; i++ ) {
+      canTranscendRoll[i] = function (li) {
+        let message = game.messages.get(li.attr("data-message-id"))
+        let rollData = message.getFlag("world", "rolldata")
+        //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>> Menu !!!!", rollData)
+        if (rollData.skill && i <= rollData.skill.value && !rollData.transcendUsed && rollData.spec ) {
+          return true
+        } 
+        return false
+      }
+      options.push({
+        name: game.i18.localize("ECRY.chat.spectranscend") + i,
+        icon: '<i class="fas fa-plus-square"></i>',
+        condition: canTranscendRoll[i],
+        callback: li => {
+          let message = game.messages.get(li.attr("data-message-id"))
+          let rollData = message.getFlag("world", "rolldata")
+            EcrymeUtility.transcendFromSpec(rollData, i)
+        }
+      })
+    }
+  }
+
+  /* -------------------------------------------- */
   static async chatListeners(html) {
 
     html.on("click", '.roll-destin', event => {
@@ -105,7 +139,7 @@ export class EcrymeUtility {
       let messageId = EcrymeUtility.findChatMessageId(event.currentTarget)
       this.drawDeckCard(messageId)
     })
-    
+
   }
 
   /* -------------------------------------------- */
@@ -191,7 +225,7 @@ export class EcrymeUtility {
   static async onSocketMesssage(msg) {
     console.log("SOCKET MESSAGE", msg.name)
     if (msg.name == "msg-draw-card") {
-      if ( game.user.isGM && game.system.ecryme.currentTirage) {
+      if (game.user.isGM && game.system.ecryme.currentTirage) {
         game.system.ecryme.currentTirage.addCard(msg.data.msgId)
       }
     }
@@ -258,19 +292,13 @@ export class EcrymeUtility {
   /* -------------------------------------------- */
   static computeResults(rollData) {
     rollData.isSuccess = false
-    if (rollData.total <= rollData.target) {
+    if (!rollData.difficulty || rollData.difficulty == "-") {
+      return
+    }
+    rollData.margin = rollData.total - rollData.difficulty
+    if (rollData.total > rollData.difficulty) {
       rollData.isSuccess = true
-    }
-    if (rollData.total == 1) {
-      rollData.isSuccess = true
-      rollData.isCritical = true
-    }
-    if (rollData.total == 20) {
-      rollData.isSuccess = false
-      rollData.isFumble = true
-    }
-    if (rollData.total <= Math.floor(rollData.target / 3)) {
-      rollData.isPart = true
+      rollData.margin = Math.min(rollData.margin, rollData.skill.value)
     }
   }
 
@@ -278,24 +306,63 @@ export class EcrymeUtility {
   static async rollEcryme(rollData) {
 
     let actor = game.actors.get(rollData.actorId)
+    // Fix difficulty
+    if (!rollData.difficulty || rollData.difficulty == "-") {
+      rollData.difficulty = 0
+    }
+    rollData.difficulty = Number(rollData.difficulty)
 
     // Build the dice formula
-    let diceFormula = "1d20"
-    rollData.target = rollData.attr.value + rollData.bonusMalusPerso + rollData.bonusMalusSituation + rollData.bonusMalusDef + rollData.bonusMalusPortee
-    if (rollData.attr.abbrev == "physique") {
-      rollData.target += rollData.phyMalus
+    let diceFormula = "2d6"
+    if (rollData.useIdeal) {
+      diceFormula = "3d6kh2"
     }
+    if (rollData.useSpleen) {
+      diceFormula = "3d6kl2"
+    }
+    if (rollData.skill) {
+      diceFormula += "+" + rollData.skill.value
+    }
+    if (rollData.skillTranscendence) {
+      diceFormula += "+" + rollData.skillTranscendence
+      actor.spentSkillTranscendence(rollData.skill, rollData.skillTranscendence)
+    }
+    if (rollData.selectedSpecs && rollData.selectedSpecs.length > 0) {
+      rollData.spec = actor.getSpecialization(rollData.selectedSpecs[0])
+      diceFormula += "+2"
+    }
+    rollData.bonusMalusTraits = 0
+    if (rollData.traitsBonus && rollData.traitsBonus.length > 0) {
+      rollData.traitsBonusList = []
+      for (let id of rollData.traitsBonus) {
+        let trait = actor.getTrait(id)
+        console.log(trait, id)
+        rollData.traitsBonusList.push(trait)
+        rollData.bonusMalusTraits += trait.system.level
+      }
+    }
+    if (rollData.traitsMalus && rollData.traitsMalus.length > 0) {
+      rollData.traitsMalusList = []
+      for (let id of rollData.traitsMalus) {
+        let trait = actor.getTrait(id)
+        rollData.traitsMalusList.push(trait)
+        rollData.bonusMalusTraits -= trait.system.level
+      }
+    }
+    diceFormula += "+" + rollData.bonusMalusTraits
+    diceFormula += "+" + rollData.bonusMalusPerso
     rollData.diceFormula = diceFormula
 
     // Performs roll
-    console.log("Roll formula", diceFormula)
     let myRoll = new Roll(diceFormula).roll({ async: false })
     await this.showDiceSoNice(myRoll, game.settings.get("core", "rollMode"))
-    rollData.roll = myRoll
+    rollData.roll = duplicate(myRoll)
     rollData.total = myRoll.total
+    rollData.diceSum = myRoll.terms[0].total
 
     this.computeResults(rollData)
 
+    console.log("ERRRRR", rollData)
     let msg = await this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-generic-result.hbs`, rollData)
     })
@@ -305,6 +372,22 @@ export class EcrymeUtility {
     }
 
     console.log("Rolldata result", rollData)
+  }
+
+  /* -------------------------------------------- */
+  static async transcendFromSpec(rollData, value) {
+    rollData.total += value
+    rollData.transcendUsed = true
+    this.computeResults(rollData)
+    //console.log("Adding spec", value, rollData.total)
+    
+    let actor = game.actors.get(rollData.actorId)
+    actor.spentSkillTranscendence(rollData.skill, value)
+    
+    let msg = await this.createChatWithRollMode(rollData.alias, {
+      content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-generic-result.hbs`, rollData)
+    })
+    msg.setFlag("world", "rolldata", rollData)    
   }
 
   /* -------------------------------------------- */
@@ -404,7 +487,12 @@ export class EcrymeUtility {
       bonusMalusSituation: 0,
       bonusMalusDef: 0,
       bonusMalusPortee: 0,
-      rollMode: game.settings.get("core", "rollMode")
+      skillTranscendence: 0,
+      rollMode: game.settings.get("core", "rollMode"),
+      difficulty: "-",
+      useSpleen: false,
+      useIdeal: false,
+      config: duplicate(game.system.ecryme.config)
     }
     EcrymeUtility.updateWithTarget(rollData)
     return rollData

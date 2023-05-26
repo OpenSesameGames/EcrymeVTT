@@ -78,7 +78,7 @@
   cursor: pointer;
 }
 
-input:hover, select:hover {
+input:hover {
   border-width: 4px;
   border-color: rgba(37, 124, 37, 0.7);
 }
@@ -547,10 +547,10 @@ ul, li {
 }
 
 .list-item {
-  margin: 0.125rem;
+  /*margin: 0.125rem;*/
   /*box-shadow: inset 0px 0px 1px #00000096;
-  border-radius: 0.25rem;*/
-  padding: 0.125rem;
+  border-radius: 0.25rem;
+  padding: 0.125rem;*/
   flex: 1 1 5rem;
   display: flex !important;
   color: rgba(19, 18, 18, 0.95);
@@ -1293,4 +1293,16 @@ ul, li {
 }
 .character-summary-rollable {
   text-decoration: underline;
+}
+
+.ecryme-roll-dialog .window-header {
+  border-radius: 10px 10px 0% 0%;
+}
+.ecryme-roll-dialog .window-content {
+  border-radius: 0% 0% 10px 10px;
+}
+
+.skill-roll-dialog div {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }

@@ -5,14 +5,8 @@ export class EcrymeRollDialog extends Dialog {
   /* -------------------------------------------- */
   static async create(actor, rollData) {
 
-    let options = { classes: ["EcrymeDialog"], width: 540, height: 'fit-content', 'z-index': 99999 }
-    let html
-    if (rollData.attr && rollData.attr.iscard)  {
-      html = await renderTemplate('systems/fvtt-ecryme/templates/dialogs/confrontation-dialog.hbs', rollData);
-    } else {
-      html = await renderTemplate('systems/fvtt-ecryme/templates/dialogs/roll-dialog-generic.hbs', rollData);
-    }
-
+    let options = { classes: ["ecryme-roll-dialog"], width: 540, height: 'fit-content', 'z-index': 99999 }
+    let html = await renderTemplate('systems/fvtt-ecryme/templates/dialogs/roll-dialog-generic.hbs', rollData);
     return new EcrymeRollDialog(actor, rollData, html, options);
   }
 
@@ -20,17 +14,17 @@ export class EcrymeRollDialog extends Dialog {
   constructor(actor, rollData, html, options, close = undefined) {
     let isCard = rollData.attr && rollData.attr.iscard
     let conf = {
-      title: (isCard) ? "Jet" : "Tirage",
+      title: game.i18n.localize("ECRY.ui.rolltitle"),
       content: html,
       buttons: {
         roll: {
           icon: '<i class="fas fa-check"></i>',
-          label: (isCard) ? "Tirer une carte" : "Lancer le dé",
+          label: game.i18n.localize("ECRY.ui.roll"),
           callback: () => { this.roll() }
         },
         cancel: {
           icon: '<i class="fas fa-times"></i>',
-          label: "Annuler",
+          label: game.i18n.localize("ECRY.ui.cancel"),
           callback: () => { this.close() }
         }
       },
@@ -45,12 +39,7 @@ export class EcrymeRollDialog extends Dialog {
 
   /* -------------------------------------------- */
   roll() {
-    let isCard = this.rollData.attr && this.rollData.attr.iscard
-    if (isCard) {
-      EcrymeUtility.tirageConfrontationEcryme(this.rollData)
-    } else {
-      EcrymeUtility.rollEcryme(this.rollData)
-    }
+    EcrymeUtility.rollEcryme(this.rollData)
   }
 
   /* -------------------------------------------- */
@@ -69,24 +58,30 @@ export class EcrymeRollDialog extends Dialog {
     }
     $(function () { onLoad(); });
 
-    html.find('#bonusMalusSituation').change((event) => {
-      this.rollData.bonusMalusSituation = Number(event.currentTarget.value)
-    })
     html.find('#bonusMalusPerso').change((event) => {
       this.rollData.bonusMalusPerso = Number(event.currentTarget.value)
     })
-    html.find('#bonusMalusDef').change((event) => {
-      this.rollData.bonusMalusDef = Number(event.currentTarget.value)
+    html.find('#roll-difficulty').change((event) => {
+      this.rollData.difficulty = Number(event.currentTarget.value) || 0
     })
-    html.find('#bonusMalusPortee').change((event) => {
-      this.rollData.bonusMalusPortee = Number(event.currentTarget.value)
+    html.find('#roll-specialization').change((event) => {
+      this.rollData.selectedSpecs = $('#roll-specialization').val()
     })
-    html.find('#confrontationDegre').change((event) => {
-      this.rollData.confrontationDegre = Number(event.currentTarget.value)
+    html.find('#roll-trait-bonus').change((event) => {
+      this.rollData.traitsBonus = $('#roll-trait-bonus').val()
     })
-    html.find('#confrontationModif').change((event) => {
-      this.rollData.confrontationModif = Number(event.currentTarget.value)
+    html.find('#roll-trait-malus').change((event) => {
+      this.rollData.traitsMalus = $('#roll-trait-malus').val()
     })
-    
+    html.find('#roll-select-transcendence').change((event) => {
+      this.rollData.skillTranscendence = Number($('#roll-select-transcendence').val())
+    })    
+    html.find('#roll-use-spleen').change((event) => {
+      this.rollData.useSpleen = event.currentTarget.checked
+    })      
+    html.find('#roll-use-ideal').change((event) => {
+      this.rollData.useIdeal = event.currentTarget.checked
+    })      
+
   }
 }

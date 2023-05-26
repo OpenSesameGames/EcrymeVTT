@@ -31,7 +31,8 @@
   "manifest": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme/raw/branch/master/system.json",
   "compatibility": {
     "minimum": "10",
-    "verified": "10"
+    "verified": "11",
+    "maximum": "11"
   },
   "id": "fvtt-ecryme",
   "primaryTokenAttribute": "secondary.health",
@@ -44,5 +45,5 @@
   "url": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme",
   "version": "10.0.4",
   "download": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme/archive/fvtt-ecryme-v10.0.0.zip",
-  "background": "systems/fvtt-ecryme/images/ui/accueil_01.webp"
+  "background": "systems/fvtt-ecryme/images/assets/ecryme_extract_panel_01.webp"
 }

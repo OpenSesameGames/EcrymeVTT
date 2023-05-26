@@ -18,3 +18,8 @@ gulp.task('css', function () {
     .pipe(postcss(processors))
     .pipe(gulp.dest('./styles'));
 });
+
+
+function watchUpdates() {
+  gulp.watch('./postcss/*.css', css);
+}

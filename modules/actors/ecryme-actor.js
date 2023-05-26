@@ -89,7 +89,26 @@ export class EcrymeActor extends Actor {
 
     return comp;
   }
+  /* -------------------------------------------- */
+  getRollTraits() {
+    return this.items.filter(it => it.type == "trait" && it.system.traitype == "normal")
+  }
+  getIdeal() {
+    return this.items.find(it => it.type == "trait" && it.system.traitype == "ideal")
+  }
+  getSpleen() {
+    return this.items.find(it => it.type == "trait" && it.system.traitype == "spleen")
+  }
 
+  /* -------------------------------------------- */
+  getTrait(id) {
+    //console.log("TRAITS", this.items, this.items.filter(it => it.type == "trait") )
+    return this.items.find(it => it.type == "trait" && it._id == id)
+  }
+  /* -------------------------------------------- */
+  getSpecialization(id) {
+    return this.items.find(it => it.type == "specialization" && it.id == id)
+  }
   /* -------------------------------------------- */
   getSpecializations(skillKey) {
     return this.items.filter(it => it.type == "specialization" && it.system.skillkey == skillKey)
@@ -262,6 +281,12 @@ export class EcrymeActor extends Actor {
     }
   }
 
+  /* -------------------------------------------- */
+  spentSkillTranscendence(skill, value) {
+    let newValue = this.system.skills[skill.categKey].skilllist[skill.skillKey].value - value
+    newValue = Math.max(0, newValue)
+    this.update( { [`system.skills.${skill.categKey}.skilllist.${skill.skillKey}.value`]: newValue})
+  }
 
   /* -------------------------------------------- */
   getCommonRollData() {
@@ -271,6 +296,9 @@ export class EcrymeActor extends Actor {
     rollData.actorId = this.id
     rollData.img = this.img
     rollData.isReroll = false
+    rollData.traits = this.getRollTraits()
+    rollData.spleen = this.getSpleen()
+    rollData.ideal  = this.getIdeal()
 
     return rollData
   }
@@ -279,7 +307,11 @@ export class EcrymeActor extends Actor {
   rollSkill(categKey, skillKey) {
     let skill = this.system.skills[categKey].skilllist[skillKey]
     let rollData = this.getCommonRollData()
-    rollData.skill = duplicate(skill)
+    skill = duplicate(skill)
+    skill.categKey = categKey
+    skill.skillKey = skillKey
+    skill.spec = this.getSpecializations(skillKey)
+    rollData.skill = skill
     rollData.mode = "skill"
     rollData.title = game.i18n.localize(skill.name)
     rollData.img = skill.img

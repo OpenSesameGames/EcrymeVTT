@@ -8,6 +8,20 @@
     "TypeEquipment": "Equipment"
   },
   "ECRY": {
+    "chat": {
+      "formula": "Formule",
+      "difficulty": "Difficulté",
+      "dicesum": "Dés",
+      "result": "Resultat",
+      "margin": "Marge",
+      "success": "Succés!",
+      "failure": "Echec!",
+      "specialization": "Spécialisation",
+      "traitbonus": "Trait bonus",
+      "traitmalus": "Trait malus",
+      "bonusmalustraits": "Bonus/Malus des Traits",
+      "spectranscend": "Dépassement de soi : "
+    },
     "ui": {
       "traitType": "Type de trait",
       "niveauTrait": "Niveau du trait",
@@ -44,7 +58,27 @@
       "loquacity": "Faconde",
       "guile": "Maraude",
       "performance" :"Représentation",
-      "skill": "Compétence"
+      "skill": "Compétence",
+      "troublesome": "Malaisé",
+      "occasional": "Peu frequent",
+      "difficult": "Difficile",
+      "uncommon": "Atypique",
+      "verydifficult": "Très difficile",
+      "rare": "Rare",
+      "extremdifficult": "Extrêmement difficile",
+      "veryrare": "Très rare",
+      "increddifficult": "Incroyable",
+      "exceptrare": "Exceptionnel",
+      "none": "Aucun",
+      "roll": "Lancer les dés !",
+      "cancel": "Annuler",
+      "rolltitle": "Ou l'on teste ses compétences",
+      "spec": "Spécialisation",
+      "traitbonus": "Traits bonus",
+      "traitmalus": "Traits malus",
+      "applyideal": "Utiliser l'idéal",
+      "applyspleen": "Utiliser le spleen",
+      "skilltranscendence": "Dépassement de soi"
     }
   }
 }

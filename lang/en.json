@@ -8,6 +8,20 @@
     "TypeEquipment": "Equipment"
   },
   "ECRY": {
+    "chat": {
+      "formula": "Formula",
+      "difficulty": "Difficulty",
+      "dicesum": "Dices result",
+      "result": "Result",
+      "margin": "Margin",
+      "success": "Success!",
+      "failure": "Failed!",
+      "specialization": "Specialization",
+      "traitbonus": "Bonus trait",
+      "traitmalus": "Malus trait",
+      "bonusmalustraits": "Traits Bonus/Malus",
+      "spectranscend": "Self-Transcend : "
+    },
     "ui": {
       "traitType": "Trait type",
       "niveauTrait": "Trait level",
@@ -44,7 +58,27 @@
       "loquacity": "Loquacity",
       "guile": "Guile",
       "performance" :"Performance",
-      "skill": "Skill"
+      "skill": "Skill",
+      "troublesome": "Troublesome",
+      "occasional": "Occasional",
+      "difficult": "Difficult",
+      "uncommon": "Uncommon",
+      "verydifficult": "Very Difficult",
+      "rare": "Rare",
+      "extremdifficult": "Extremely difficult",
+      "veryrare": "Very rare",
+      "increddifficult": "Incredibly difficult",
+      "exceptrare": "Exceptionally rare",
+      "none": "None",
+      "roll": "Roll !",
+      "cancel": "Cancel",
+      "rolltitle": "Test roll",
+      "spec": "Specialization",
+      "traitbonus": "Bonus traits",
+      "traitmalus": "Malus traits",
+      "applyideal": "Apply ideal",
+      "applyspleen": "Apply spleen",
+      "skilltranscendence": "Self Transcendence"
     }
   }
 }

@@ -14,13 +14,27 @@
 
         <div class="flexrow">
             <ul>
-              <li class="flexrow item">
-                <label class="item-name-label-long">Milieu social</label>
-                <input type="text" class="item-field-label-long" name="system.biodata.milieusocial" value="{{system.biodata.milieusocial}}" data-dtype="String" />
+              <li class="flexrow item" data-item-id="{{spleen.id}}">
+                <label class="item-name-label-medium">Spleen :</label>
+                <label class="item-name-label-long">{{spleen.name}}</label>
+                <div class="item-filler">&nbsp;</div>
+                {{#if spleen}}
+                <div class="item-controls item-controls-fixed">
+                  <a class="item-control item-edit" data-type="trait" title="Edit Item"><i class="fas fa-edit"></i></a>
+                  <a class="item-control item-add" data-type="trait" title="Delete Item"><i class="fas fa-plus"></i></a>
+                </div>
+                {{/if}}
               </li>
-              <li class="item flexrow">
-                <label class="item-name-label-long">Profession</label>
-                <input type="text" class="item-field-label-long" name="system.biodata.profession" value="{{system.biodata.profession}}" data-dtype="String" />
+              <li class="item flexrow" data-item-id="{{ideal.id}}">
+                <label class="item-name-label-medium">Ideal :</label>
+                <label class="item-name-label-long">{{ideal.name}}</label>
+                <div class="item-filler">&nbsp;</div>
+                {{#if ideal}}
+                <div class="item-controls item-controls-fixed">
+                  <a class="item-control item-edit" data-type="trait" title="Edit Item"><i class="fas fa-edit"></i></a>
+                  <a class="item-control item-add" data-type="trait" title="Delete Item"><i class="fas fa-plus"></i></a>
+                </div>
+                {{/if}}
               </li>
             </ul>
           </div>
@@ -99,6 +113,34 @@
 
 
     <div class="tab traits" data-group="primary" data-tab="traits">
+
+      <ul class="item-list alternate-list">
+        <li class="item flexrow list-item items-title-bg">
+          <span class="item-name-label-header-long2">
+            <h3><label class="item-name-label-header-long2">Traits</label></h3>
+          </span>
+          <span class="item-field-label-short">
+            <label class="item-field-label-short">Niveau</label>
+          </span>
+          <div class="item-controls item-controls-fixed">
+            <a class="item-control item-add" data-type="trait" title="Create Trait"><i class="fas fa-plus"></i></a>
+          </div>
+        </li>
+        {{#each traits as |trait key|}}
+        <li class="item flexrow list-item list-item-shadow" data-item-id="{{trait._id}}">
+          <a class="item-edit item-name-img" title="Edit Item"><img class="sheet-competence-img"
+              src="{{trait.img}}" /></a>
+          <span class="item-name-label-long2">{{trait.name}}</span>
+          <span class="item-field-label-short"><label>{{trait.system.level}}</label></span>
+
+          <div class="item-filler">&nbsp;</div>
+          <div class="item-controls item-controls-fixed">
+            <a class="item-control item-delete" title="Delete trait"><i class="fas fa-trash"></i></a>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+
     </div>
 
     {{!-- Equipement Tab --}}
@@ -214,15 +256,6 @@
       <div class="grid grid-2col">
         <div>
           <ul class="item-list alternate-list">
-            <li class="item flexrow" data-item-id="{{archetype._id}}">
-              <label class="item-name-label-medium">Archetype</label>
-              <a class="item-edit item-name-img" title="Edit Item"><img class="sheet-competence-img"
-                  src="{{archetype.img}}" /></a>
-              <span class="item-name-label-medium">{{archetype.name}}</span>
-              <div class="item-controls item-controls-fixed">
-                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-              </div>
-            </li>
             <li class="item flexrow">
               <label class="item-name-label-medium">Lieu de naissance</label>
               <input type="text" class="" name="system.biodata.lieunaissance" value="{{system.biodata.lieunaissance}}"
@@ -232,6 +265,14 @@
               <label class="item-name-label-medium">Age</label>
               <input type="text" class="" name="system.biodata.age" value="{{system.biodata.age}}" data-dtype="String" />
             </li>
+          </ul>
+        </div>
+       <div>
+          <ul>
+            <li class="item flexrow">
+              <label class="item-name-label-medium">Résidence</label>
+              <input type="text" class="" name="system.biodata.residence" value="{{system.biodata.residence}}" data-dtype="String" />
+            </li>
             <li class="item flexrow">
               <label class="item-name-label-medium">Nationalité</label>
               <input type="text" class="" name="system.biodata.nationalite" value="{{system.biodata.nationalite}}" data-dtype="String" />
@@ -239,38 +280,6 @@
             <li class="item flexrow">
               <label class="item-name-label-medium">Enfance</label>
               <input type="text" class="" name="system.biodata.enfance" value="{{system.biodata.enfance}}" data-dtype="String" />
-            </li>
-            <li class="item flexrow">
-              <label class="item-name-label-medium">Vie d'adulte</label>
-              <input type="text" class="" name="system.biodata.adulte" value="{{system.biodata.adulte}}" data-dtype="String" />
-            </li>
-          </ul>
-        </div>
-       <div>
-          <ul>
-            <li class="item flexrow">
-              <label class="item-name-label-medium">Lame tutélaire</label>
-              <span class="item-name-label-medium">{{archetype.tarot.name}}</span>
-            </li>
-            <li class="item flexrow">
-              <label class="item-name-label-medium">Résidence</label>
-              <input type="text" class="" name="system.biodata.residence" value="{{system.biodata.residence}}" data-dtype="String" />
-            </li>
-            <li class="item flexrow">
-              <label class="item-name-label-medium">Singularité</label>
-              <input type="text" class="" name="system.biodata.singularite" value="{{system.biodata.singularite}}" data-dtype="String" />
-            </li>
-            <li class="item flexrow">
-              <label class="item-name-label-medium">Loisirs</label>
-              <input type="text" class="" name="system.biodata.loisirs" value="{{system.biodata.loisirs}}" data-dtype="String" />
-            </li>
-            <li class="item flexrow">
-              <label class="item-name-label-medium">Orientation politique</label>
-              <input type="text" class="" name="system.biodata.politique" value="{{system.biodata.politique}}" data-dtype="String" />
-            </li>
-            <li class="item flexrow">
-              <label class="item-name-label-medium">Orientation religieuse</label>
-              <input type="text" class="" name="system.biodata.religion" value="{{system.biodata.religion}}" data-dtype="String" />
             </li>
           </ul>
         </div>
