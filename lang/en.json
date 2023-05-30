@@ -1,11 +1,13 @@
 {
-  "ACTOR": {
-    "TypePersonnage": "PC"
-  },
-  "ITEM": {
-    "TypeTrait": "Trait",
-    "TypeWeapon": "Weapon",
-    "TypeEquipment": "Equipment"
+  "TYPES": {
+    "Actor":{
+      "Personnage": "PC"
+    },
+    "Item": {
+      "Trait": "Trait",
+      "Weapon": "Weapon",
+      "Equipment": "Equipment"
+    }
   },
   "ECRY": {
     "chat": {
@@ -78,7 +80,12 @@
       "traitmalus": "Malus traits",
       "applyideal": "Apply ideal",
       "applyspleen": "Apply spleen",
-      "skilltranscendence": "Self Transcendence"
+      "skilltranscendence": "Self Transcendence",
+      "confrontation": "Confrontation",
+      "rollnormal": "Normal (4d6)",
+      "rollspleen": "With Spleen (5d6, worst 4 are kept)",
+      "rollideal": "With Ideal (5d6, best 4 are kept)"
+
     }
   }
 }

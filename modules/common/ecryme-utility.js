@@ -100,24 +100,24 @@ export class EcrymeUtility {
   /* -------------------------------------------- */
   static chatMenuManager(html, options) {
     let canTranscendRoll = []
-    for(let i=1; i<=10; i++ ) {
+    for (let i = 1; i <= 10; i++) {
       canTranscendRoll[i] = function (li) {
         let message = game.messages.get(li.attr("data-message-id"))
         let rollData = message.getFlag("world", "rolldata")
         //console.log(">>>>>>>>>>>>>>>>>>>>>>>>>> Menu !!!!", rollData)
-        if (rollData.skill && i <= rollData.skill.value && !rollData.transcendUsed && rollData.spec ) {
+        if (rollData.skill && i <= rollData.skill.value && !rollData.transcendUsed && rollData.spec) {
           return true
-        } 
+        }
         return false
       }
       options.push({
-        name: game.i18.localize("ECRY.chat.spectranscend") + i,
+        name: game.i18n.localize("ECRY.chat.spectranscend") + i,
         icon: '<i class="fas fa-plus-square"></i>',
         condition: canTranscendRoll[i],
         callback: li => {
           let message = game.messages.get(li.attr("data-message-id"))
           let rollData = message.getFlag("world", "rolldata")
-            EcrymeUtility.transcendFromSpec(rollData, i)
+          EcrymeUtility.transcendFromSpec(rollData, i)
         }
       })
     }
@@ -149,7 +149,8 @@ export class EcrymeUtility {
       'systems/fvtt-ecryme/templates/actors/editor-notes-gm.hbs',
       'systems/fvtt-ecryme/templates/items/partial-item-nav.hbs',
       'systems/fvtt-ecryme/templates/items/partial-item-equipment.hbs',
-      'systems/fvtt-ecryme/templates/items/partial-item-description.hbs'
+      'systems/fvtt-ecryme/templates/items/partial-item-description.hbs',
+      'systems/fvtt-ecryme/templates/dialogs/partial-common-roll-dialog.hbs'
     ]
     return loadTemplates(templatePaths);
   }
@@ -303,22 +304,14 @@ export class EcrymeUtility {
   }
 
   /* -------------------------------------------- */
-  static async rollEcryme(rollData) {
-
-    let actor = game.actors.get(rollData.actorId)
-    // Fix difficulty
-    if (!rollData.difficulty || rollData.difficulty == "-") {
-      rollData.difficulty = 0
-    }
-    rollData.difficulty = Number(rollData.difficulty)
-
+  static computeRollFormula(rollData, isConfrontation = false) {
     // Build the dice formula
-    let diceFormula = "2d6"
+    let diceFormula = (isConfrontation) ? "4d6" : "2d6"
     if (rollData.useIdeal) {
-      diceFormula = "3d6kh2"
+      diceFormula = (isConfrontation) ? "5d6kh2" : "3d6kh2"
     }
     if (rollData.useSpleen) {
-      diceFormula = "3d6kl2"
+      diceFormula = (isConfrontation) ? "5d6kl2" : "3d6kl2"
     }
     if (rollData.skill) {
       diceFormula += "+" + rollData.skill.value
@@ -352,6 +345,20 @@ export class EcrymeUtility {
     diceFormula += "+" + rollData.bonusMalusTraits
     diceFormula += "+" + rollData.bonusMalusPerso
     rollData.diceFormula = diceFormula
+    return diceFormula
+  }
+
+  /* -------------------------------------------- */
+  static async rollEcryme(rollData) {
+
+    let actor = game.actors.get(rollData.actorId)
+    // Fix difficulty
+    if (!rollData.difficulty || rollData.difficulty == "-") {
+      rollData.difficulty = 0
+    }
+    rollData.difficulty = Number(rollData.difficulty)
+
+    let diceFormula = this.computeRollFormula(rollData)
 
     // Performs roll
     let myRoll = new Roll(diceFormula).roll({ async: false })
@@ -380,14 +387,14 @@ export class EcrymeUtility {
     rollData.transcendUsed = true
     this.computeResults(rollData)
     //console.log("Adding spec", value, rollData.total)
-    
+
     let actor = game.actors.get(rollData.actorId)
     actor.spentSkillTranscendence(rollData.skill, value)
-    
+
     let msg = await this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-generic-result.hbs`, rollData)
     })
-    msg.setFlag("world", "rolldata", rollData)    
+    msg.setFlag("world", "rolldata", rollData)
   }
 
   /* -------------------------------------------- */

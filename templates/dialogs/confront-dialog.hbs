@@ -1,0 +1,58 @@
+<form class="confrontation-roll-dialog">
+  <header class="roll-dialog-header">
+    {{#if img}}
+    <img class="actor-icon" src="{{img}}" data-edit="img" title="{{name}}" />
+    {{/if}}
+    <h1 class="dialog-roll-title roll-dialog-header">{{title}}</h1>
+  </header>
+
+  <div class="flexcol">
+
+    <div class="flexrow">
+
+      <div class="flexrow confront-area confront-execution-area" >
+        {{#each availableDices as |dice idx|}}
+          {{#if (eq dice.location "execution")}}
+          <div class="confront-dice-container" >
+            <span draggable="true" data-dice-idx={{idx}} data-dice-value="{{dice.result}}">
+              <img class="confront-dice" src="icons/svg/d6-grey.svg">
+              <label class="confront-dice-centered">{{dice.result}}</label>
+            </span>
+          </div>
+          {{/if}}      
+        {{/each}}
+      </div>
+  
+      <div class="flexrow confront-area confront-preservation-area" >
+      {{#each availableDices as |dice idx|}}
+          {{#if (eq dice.location "preservation")}}
+          <div class="confront-dice-container" >
+            <span draggable="true" data-dice-idx={{idx}} data-dice-value="{{dice.result}}">
+              <img class="confront-dice" src="icons/svg/d6-grey.svg">
+              <label class="confront-dice-centered">{{dice.result}}</label>
+            </span>
+          </div>
+          {{/if}}      
+        {{/each}}
+      </div>
+
+    </div>
+
+    <div class="flexrow confront-area confrontation-dice-list">
+      {{#each availableDices as |dice idx|}}
+        {{#if (eq dice.location "mainpool")}}
+          <div class="confront-dice-container" >
+            <span draggable="true" data-dice-idx={{idx}} data-dice-value="{{dice.result}}">
+              <img class="confront-dice" src="icons/svg/d6-grey.svg">
+              <label class="confront-dice-centered">{{dice.result}}</label>
+            </span>
+          </div>
+        {{/if}}      
+      {{/each}}
+    </div>
+
+    {{> systems/fvtt-ecryme/templates/dialogs/partial-common-roll-dialog.hbs}}
+
+  </div>
+
+</form>

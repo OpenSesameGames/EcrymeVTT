@@ -12,7 +12,6 @@ export class EcrymeRollDialog extends Dialog {
 
   /* -------------------------------------------- */
   constructor(actor, rollData, html, options, close = undefined) {
-    let isCard = rollData.attr && rollData.attr.iscard
     let conf = {
       title: game.i18n.localize("ECRY.ui.rolltitle"),
       content: html,

@@ -1,7 +1,7 @@
 /* -------------------------------------------- */
 import { EcrymeUtility } from "../common/ecryme-utility.js";
 import { EcrymeRollDialog } from "../dialogs/ecryme-roll-dialog.js";
-
+import { EcrymeConfrontStartDialog } from "../dialogs/ecryme-confront-start-dialog.js";
 
 /* -------------------------------------------- */
 /* -------------------------------------------- */
@@ -82,7 +82,7 @@ export class EcrymeActor extends Actor {
     return comp;
   }
   getArchetype() {
-    let comp = duplicate(this.items.find(item => item.type == 'archetype') || {name: "Pas d'archetype"})
+    let comp = duplicate(this.items.find(item => item.type == 'archetype') || { name: "Pas d'archetype" })
     if (comp && comp.system) {
       comp.tarot = EcrymeUtility.getTarot(comp.system.lametutelaire)
     }
@@ -116,9 +116,9 @@ export class EcrymeActor extends Actor {
   /* -------------------------------------------- */
   prepareSkills() {
     let skills = duplicate(this.system.skills)
-    for (let categKey in  skills) {
+    for (let categKey in skills) {
       let category = skills[categKey]
-      for (let skillKey in category.skilllist)  {
+      for (let skillKey in category.skilllist) {
         let skill = category.skilllist[skillKey]
         skill.spec = this.getSpecializations(skillKey)
       }
@@ -221,13 +221,13 @@ export class EcrymeActor extends Actor {
   }
 
   /* -------------------------------------------- */
-  clearInitiative(){
+  clearInitiative() {
     this.getFlag("world", "initiative", -1)
   }
   /* -------------------------------------------- */
   getInitiativeScore(combatId, combatantId) {
-    let init = Math.floor( (this.system.attributs.physique.value+this.system.attributs.habilite.value) / 2)
-    let subvalue = new Roll("1d20").roll({async: false})
+    let init = Math.floor((this.system.attributs.physique.value + this.system.attributs.habilite.value) / 2)
+    let subvalue = new Roll("1d20").roll({ async: false })
     return init + (subvalue.total / 100)
   }
 
@@ -285,7 +285,7 @@ export class EcrymeActor extends Actor {
   spentSkillTranscendence(skill, value) {
     let newValue = this.system.skills[skill.categKey].skilllist[skill.skillKey].value - value
     newValue = Math.max(0, newValue)
-    this.update( { [`system.skills.${skill.categKey}.skilllist.${skill.skillKey}.value`]: newValue})
+    this.update({ [`system.skills.${skill.categKey}.skilllist.${skill.skillKey}.value`]: newValue })
   }
 
   /* -------------------------------------------- */
@@ -298,13 +298,13 @@ export class EcrymeActor extends Actor {
     rollData.isReroll = false
     rollData.traits = this.getRollTraits()
     rollData.spleen = this.getSpleen()
-    rollData.ideal  = this.getIdeal()
+    rollData.ideal = this.getIdeal()
 
     return rollData
   }
 
   /* -------------------------------------------- */
-  rollSkill(categKey, skillKey) {
+  getCommonSkill(categKey, skillKey) {
     let skill = this.system.skills[categKey].skilllist[skillKey]
     let rollData = this.getCommonRollData()
     skill = duplicate(skill)
@@ -312,10 +312,27 @@ export class EcrymeActor extends Actor {
     skill.skillKey = skillKey
     skill.spec = this.getSpecializations(skillKey)
     rollData.skill = skill
-    rollData.mode = "skill"
-    rollData.title = game.i18n.localize(skill.name)
     rollData.img = skill.img
+    return rollData
+  }
+
+  /* -------------------------------------------- */
+  rollSkill(categKey, skillKey) {
+    let rollData = this.getCommonSkill(categKey, skillKey)
+    rollData.mode = "skill"
+    rollData.title = game.i18n.localize(rollData.skill.name)
     this.startRoll(rollData)
+  }
+
+  /* -------------------------------------------- */
+  async rollSkillConfront(categKey, skillKey) {
+    let rollData = this.getCommonSkill(categKey, skillKey)
+    rollData.mode = "skill"
+    rollData.title = game.i18n.localize("ECRY.ui.confrontation") + " : " + game.i18n.localize(rollData.skill.name)
+    rollData.executionDices = []
+    rollData.preservationDices = []
+    let confrontStartDialog = await EcrymeConfrontStartDialog.create(this, rollData)
+    confrontStartDialog.render(true)
   }
 
   /* -------------------------------------------- */
@@ -325,7 +342,7 @@ export class EcrymeActor extends Actor {
       weapon = duplicate(weapon)
       let rollData = this.getCommonRollData()
       if (weapon.system.armetype == "mainsnues" || weapon.system.armetype == "epee") {
-        rollData.attr = { label: "(Physique+Habilité)/2", value: Math.floor( (this.getPhysiqueMalus()+this.system.attributs.physique.value+this.system.attributs.habilite.value) / 2) }
+        rollData.attr = { label: "(Physique+Habilité)/2", value: Math.floor((this.getPhysiqueMalus() + this.system.attributs.physique.value + this.system.attributs.habilite.value) / 2) }
       } else {
         rollData.attr = duplicate(this.system.attributs.habilite)
       }
@@ -338,10 +355,9 @@ export class EcrymeActor extends Actor {
       ui.notifications.warn("Impossible de trouver l'arme concernée ")
     }
   }
-  
+
   /* -------------------------------------------- */
   async startRoll(rollData) {
-    console.log("ROLLDATA", rollData)
     let rollDialog = await EcrymeRollDialog.create(this, rollData)
     rollDialog.render(true)
   }

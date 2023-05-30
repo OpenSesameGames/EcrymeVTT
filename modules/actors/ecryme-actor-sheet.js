@@ -115,6 +115,12 @@ export class EcrymeActorSheet extends ActorSheet {
       let skillKey = $(event.currentTarget).data("skill-key")
       this.actor.rollSkill(categKey, skillKey)
     });    
+    html.find('.roll-skill-confront').click((event) => {
+      let categKey = $(event.currentTarget).data("category-key")
+      let skillKey = $(event.currentTarget).data("skill-key")
+      this.actor.rollSkillConfront(categKey, skillKey)
+    });    
+    
     html.find('.roll-weapon').click((event) => {
       const armeId = $(event.currentTarget).data("arme-id")
       this.actor.rollArme(armeId)

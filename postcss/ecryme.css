@@ -1326,3 +1326,30 @@ ul, li {
   margin-top: 4px;
   margin-bottom: 4px;
 }
+
+.confront-dice {
+  border-width: 0px;
+}
+.confront-dice-container {
+  position: relative;
+  max-width: 128px;
+  flex-grow: 1;
+  text-align: center;
+  color: black;
+}
+.confront-dice-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  color: darkgreen;
+  font-family: MailartRubberstamp;
+  transform: translate(-50%, -80%);
+}
+.confront-area {
+  min-height: 96px;
+  border-width: 2px;
+  border-color: #000000;
+  border-radius: 4px;
+  border: 2px ridge #443307;
+}

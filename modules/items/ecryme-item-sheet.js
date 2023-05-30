@@ -8,7 +8,6 @@ export class EcrymeItemSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {
-
     return mergeObject(super.defaultOptions, {
       classes: ["fvtt-ecryme", "sheet", "item"],
       template: "systems/fvtt-ecryme/templates/item-sheet.hbs",

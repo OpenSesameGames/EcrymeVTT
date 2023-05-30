@@ -75,6 +75,9 @@
               {{#each category.skilllist as |skill skillkey|}}
               <li class="item flexrow list-item">
                 <span class="item-name-label-long">
+                  <a class="roll-skill-confront" data-category-key="{{categkey}}" data-skill-key="{{skillkey}}">
+                    <i class="fa-regular fa-swords"></i>
+                  </a>
                   <a class="roll-skill" data-category-key="{{categkey}}" data-skill-key="{{skillkey}}">
                     <i class="fa-solid fa-dice-d6"></i>
                     {{localize skill.name}}                
