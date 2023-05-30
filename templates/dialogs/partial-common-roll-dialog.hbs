@@ -20,8 +20,8 @@
     <div class="flexrow">
       <span class="roll-dialog-label">{{localize "ECRY.ui.spec"}} : </span>
       <select class="" id="roll-specialization" data-type="String" multiple>
-        {{#each skill.spec as | spec idx|}}
-          <option value="{{spec._id}}">{{spec.name}}</option>
+        {{#each skill.spec as |spec idx|}}
+          <option value="{{spec.id}}">{{spec.name}}</option>
         {{/each}}
       </select>
     </div>

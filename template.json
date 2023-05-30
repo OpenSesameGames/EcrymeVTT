@@ -115,6 +115,26 @@
               }
             }
           }
+        },
+        "impacts": {
+          "physical": {
+            "superficial": 0,
+            "light": 0,
+            "serious": 0,
+            "major": 0
+          },
+          "mental": {
+            "superficial": 0,
+            "light": 0,
+            "serious": 0,
+            "major": 0
+          },
+          "social": {
+            "superficial": 0,
+            "light": 0,
+            "serious": 0,
+            "major": 0
+          }
         }
       },
       "npccore": {
@@ -130,7 +150,16 @@
     }
   },
   "Item": {
-    "types": ["equipment", "trait", "weapon", "specialization","annency", "boheme", "contact"],
+    "types": [
+      "equipment",
+      "trait",
+      "weapon",
+      "specialization",
+      "annency",
+      "boheme",
+      "contact",
+      "impact"
+    ],
     "templates": {
       "common": {
         "description": ""
@@ -141,46 +170,75 @@
         "costunit": ""
       }
     },
+    "impact": {
+      "templates": [
+        "common"
+      ],
+      "impacttype": "physical",
+      "impactlevel": "superficial"
+    },
     "equipment": {
-      "templates": ["common","equipement"],
+      "templates": [
+        "common",
+        "equipement"
+      ],
       "quantity": 1,
       "weight": 0
     },
     "trait": {
-      "templates": ["common"],
+      "templates": [
+        "common"
+      ],
       "traitype": "normal",
       "level": 1
     },
     "weapon": {
-      "templates": ["common", "equipement"],
+      "templates": [
+        "common",
+        "equipement"
+      ],
       "effect": 0
     },
     "specialization": {
-      "templates": ["common"],
+      "templates": [
+        "common"
+      ],
       "skillkey": ""
     },
     "scar": {
-      "templates": ["common"],
-      "skillcategory": ["physical", "mental", "social", "cephalie"],
+      "templates": [
+        "common"
+      ],
+      "skillcategory": [
+        "physical",
+        "mental",
+        "social",
+        "cephalie"
+      ],
       "scarLevel": 1
     },
     "annency": {
-      "templates": ["common"],
+      "templates": [
+        "common"
+      ],
       "collective": false,
       "multiple": false,
       "improvements": ""
     },
     "boheme": {
-      "templates": ["common"],
+      "templates": [
+        "common"
+      ],
       "ideals": "",
       "political": ""
     },
     "contact": {
-      "templates": ["common"],
+      "templates": [
+        "common"
+      ],
       "attitude": "neutral",
       "organization": "",
-      "location":""
+      "location": ""
     }
   }
-
 }

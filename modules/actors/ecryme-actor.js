@@ -107,7 +107,8 @@ export class EcrymeActor extends Actor {
   }
   /* -------------------------------------------- */
   getSpecialization(id) {
-    return this.items.find(it => it.type == "specialization" && it.id == id)
+    let spec = this.items.find(it => it.type == "specialization" && it.id == id)
+    return spec
   }
   /* -------------------------------------------- */
   getSpecializations(skillKey) {
@@ -124,6 +125,11 @@ export class EcrymeActor extends Actor {
       }
     }
     return skills
+  }
+  /* -------------------------------------------- */
+  getImpacts() {
+    let comp = duplicate(this.items.filter(item => item.type == 'impact') || [])
+    return comp;
   }
   /* -------------------------------------------- */
   getWeapons() {
@@ -214,10 +220,24 @@ export class EcrymeActor extends Actor {
   /* -------------------------------------------- */
   async equipGear(equipmentId) {
     let item = this.items.find(item => item.id == equipmentId);
-    if (item && item.system) {
+    if (item?.system) {
       let update = { _id: item.id, "system.equipped": !item.system.equipped };
       await this.updateEmbeddedDocuments('Item', [update]); // Updates one EmbeddedEntity
     }
+  }
+
+  /* -------------------------------------------- */
+  modifyImpact(impactType, impactLevel, modifier) {
+    console.log(impactType, impactLevel, modifier)
+    let current = this.system.impacts[impactType][impactLevel]
+    if (modifier > 0) {
+      while ( EcrymeUtility.getImpactMax(impactLevel) == current && impactLevel != "major") {
+        impactLevel = EcrymeUtility.getNextImpactLevel(impactLevel)
+        current = this.system.impacts[impactType][impactLevel]
+      }  
+    }
+    let newImpact  = Math.max(this.system.impacts[impactType][impactLevel] + modifier, 0)
+    this.update({ [`system.impacts.${impactType}.${impactLevel}`]: newImpact})
   }
 
   /* -------------------------------------------- */

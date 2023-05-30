@@ -1201,7 +1201,17 @@ ul, li {
   color: rgba(19, 18, 18, 0.95);
 
 }
+.impact-box {
+  border-width: 2px;
+  border-color: #000000;
+  border-radius: 6px;
+  border: 2px ridge #443307;
+  margin: 2px;
+}
+
 .items-title-text {
+  text-align: center;
+  font-family: MailartRubberstamp;
   margin-left: 4px;
 }
 .lock-icon {

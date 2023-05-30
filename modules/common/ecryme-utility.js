@@ -1,6 +1,9 @@
 /* -------------------------------------------- */
 import { EcrymeCommands } from "../app/ecryme-commands.js";
 
+/* -------------------------------------------- */
+const __maxImpacts = {superficial: 4, light: 3, serious: 2, major: 1}
+const __nextImpacts = {superficial: "light", light: "serious", serious: "major", major: "major"}
 
 /* -------------------------------------------- */
 export class EcrymeUtility {
@@ -150,7 +153,8 @@ export class EcrymeUtility {
       'systems/fvtt-ecryme/templates/items/partial-item-nav.hbs',
       'systems/fvtt-ecryme/templates/items/partial-item-equipment.hbs',
       'systems/fvtt-ecryme/templates/items/partial-item-description.hbs',
-      'systems/fvtt-ecryme/templates/dialogs/partial-common-roll-dialog.hbs'
+      'systems/fvtt-ecryme/templates/dialogs/partial-common-roll-dialog.hbs',
+      'systems/fvtt-ecryme/templates/actors/partial-impacts.hbs'
     ]
     return loadTemplates(templatePaths);
   }
@@ -264,7 +268,13 @@ export class EcrymeUtility {
 
     return chatData;
   }
-
+  /* -------------------------------------------- */
+  static getImpactMax(impactLevel) {
+    return __maxImpacts[impactLevel]
+  }
+  static getNextImpactLevel(impactLevel)  {
+    return __nextImpacts[impactLevel]
+  }
   /* -------------------------------------------- */
   static async showDiceSoNice(roll, rollMode) {
     if (game.modules.get("dice-so-nice")?.active) {
@@ -304,7 +314,7 @@ export class EcrymeUtility {
   }
 
   /* -------------------------------------------- */
-  static computeRollFormula(rollData, isConfrontation = false) {
+  static computeRollFormula(rollData, actor, isConfrontation = false) {
     // Build the dice formula
     let diceFormula = (isConfrontation) ? "4d6" : "2d6"
     if (rollData.useIdeal) {
@@ -358,7 +368,7 @@ export class EcrymeUtility {
     }
     rollData.difficulty = Number(rollData.difficulty)
 
-    let diceFormula = this.computeRollFormula(rollData)
+    let diceFormula = this.computeRollFormula(rollData, actor)
 
     // Performs roll
     let myRoll = new Roll(diceFormula).roll({ async: false })
@@ -369,7 +379,7 @@ export class EcrymeUtility {
 
     this.computeResults(rollData)
 
-    console.log("ERRRRR", rollData)
+    console.log("rollData", rollData)
     let msg = await this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-generic-result.hbs`, rollData)
     })

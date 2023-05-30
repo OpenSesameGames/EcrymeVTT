@@ -1,6 +1,6 @@
 {
   "TYPES": {
-    "Actor":{
+    "Actor": {
       "Personnage": "PC"
     },
     "Item": {
@@ -54,12 +54,12 @@
       "ecrymology": "Ecrymology",
       "traumatology": "Traumatology",
       "traversology": "Traversology",
-      "urbatechnology": "Urbatechnology", 
+      "urbatechnology": "Urbatechnology",
       "quibbling": "Quibbling",
       "creativity": "Creativity",
       "loquacity": "Loquacity",
       "guile": "Guile",
-      "performance" :"Performance",
+      "performance": "Performance",
       "skill": "Skill",
       "troublesome": "Troublesome",
       "occasional": "Occasional",
@@ -84,8 +84,16 @@
       "confrontation": "Confrontation",
       "rollnormal": "Normal (4d6)",
       "rollspleen": "With Spleen (5d6, worst 4 are kept)",
-      "rollideal": "With Ideal (5d6, best 4 are kept)"
-
+      "rollideal": "With Ideal (5d6, best 4 are kept)",
+      "superficial": "Superficial",
+      "light": "Light",
+      "serious": "Serious",
+      "major": "Major",
+      "impactType": "Impact type",
+      "impactLevel": "Impact level",
+      "impactphysical": "Physical",
+      "impactmental": "Mental",
+      "impactsocial": "Social"
     }
   }
 }

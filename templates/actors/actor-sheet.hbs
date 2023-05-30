@@ -8,11 +8,11 @@
         <div class="profile-img-container">
           <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" />
         </div>
-        
+
         <div class="flexcol">
           <h1 class="charname margin-right"><input name="name" type="text" value="{{name}}" placeholder="Name" /></h1>
 
-        <div class="flexrow">
+          <div class="flexrow">
             <ul>
               <li class="flexrow item" data-item-id="{{spleen.id}}">
                 <label class="item-name-label-medium">Spleen :</label>
@@ -39,9 +39,18 @@
             </ul>
           </div>
 
+          <div class="flexrow">
+            {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.physical
+            impacttype="physical"}}
+            {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.mental
+            impacttype="mental"}}
+            {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.social
+            impacttype="social"}}
           </div>
+
         </div>
       </div>
+    </div>
     </div>
 
   </header>
@@ -60,56 +69,60 @@
 
     {{!-- Skills Tab --}}
     <div class="tab competences" data-group="primary" data-tab="competences">
-      
+
 
       <div class="grid grid-3col">
 
         {{#each skills as |category categkey|}}
         <div>
-            <ul class="stat-list alternate-list item-list">
-              <li class="item flexrow list-item items-title-bg">
-                <span class="item-name-label-header">
-                  <h3><label class="items-title-text">{{localize category.name}}</label></h3>
-                </span>
-              </li>
-              {{#each category.skilllist as |skill skillkey|}}
-              <li class="item flexrow list-item">
-                <span class="item-name-label-long">
-                  <a class="roll-skill-confront" data-category-key="{{categkey}}" data-skill-key="{{skillkey}}">
-                    <i class="fa-regular fa-swords"></i>
-                  </a>
-                  <a class="roll-skill" data-category-key="{{categkey}}" data-skill-key="{{skillkey}}">
+          <ul class="stat-list alternate-list item-list">
+            <li class="item flexrow list-item items-title-bg">
+              <span class="item-name-label-header title-center">
+                <h3><label class="items-title-text">{{localize category.name}}</label></h3>
+              </span>
+            </li>
+            {{#each category.skilllist as |skill skillkey|}}
+            <li class="item flexrow list-item">
+              <span class="item-name-label-long">
+                <a class="roll-skill-confront" data-category-key="{{categkey}}" data-skill-key="{{skillkey}}">
+                  <i class="fa-regular fa-swords"></i>
+                </a>
+                <a class="roll-skill" data-category-key="{{categkey}}" data-skill-key="{{skillkey}}">
+                  <i class="fa-solid fa-dice-d6"></i>
+                  {{localize skill.name}}
+                </a></span>
+              <select class="item-field-label-short" type="text"
+                name="system.skills.{{categkey}}.skilllist.{{skillkey}}.value" value="{{skill.value}}"
+                data-dtype="Number">
+                {{#select skill.value}}
+                {{#each @root.config.skillLevel as |level key| }}
+                <option value="{{level}}">{{level}}</option>
+                {{/each}}
+                {{/select}}
+              </select>
+            </li>
+            <li class="item flexrow list-item">
+              <ul class="ul-level1">
+                {{#each skill.spec as |spec idx|}}
+                <li class="item flexrow list-item" data-item-id="{{spec._id}}" data-item-type="specialization">
+                  <a class="roll-spec" data-spec-id="{{spec._id}}">
                     <i class="fa-solid fa-dice-d6"></i>
-                    {{localize skill.name}}                
-                  </a></span>
-                <select class="item-field-label-short" type="text" name="system.skills.{{categkey}}.skilllist.{{skillkey}}.value" value="{{skill.value}}" data-dtype="Number">
-                  {{#select skill.value}}
-                    {{#each @root.config.skillLevel as |level key| }}
-                    <option value="{{level}}">{{level}}</option>
-                    {{/each}}
-                  {{/select}}
-                </select> 
-              </li>
-              <li class="item flexrow list-item">
-                <ul class="ul-level1">
-                  {{#each skill.spec as |spec idx|}}
-                    <li class="item flexrow list-item" data-item-id="{{spec._id}}" data-item-type="specialization">
-                      <a class="roll-spec" data-spec-id="{{spec._id}}">
-                        <i class="fa-solid fa-dice-d6"></i>
-                        {{spec.name}}
-                      </a>
-                      <div class="item-controls item-controls-fixed">
-                        <a class="item-control item-edit" data-type="specialization" title="Edit Item"><i class="fas fa-edit"></i></a>
-                        <a class="item-control item-add" data-type="specialization" title="Delete Item"><i class="fas fa-plus"></i></a>
-                      </div>
-                    </li>
-                  {{/each}}
-                </ul>
-              </li>
-              {{/each}}
-            </ul>
+                    {{spec.name}}
+                  </a>
+                  <div class="item-controls item-controls-fixed">
+                    <a class="item-control item-edit" data-type="specialization" title="Edit Item"><i
+                        class="fas fa-edit"></i></a>
+                    <a class="item-control item-add" data-type="specialization" title="Delete Item"><i
+                        class="fas fa-plus"></i></a>
+                  </div>
+                </li>
+                {{/each}}
+              </ul>
+            </li>
+            {{/each}}
+          </ul>
         </div>
-        {{/each}}        
+        {{/each}}
       </div>
 
     </div>
@@ -150,7 +163,7 @@
     <div class="tab equipment" data-group="primary" data-tab="equipment">
 
       <span class="item-name-label-header items-title-bg">
-          <h3><label class="items-title-text">Equipements (saisie libre)</label></h3>
+        <h3><label class="items-title-text">Equipements (saisie libre)</label></h3>
       </span>
       <div class="form-group small-editor">
         {{editor equipementlibre target="system.equipementlibre" button=true owner=owner editable=editable}}
@@ -266,33 +279,37 @@
             </li>
             <li class="item flexrow">
               <label class="item-name-label-medium">Age</label>
-              <input type="text" class="" name="system.biodata.age" value="{{system.biodata.age}}" data-dtype="String" />
+              <input type="text" class="" name="system.biodata.age" value="{{system.biodata.age}}"
+                data-dtype="String" />
             </li>
           </ul>
         </div>
-       <div>
+        <div>
           <ul>
             <li class="item flexrow">
               <label class="item-name-label-medium">Résidence</label>
-              <input type="text" class="" name="system.biodata.residence" value="{{system.biodata.residence}}" data-dtype="String" />
+              <input type="text" class="" name="system.biodata.residence" value="{{system.biodata.residence}}"
+                data-dtype="String" />
             </li>
             <li class="item flexrow">
               <label class="item-name-label-medium">Nationalité</label>
-              <input type="text" class="" name="system.biodata.nationalite" value="{{system.biodata.nationalite}}" data-dtype="String" />
+              <input type="text" class="" name="system.biodata.nationalite" value="{{system.biodata.nationalite}}"
+                data-dtype="String" />
             </li>
             <li class="item flexrow">
               <label class="item-name-label-medium">Enfance</label>
-              <input type="text" class="" name="system.biodata.enfance" value="{{system.biodata.enfance}}" data-dtype="String" />
+              <input type="text" class="" name="system.biodata.enfance" value="{{system.biodata.enfance}}"
+                data-dtype="String" />
             </li>
           </ul>
         </div>
       </div>
-  </div>
+    </div>
 
-  <div class="tab notes" data-group="primary" data-tab="notes">
+    <div class="tab notes" data-group="primary" data-tab="notes">
       <hr>
       <span class="item-name-label-header items-title-bg">
-          <h3><label class="items-title-text">Background</label></h3>
+        <h3><label class="items-title-text">Background</label></h3>
       </span>
       <div class="form-group editor">
         {{editor description target="system.biodata.description" button=true owner=owner
@@ -300,7 +317,7 @@
       </div>
       <hr>
       <span class="item-name-label-header items-title-bg">
-          <h3><label class="items-title-text">Notes</label></h3>
+        <h3><label class="items-title-text">Notes</label></h3>
       </span>
       <div class="form-group editor">
         {{editor notes target="system.biodata.notes" button=true owner=owner editable=editable}}
@@ -308,7 +325,7 @@
       <hr>
       </article>
     </div>
-  </div>
+    </div>
 
   </section>
 </form>

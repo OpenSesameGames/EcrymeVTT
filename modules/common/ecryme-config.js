@@ -6,6 +6,7 @@ export const ECRYME_CONFIG = {
     spleen: "Spleen",
     ideal: "Ideal"
   },
+
   traitLevel: [
     {value: -3, text: "-3"},
     {value: -2, text: "-2"},
@@ -14,6 +15,17 @@ export const ECRYME_CONFIG = {
     {value: +2, text: "+2"},
     {value: +3, text: "+3"}
   ],
+  impactTypes: {
+    physical: "ECRY.ui.physical",
+    mental: "ECRY.ui.mental",
+    social: "ECRY.ui.social"
+  },
+  impactLevels: {
+    superficial: "ECRY.ui.superficial",
+    light: "ECRY.ui.light",
+    serious: "ECRY.ui.serious",
+    major: "ECRY.ui.major"
+  },
   difficulty: {
     "-1": {difficulty: "ECRY.ui.none", frequency: "ECRY.ui.none", value: "-"},
     "8": { difficulty: "ECRY.ui.troublesome", frequency: "ECRY.ui.occasional", value: 8 },

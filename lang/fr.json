@@ -84,7 +84,16 @@
       "confrontation": "Confrontation",
       "rollnormal": "Normal (4d6)",
       "rollspleen": "Avec le Spleen (5d6, 4 plus bas conservés)",
-      "rollideal": "Avec l'Idéal (5d6, 4 plus haut conservés)"
+      "rollideal": "Avec l'Idéal (5d6, 4 plus haut conservés)",
+      "superficial": "Superficiel",
+      "light": "Léger",
+      "serious": "Grave",
+      "major": "Majeur",
+      "impactType": "Type d'Impact",
+      "impactLevel": "Niveau d'impact",
+      "impactphysical": "Physique",
+      "impactmental": "Mental",
+      "impactsocial": "Social"
     }
   }
 }

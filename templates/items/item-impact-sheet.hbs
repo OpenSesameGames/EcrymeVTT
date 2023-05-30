@@ -1,0 +1,48 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+      <img class="item-sheet-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+      <div class="header-fields">
+          <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
+      </div>
+  </header>
+  
+  {{> systems/fvtt-ecryme/templates/items/partial-item-nav.hbs}}
+
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{> systems/fvtt-ecryme/templates/items/partial-item-description.hbs}}
+    
+    <div class="tab details" data-group="primary" data-tab="details">
+
+      <div class="tab" data-group="primary">
+        <ul>
+
+          <li class="flexrow">
+            <label class="item-name-label-long">{{localize "ECRY.ui.impactType"}}</label>
+            <select class="item-field-label-medium" type="text" name="system.impacttype" value="{{system.impacttype}}" data-dtype="String">
+              {{#select system.impacttype}}
+                {{#each config.impactTypes as |type key| }}
+                <option value="{{key}}">{{localize type}}</option>
+                {{/each}}
+              {{/select}}
+            </select> 
+          </li>
+
+          <li class="flexrow">
+            <label class="item-name-label-long">{{localize "ECRY.ui.impactLevel"}}</label>
+            <select class="item-field-label-medium" type="text" name="system.impactlevel" value="{{system.impactlevel}}" data-dtype="String">
+              {{#select system.impactlevel}}
+                {{#each config.impactLevels as |level key| }}
+                <option value="{{key}}">{{localize level}}</option>
+                {{/each}}
+              {{/select}}
+            </select> 
+          </li>
+        </ul>
+    </div>
+  </div>
+
+  </section>
+</form>

@@ -1,0 +1,14 @@
+<div class="impact-box">
+
+  <span class="item-field-label-medium"><label>{{localize (concat "ECRY.ui.impact" impacttype)}}</label></span>
+  <ul>
+    {{#each impacts as |value key|}}
+    <li class="flexrow" data-impact-type="{{../impacttype}}">
+      <span class="item-field-label-medium"><label>{{localize (concat "ECRY.ui." key)}}</label></span>
+      <a class="impact-modify" data-impact-modifier="+1" data-impact-type="{{../impacttype}}" data-impact-level="{{key}}"><i class="fas fa-plus-square"></i></a>
+      <span class="">{{value}}</span>
+      <a class="impact-modify" data-impact-modifier="-1"  data-impact-type="{{../impacttype}}" data-impact-level="{{key}}"><i class="fas fa-minus-square"></i></a>
+    </li>
+    {{/each}}
+  </ul>
+</div>

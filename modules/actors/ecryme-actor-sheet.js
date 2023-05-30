@@ -39,9 +39,9 @@ export class EcrymeActorSheet extends ActorSheet {
       traits: this.actor.getRollTraits(),
       ideal: this.actor.getIdeal(),
       spleen: this.actor.getSpleen(),
-      system: duplicate(this.object.system),
+      impacts: this.object.getImpacts(),
       config: duplicate(game.system.ecryme.config),
-      weapons: duplicate(this.actor.getWeapons()),
+      weapons: this.actor.getWeapons(),
       archetype: duplicate(this.actor.getArchetype()),
       equipements: duplicate(this.actor.getEquipements()),
       subActors: duplicate(this.actor.getSubActors()),
@@ -120,6 +120,13 @@ export class EcrymeActorSheet extends ActorSheet {
       let skillKey = $(event.currentTarget).data("skill-key")
       this.actor.rollSkillConfront(categKey, skillKey)
     });    
+    
+    html.find('.impact-modify').click((event) => {
+      let impactType = $(event.currentTarget).data("impact-type")
+      let impactLevel = $(event.currentTarget).data("impact-level")
+      let modifier = Number($(event.currentTarget).data("impact-modifier"))
+      this.actor.modifyImpact(impactType, impactLevel, modifier)
+    });
     
     html.find('.roll-weapon').click((event) => {
       const armeId = $(event.currentTarget).data("arme-id")

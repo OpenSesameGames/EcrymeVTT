@@ -69,7 +69,7 @@ export class EcrymeConfrontDialog extends Dialog {
     let dataJSON = event.dataTransfer.getData('text/plain')
     let data = JSON.parse(dataJSON)
     let idx = Number(data.diceIndex)
-    console.log("DATA", data, event, event.srcElement.className)
+    //console.log("DATA", data, event, event.srcElement.className)
     if ( event.srcElement.className.includes("execution")) {
       this.rollData.availableDices[idx].location = "execution"  
     }
