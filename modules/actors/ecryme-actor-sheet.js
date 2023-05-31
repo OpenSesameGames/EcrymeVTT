@@ -45,7 +45,7 @@ export class EcrymeActorSheet extends ActorSheet {
       weapons: this.actor.getWeapons(),
       impactsMalus: this.actor.getImpactsMalus(),
       archetype: duplicate(this.actor.getArchetype()),
-      equipements: this.actor.getEquipements(),
+      equipements: this.actor.getEquipments(),
       subActors: duplicate(this.actor.getSubActors()),
       description: await TextEditor.enrichHTML(this.object.system.description, { async: true }),
       notes: await TextEditor.enrichHTML(this.object.system.notes, { async: true }),
@@ -84,7 +84,7 @@ export class EcrymeActorSheet extends ActorSheet {
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents(".item")
-      EcrymeUtility.confirmDelete(this, li)
+      EcrymeUtility.confirmDelete(this, li).catch("Error : No deletion confirmed")
     })
     html.find('.item-add').click(ev => {
       let dataType = $(ev.currentTarget).data("type")

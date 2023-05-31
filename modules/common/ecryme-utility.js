@@ -51,8 +51,8 @@ export class EcrymeUtility {
       return arr[idx];
     })  
     Handlebars.registerHelper('for', function (from, to, incr, block) {
-      var accum = '';
-      for (var i = from; i <= to; i += incr)
+      let accum = '';
+      for (let i = from; i <= to; i += incr)
         accum += block.fn(i);
       return accum;
     })
@@ -123,7 +123,7 @@ export class EcrymeUtility {
         callback: li => {
           let message = game.messages.get(li.attr("data-message-id"))
           let rollData = message.getFlag("world", "rolldata")
-          EcrymeUtility.transcendFromSpec(rollData, i)
+          EcrymeUtility.transcendFromSpec(rollData, i).catch("Error on Transcend")
         }
       })
     }
@@ -139,7 +139,7 @@ export class EcrymeUtility {
       let actor = this.getActorFromRollData(rollData)
       actor.incDecDestin(-1)
       rollData.isReroll = true
-      this.rollEcryme(rollData)
+      this.rollEcryme(rollData).catch("Error on rollEcryme")
     })
     html.on("click", '.draw-tarot-card', event => {
       let messageId = EcrymeUtility.findChatMessageId(event.currentTarget)
@@ -383,7 +383,6 @@ export class EcrymeUtility {
 
     this.computeResults(rollData)
 
-    console.log("rollData", rollData)
     let msg = await this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-generic-result.hbs`, rollData)
     })

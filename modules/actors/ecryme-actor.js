@@ -35,37 +35,16 @@ export class EcrymeActor extends Actor {
       return actor;
     }
 
-    if (data.type == 'character') {
-    }
-    if (data.type == 'npc') {
-    }
-
     return super.create(data, options);
   }
 
   /* -------------------------------------------- */
-  prepareBaseData() {
-  }
-
-  /* -------------------------------------------- */
   async prepareData() {
-
     super.prepareData()
-
-  }
-
-  /* -------------------------------------------- */
-  computeHitPoints() {
-    if (this.type == "character") {
-    }
   }
 
   /* -------------------------------------------- */
   prepareDerivedData() {
-
-    if (this.type == 'character' || game.user.isGM) {
-    }
-
     super.prepareDerivedData();
   }
 
@@ -83,7 +62,7 @@ export class EcrymeActor extends Actor {
   }
   getArchetype() {
     let comp = duplicate(this.items.find(item => item.type == 'archetype') || { name: "Pas d'archetype" })
-    if (comp && comp.system) {
+    if (comp?.system) {
       comp.tarot = EcrymeUtility.getTarot(comp.system.lametutelaire)
     }
 
@@ -152,7 +131,7 @@ export class EcrymeActor extends Actor {
   /* -------------------------------------------- */
   async equipItem(itemId) {
     let item = this.items.find(item => item.id == itemId)
-    if (item && item.system) {
+    if (item?.system) {
       if (item.type == "armor") {
         let armor = this.items.find(item => item.id != itemId && item.type == "armor" && item.system.equipped)
         if (armor) {
@@ -173,7 +152,7 @@ export class EcrymeActor extends Actor {
   }
 
   /* ------------------------------------------- */
-  getEquipements() {
+  getEquipments() {
     return this.items.filter(item => item.type == 'equipement')
   }
 
@@ -266,8 +245,8 @@ export class EcrymeActor extends Actor {
   /* -------------------------------------------- */
   getInitiativeScore(combatId, combatantId) {
     let init = Math.floor((this.system.attributs.physique.value + this.system.attributs.habilite.value) / 2)
-    let subvalue = new Roll("1d20").roll({ async: false })
-    return init + (subvalue.total / 100)
+    let subValue = new Roll("1d20").roll({ async: false })
+    return init + (subValue.total / 100)
   }
 
   /* -------------------------------------------- */
@@ -315,7 +294,7 @@ export class EcrymeActor extends Actor {
     if (objetQ) {
       let newQ = objetQ.system.quantity + incDec
       if (newQ >= 0) {
-        const updated = await this.updateEmbeddedDocuments('Item', [{ _id: objetQ.id, 'system.quantity': newQ }]) // pdates one EmbeddedEntity
+        await this.updateEmbeddedDocuments('Item', [{ _id: objetQ.id, 'system.quantity': newQ }]) // pdates one EmbeddedEntity
       }
     }
   }
@@ -364,7 +343,7 @@ export class EcrymeActor extends Actor {
     let rollData = this.getCommonSkill(categKey, skillKey)
     rollData.mode = "skill"
     rollData.title = game.i18n.localize(rollData.skill.name)
-    this.startRoll(rollData)
+    this.startRoll(rollData).catch("Error on startRoll")
   }
 
   /* -------------------------------------------- */
@@ -393,7 +372,7 @@ export class EcrymeActor extends Actor {
       rollData.weapon = weapon
       rollData.img = weapon.img
       rollData.title = weapon.name
-      this.startRoll(rollData)
+      this.startRoll(rollData).catch("Error on startRoll")
     } else {
       ui.notifications.warn("Impossible de trouver l'arme concernée ")
     }
