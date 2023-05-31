@@ -90,6 +90,9 @@ export class EcrymeActor extends Actor {
     return comp;
   }
   /* -------------------------------------------- */
+  getConfrontations() {
+    return this.items.filter(it => it.type == "confrontation")
+  }
   getRollTraits() {
     return this.items.filter(it => it.type == "trait" && it.system.traitype == "normal")
   }
@@ -241,6 +244,22 @@ export class EcrymeActor extends Actor {
   }
 
   /* -------------------------------------------- */
+  getImpactMalus(impactKey) {
+    let impacts = this.system.impacts[impactKey]
+    return - ((impacts.serious*2) + (impacts.major*4))
+  }
+
+  /* -------------------------------------------- */
+  getImpactsMalus() {
+    let impactsMalus = {
+      physical: this.getImpactMalus("physical"),
+      mental: this.getImpactMalus("mental"),
+      social: this.getImpactMalus("social")
+    }
+    return impactsMalus
+  }
+
+  /* -------------------------------------------- */
   clearInitiative() {
     this.getFlag("world", "initiative", -1)
   }
@@ -327,12 +346,16 @@ export class EcrymeActor extends Actor {
   getCommonSkill(categKey, skillKey) {
     let skill = this.system.skills[categKey].skilllist[skillKey]
     let rollData = this.getCommonRollData()
+    
     skill = duplicate(skill)
     skill.categKey = categKey
     skill.skillKey = skillKey
     skill.spec = this.getSpecializations(skillKey)
+
     rollData.skill = skill
     rollData.img = skill.img
+    rollData.impactMalus = this.getImpactMalus(categKey)
+
     return rollData
   }
 

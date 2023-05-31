@@ -39,15 +39,6 @@
             </ul>
           </div>
 
-          <div class="flexrow">
-            {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.physical
-            impacttype="physical"}}
-            {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.mental
-            impacttype="mental"}}
-            {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.social
-            impacttype="social"}}
-          </div>
-
         </div>
       </div>
     </div>
@@ -59,9 +50,9 @@
   <nav class="sheet-tabs tabs" data-group="primary">
     <a class="item" data-tab="competences">{{localize "ECRY.ui.skills"}}</a>
     <a class="item" data-tab="traits">{{localize "ECRY.ui.traits"}}</a>
+    <a class="item" data-tab="confrontation">{{localize "ECRY.ui.confrontation"}}</a>
     <a class="item" data-tab="equipements">{{localize "ECRY.ui.equipment"}}</a>
-    <a class="item" data-tab="biodata">{{localize "ECRY.ui.bio"}}</a>
-    <a class="item" data-tab="notes">{{localize "ECRY.ui.notes"}}</a>
+    <a class="item" data-tab="biodata">{{localize "ECRY.ui.bionotes"}}</a>
   </nav>
 
   {{!-- Sheet Body --}}
@@ -77,8 +68,8 @@
         <div>
           <ul class="stat-list alternate-list item-list">
             <li class="item flexrow list-item items-title-bg">
-              <span class="item-name-label-header title-center">
-                <h3><label class="items-title-text">{{localize category.name}}</label></h3>
+              <span class="item-name-label-header impact-title">
+                <h3><label class="items-title-text">{{localize category.name}} ({{valueAtIndex @root.impactsMalus categkey}})</label></h3>
               </span>
             </li>
             {{#each category.skilllist as |skill skillkey|}}
@@ -158,6 +149,40 @@
       </ul>
 
     </div>
+
+    <div class="tab confrontation" data-group="primary" data-tab="confrontation">
+
+      <div class="flexrow">
+        {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.physical
+        impacttype="physical" impactMalus=impactsMalus.physical}}
+        {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.mental
+        impacttype="mental" impactMalus=impactsMalus.mental}}
+        {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.social
+        impacttype="social" impactMalus=impactsMalus.social}}
+      </div>
+
+      <ul class="item-list alternate-list">
+        <li class="item flexrow list-item items-title-bg">
+          <span class="item-name-label-header-long2">
+            <h3><label class="item-name-label-header-long2">{{localize "ECRY.ui.ongoingconfront"}}</label></h3>
+          </span>
+        </li>
+        {{#each confrontations as |confront key|}}
+        <li class="item flexrow list-item list-item-shadow" data-item-id="{{confront._id}}">
+          <a class="item-edit item-name-img" title="Edit Item"><img class="sheet-competence-img"
+              src="{{confront.img}}" /></a>
+          <span class="item-name-label-long2">{{confront.name}}</span>
+
+          <div class="item-filler">&nbsp;</div>
+          <div class="item-controls item-controls-fixed">
+            <a class="item-control item-delete" title="Delete confrontation"><i class="fas fa-trash"></i></a>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+
+    </div>
+
 
     {{!-- Equipement Tab --}}
     <div class="tab equipment" data-group="primary" data-tab="equipment">
@@ -304,9 +329,7 @@
           </ul>
         </div>
       </div>
-    </div>
 
-    <div class="tab notes" data-group="primary" data-tab="notes">
       <hr>
       <span class="item-name-label-header items-title-bg">
         <h3><label class="items-title-text">Background</label></h3>
@@ -323,9 +346,9 @@
         {{editor notes target="system.biodata.notes" button=true owner=owner editable=editable}}
       </div>
       <hr>
-      </article>
+
     </div>
-    </div>
+
 
   </section>
 </form>

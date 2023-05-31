@@ -25,9 +25,12 @@
           {{/if}}
         {{/if}}
 
+        {{#if impactMalus}}
+          <li>{{localize "ECRY.ui.impactmalus"}}: {{impactMalus}} </li>
+        {{/if}}
+
         {{#if skillTranscendence}}
           <li>{{localize "ECRY.ui.skilltranscendence"}}: {{skillTranscendence}} </li>
-
         {{/if}}
 
         {{#if traitsBonusList}}

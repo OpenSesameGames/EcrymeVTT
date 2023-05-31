@@ -157,7 +157,8 @@
       "specialization",
       "annency",
       "boheme",
-      "contact"
+      "contact",
+      "confrontation"
     ],
     "templates": {
       "common": {
@@ -168,6 +169,16 @@
         "cost": 0,
         "costunit": ""
       }
+    },
+    "confrontation": {
+      "templates": [
+        "common"
+      ],
+      "attackerId": "",
+      "defenserId": "",
+      "rolllist": [],
+      "bonusexecution": 0,
+      "bonuspreservation": 0
     },
     "equipment": {
       "templates": [

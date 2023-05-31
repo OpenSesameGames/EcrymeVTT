@@ -1,10 +1,15 @@
     {{#if skill}}
     <div class="flexrow">
       <span class="roll-dialog-label">{{localize skill.name}} : </span>
-      <span class="roll-dialog-label">
-        {{skill.value}}
-      </span>
+      <span class="roll-dialog-label">{{skill.value}}</span>
     </div>
+
+    {{#if impactMalus}}
+      <div class="flexrow">
+        <span class="roll-dialog-label">{{localize "ECRY.ui.impactmalus"}} : </span>
+        <span class="roll-dialog-label">{{impactMalus}}</span>
+      </div>
+    {{/if}}
 
     <div class="flexrow">
       <span class="roll-dialog-label">{{localize "ECRY.ui.skilltranscendence"}} : </span>

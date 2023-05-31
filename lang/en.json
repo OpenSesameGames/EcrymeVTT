@@ -39,6 +39,7 @@
       "coin": "Coin",
       "notes": "Notes",
       "bio": "Bio",
+      "bionotes": "Bio&Notes",
       "skills": "Skills",
       "traits": "Traits",
       "equipment": "Equipment",
@@ -93,7 +94,10 @@
       "impactLevel": "Impact level",
       "impactphysical": "Physical",
       "impactmental": "Mental",
-      "impactsocial": "Social"
+      "impactsocial": "Social",
+      "impactmalus": "Impact Malus",
+      "ongoingconfront": "Ongoing confrontation",
+      "confront":"Confrontation"
     }
   }
 }

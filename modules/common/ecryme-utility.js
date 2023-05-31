@@ -47,6 +47,9 @@ export class EcrymeUtility {
     Handlebars.registerHelper('add', function (a, b) {
       return parseInt(a) + parseInt(b);
     })
+    Handlebars.registerHelper('valueAtIndex', function (arr, idx) {
+      return arr[idx];
+    })  
     Handlebars.registerHelper('for', function (from, to, incr, block) {
       var accum = '';
       for (var i = from; i <= to; i += incr)
@@ -354,6 +357,7 @@ export class EcrymeUtility {
     }
     diceFormula += "+" + rollData.bonusMalusTraits
     diceFormula += "+" + rollData.bonusMalusPerso
+    diceFormula += "+" + rollData.impactMalus
     rollData.diceFormula = diceFormula
     return diceFormula
   }
@@ -509,6 +513,7 @@ export class EcrymeUtility {
       difficulty: "-",
       useSpleen: false,
       useIdeal: false,
+      impactMalus: 0,
       config: duplicate(game.system.ecryme.config)
     }
     EcrymeUtility.updateWithTarget(rollData)

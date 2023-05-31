@@ -1,6 +1,9 @@
 <div class="impact-box">
 
-  <span class="item-field-label-medium"><label>{{localize (concat "ECRY.ui.impact" impacttype)}}</label></span>
+  <div class="impact-title">
+    <label class="items-title-text">{{localize (concat "ECRY.ui.impact" impacttype)}} ({{impactMalus}})</label>
+  </div>
+
   <ul>
     {{#each impacts as |value key|}}
     <li class="flexrow" data-impact-type="{{../impacttype}}">
