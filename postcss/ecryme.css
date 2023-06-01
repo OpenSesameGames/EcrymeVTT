@@ -1367,9 +1367,11 @@ ul, li {
   transform: translate(-50%, -80%);
 }
 .confront-area {
-  min-height: 96px;
+  margin: 2px;
+  padding: 4px;
+  min-height: 64px;
   border-width: 2px;
   border-color: #000000;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 2px ridge #443307;
 }

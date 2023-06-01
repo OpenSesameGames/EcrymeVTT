@@ -314,7 +314,7 @@ export class EcrymeActor extends Actor {
     rollData.actorId = this.id
     rollData.img = this.img
     rollData.isReroll = false
-    rollData.traits = this.getRollTraits()
+    rollData.traits = duplicate(this.getRollTraits())
     rollData.spleen = this.getSpleen()
     rollData.ideal = this.getIdeal()
 
@@ -351,8 +351,9 @@ export class EcrymeActor extends Actor {
     let rollData = this.getCommonSkill(categKey, skillKey)
     rollData.mode = "skill"
     rollData.title = game.i18n.localize("ECRY.ui.confrontation") + " : " + game.i18n.localize(rollData.skill.name)
-    rollData.executionDices = []
-    rollData.preservationDices = []
+    rollData.executionTotal    = rollData.skill.value
+    rollData.preservationTotal = rollData.skill.value
+    rollData.applyTranscendence = "execution"
     let confrontStartDialog = await EcrymeConfrontStartDialog.create(this, rollData)
     confrontStartDialog.render(true)
   }

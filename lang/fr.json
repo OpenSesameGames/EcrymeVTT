@@ -24,6 +24,9 @@
       "bonusmalustraits": "Bonus/Malus des Traits",
       "spectranscend": "Dépassement de soi : "
     },
+    "warn": {
+      "notenoughdice": "L'Accomplissement et la Préservation doivent avoir 2 dés chacun"
+    },
     "ui": {
       "traitType": "Type de trait",
       "niveauTrait": "Niveau du trait",
@@ -97,7 +100,13 @@
       "impactsocial": "Social",
       "impactmalus": "Malus d'Impact",
       "ongoingconfront": "Confrontations en cours",
-      "confront":"Confrontation"
+      "confront":"Confrontation",
+      "launchconfront": "Lancer la confrontation",
+      "execution": "Accomplissement",
+      "preservation": "Préservation",
+      "dicepool": "Dés disponibles",
+      "selectconfront": "Sélectionner pour la Confrontation",
+      "transcendapply": "Appliquer la Transcendence à "
     }
   }
 }

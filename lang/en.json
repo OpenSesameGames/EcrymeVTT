@@ -24,6 +24,9 @@
       "bonusmalustraits": "Traits Bonus/Malus",
       "spectranscend": "Self-Transcend : "
     },
+    "warn": {
+      "notenoughdice": "Execution and Preservation must have 2 dices allocated"
+    },
     "ui": {
       "traitType": "Trait type",
       "niveauTrait": "Trait level",
@@ -97,7 +100,13 @@
       "impactsocial": "Social",
       "impactmalus": "Impact Malus",
       "ongoingconfront": "Ongoing confrontation",
-      "confront":"Confrontation"
+      "confront":"Confrontation",
+      "launchconfront": "Launch confrontation",
+      "execution": "Execution",
+      "preservation": "Preservation",
+      "dicepool": "Available dices",
+      "selectconfront": "Select for confrontation",
+      "transcendapply": "Apply la Transcend to "
     }
   }
 }

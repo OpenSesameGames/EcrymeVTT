@@ -1,0 +1,27 @@
+<div class="chat-message-header">
+  {{#if actorImg}}
+  <img class="actor-icon" src="{{actorImg}}" alt="{{alias}}" />
+  {{/if}}
+  <h4 class="chat-actor-name">{{alias}}</h4>
+</div>
+
+<hr>
+
+{{#if img}}
+<div>
+  <img class="chat-icon" src="{{img}}" alt="{{alias}}" />
+</div>
+{{/if}}
+
+<div>
+  <ul>
+    <li>Confrontation : {{alias}} </li>
+    <li>{{localize skill.name}}: {{skill.value}} </li>
+    {{#if spec}}
+    <li>{{localize "ECRY.chat.specialization"}} {{spec.name}} (+2) </li>
+    {{/if}}
+  </ul>
+  <button class="button-select-confront">{{localize "ECRY.ui.selectconfront"}}</button>
+</div>
+
+</div>

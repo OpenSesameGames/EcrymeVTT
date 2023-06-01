@@ -157,7 +157,8 @@ export class EcrymeUtility {
       'systems/fvtt-ecryme/templates/items/partial-item-equipment.hbs',
       'systems/fvtt-ecryme/templates/items/partial-item-description.hbs',
       'systems/fvtt-ecryme/templates/dialogs/partial-common-roll-dialog.hbs',
-      'systems/fvtt-ecryme/templates/actors/partial-impacts.hbs'
+      'systems/fvtt-ecryme/templates/dialogs/partial-confront-dice-area.hbs',
+      'systems/fvtt-ecryme/templates/actors/partial-impacts.hbs',
     ]
     return loadTemplates(templatePaths);
   }
@@ -386,10 +387,7 @@ export class EcrymeUtility {
     let msg = await this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-generic-result.hbs`, rollData)
     })
-    msg.setFlag("world", "rolldata", rollData)
-    if (rollData.mode == "initiative") {
-      actor.setFlag("world", "initiative", myRoll.total)
-    }
+    msg.setFlag("world", "ecryme-rolldata", rollData)
 
     console.log("Rolldata result", rollData)
   }
@@ -407,7 +405,7 @@ export class EcrymeUtility {
     let msg = await this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-generic-result.hbs`, rollData)
     })
-    msg.setFlag("world", "rolldata", rollData)
+    msg.setFlag("world", "ecryme-rolldata", rollData)
   }
 
   /* -------------------------------------------- */
