@@ -135,6 +135,9 @@
             "serious": 0,
             "major": 0
           }
+        },
+        "internals": {
+          "confrontbonus": 0
         }
       },
       "npccore": {
@@ -200,6 +203,7 @@
         "common",
         "equipement"
       ],
+      "weapontype": "melee",
       "effect": 0
     },
     "specialization": {

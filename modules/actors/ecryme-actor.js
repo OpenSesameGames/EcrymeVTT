@@ -298,6 +298,12 @@ export class EcrymeActor extends Actor {
       }
     }
   }
+  
+  /* -------------------------------------------- */
+  modifyConfrontBonus( modifier ) {
+    let newBonus = this.system.internals.confrontbonus + bonus
+    this.update({'system.internals.confrontbonus': newBonus})
+  }
 
   /* -------------------------------------------- */
   spentSkillTranscendence(skill, value) {
@@ -307,7 +313,17 @@ export class EcrymeActor extends Actor {
   }
 
   /* -------------------------------------------- */
+  getBonusList() {
+    let bonusList = []
+    for(let i=0; i<this.system.internals.confrontbonus; i++) {
+      bonusList.push( { value: 1, type: "bonus", location: "mainpool"})
+    }
+    return bonusList
+  }
+
+  /* -------------------------------------------- */
   getCommonRollData() {
+    this.system.internals.confrontbonus = 5 // TO BE REMOVED!!!!
     let rollData = EcrymeUtility.getBasicRollData()
     rollData.alias = this.name
     rollData.actorImg = this.img
@@ -315,8 +331,9 @@ export class EcrymeActor extends Actor {
     rollData.img = this.img
     rollData.isReroll = false
     rollData.traits = duplicate(this.getRollTraits())
-    rollData.spleen = this.getSpleen()
-    rollData.ideal = this.getIdeal()
+    rollData.spleen = duplicate(this.getSpleen() || {})
+    rollData.ideal = duplicate(this.getIdeal() || {})
+    rollData.confrontBonus = this.getBonusList()
 
     return rollData
   }
@@ -350,6 +367,25 @@ export class EcrymeActor extends Actor {
   async rollSkillConfront(categKey, skillKey) {
     let rollData = this.getCommonSkill(categKey, skillKey)
     rollData.mode = "skill"
+    rollData.title = game.i18n.localize("ECRY.ui.confrontation") + " : " + game.i18n.localize(rollData.skill.name)
+    rollData.executionTotal    = rollData.skill.value
+    rollData.preservationTotal = rollData.skill.value
+    rollData.applyTranscendence = "execution"
+    let confrontStartDialog = await EcrymeConfrontStartDialog.create(this, rollData)
+    confrontStartDialog.render(true)
+  }
+
+  /* -------------------------------------------- */
+  async rollWeaponConfront(weaponId) {
+    let weapon = this.items.get(weaponId)
+    let rollData
+    if (weapon && weapon.system.weapontype == "melee") {
+      rollData = this.getCommonSkill("physical", "fencing")
+    } else {
+      rollData = this.getCommonSkill("physical", "shooting")
+    }
+    rollData.mode = "weapon"
+    rollData.weapon = duplicate(weapon)
     rollData.title = game.i18n.localize("ECRY.ui.confrontation") + " : " + game.i18n.localize(rollData.skill.name)
     rollData.executionTotal    = rollData.skill.value
     rollData.preservationTotal = rollData.skill.value

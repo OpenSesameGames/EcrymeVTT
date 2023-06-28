@@ -1,0 +1,10 @@
+{{#each confrontBonus as |bonus idx|}}
+{{#if (eq bonus.location ../filter)}}
+  <div class="confront-dice-container bonus-spec" data-drag-type="bonus" data-bonus-idx={{idx}}>
+    <span draggable="true" data-drag-type="bonus" data-bonus-idx={{idx}}>
+      <img class="confront-dice" data-drag-type="bonus" data-bonus-idx={{idx}} src="icons/svg/circle.svg" >
+      <label class="confront-bonus-centered" data-drag-type="bonus" data-bonus-idx={{idx}}>+1</label>
+    </span>
+  </div>
+{{/if}}
+{{/each}}

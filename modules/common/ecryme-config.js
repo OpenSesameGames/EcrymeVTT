@@ -6,7 +6,10 @@ export const ECRYME_CONFIG = {
     spleen: "Spleen",
     ideal: "Ideal"
   },
-
+  weaponTypes: {
+    "melee": "ECRY.ui.melee",
+    "ranged": "ECRY.ui.ranged"
+  },
   traitLevel: [
     {value: -3, text: "-3"},
     {value: -2, text: "-2"},

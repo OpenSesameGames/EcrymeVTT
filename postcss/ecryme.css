@@ -1350,9 +1350,35 @@ ul, li {
 .confront-dice {
   border-width: 0px;
 }
+
+.bonus-spec {
+  max-width: 48px;
+}
+.confront-bonus-container {
+  position: relative;
+  flex-grow: 1;
+  text-align: center;
+  color: black;
+}
+.pool-list {
+  align-items: center;
+  justify-content: center;
+}
+.confront-bonus-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1.6rem;
+  color: darkgreen;
+  font-family: MailartRubberstamp;
+  transform: translate(-50%, -55%);
+}
+
+.dice-spec {
+  max-width: 64px;
+}
 .confront-dice-container {
   position: relative;
-  max-width: 128px;
   flex-grow: 1;
   text-align: center;
   color: black;
@@ -1364,7 +1390,7 @@ ul, li {
   font-size: 2rem;
   color: darkgreen;
   font-family: MailartRubberstamp;
-  transform: translate(-50%, -80%);
+  transform: translate(-50%, -55%);
 }
 .confront-area {
   margin: 2px;
@@ -1374,4 +1400,6 @@ ul, li {
   border-color: #000000;
   border-radius: 6px;
   border: 2px ridge #443307;
+  align-items: center;
+  justify-content: center;
 }

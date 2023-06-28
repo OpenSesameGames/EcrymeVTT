@@ -106,7 +106,18 @@
       "preservation": "Preservation",
       "dicepool": "Available dices",
       "selectconfront": "Select for confrontation",
-      "transcendapply": "Apply la Transcend to "
+      "transcendapply": "Apply la Transcend to ",
+      "healthcombat": "Health&Fight",
+      "name": "Name",
+      "weapons": "Weapons",
+      "weapon": "Weapon",
+      "melee": "Melee",
+      "ranged": "Ranged",
+      "weapontype": "Weapon type",
+      "type": "Type",
+      "applyimpact": "Apply impact",
+      "applybonus": "Apply bonus",
+      "bonuspool": "Available bonuses"
     }
   }
 }

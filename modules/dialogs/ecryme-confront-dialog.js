@@ -9,7 +9,7 @@ export class EcrymeConfrontDialog extends Dialog {
     let options = mergeObject(super.defaultOptions, {
       classes: ["fvtt-ecryme ecryme-confrontation-dialog"],
       dragDrop: [{ dragSelector: ".confront-dice-container", dropSelector: null }],
-      width: 540, height: 'fit-content', 'z-index': 99999
+      width: 620, height: 'fit-content', 'z-index': 99999
     });
 
     let html = await renderTemplate('systems/fvtt-ecryme/templates/dialogs/confront-dialog.hbs', rollData);
@@ -50,6 +50,7 @@ export class EcrymeConfrontDialog extends Dialog {
     let msg = await EcrymeUtility.createChatMessage(this.rollData.alias, "blindroll", {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-confrontation-pending.hbs`, this.rollData)
     })
+    console.log("MSG", this.rollData)
     msg.setFlag("world", "ecryme-rolldata", this.rollData)
   }
 
@@ -61,16 +62,26 @@ export class EcrymeConfrontDialog extends Dialog {
 
     let button = this.buttonDisabled
     setTimeout(function () { $(".launchConfront").attr("disabled", button) }, 180)
-
   }
 
   /* ------------------ -------------------------- */
   _onDragStart(event) {
     super._onDragStart(event)
-    console.log("DRAG", event)
-    const diceData = {
-      diceIndex: $(event.srcElement).data("dice-idx"),
-      diceValue: $(event.srcElement).data("dice-value"),
+    let dragType = $(event.srcElement).data("drag-type")
+    let diceData = {}
+    console.log("DRAGTYPE", dragType)
+    if (dragType == "dice") {
+      diceData = {
+        dragType: "dice",
+        diceIndex: $(event.srcElement).data("dice-idx"),
+        diceValue: $(event.srcElement).data("dice-value"),
+      }
+    } else {
+      diceData = {
+        dragType: "bonus",
+        bonusIndex: $(event.srcElement).data("bonus-idx"),
+        bonusValue: 1
+      }
     }
     event.dataTransfer.setData("text/plain", JSON.stringify(diceData));
   }
@@ -78,28 +89,42 @@ export class EcrymeConfrontDialog extends Dialog {
   /* -------------------------------------------- */
   _onDrop(event) {
     let dataJSON = event.dataTransfer.getData('text/plain')
-    console.log("DICEDATA", dataJSON)
     let data = JSON.parse(dataJSON)
-    let idx = Number(data.diceIndex)
-    //console.log("DATA", data, event, event.srcElement.className)
-    if (event.srcElement.className.includes("execution")) {
-      this.rollData.availableDices[idx].location = "execution"
-    }
-    if (event.srcElement.className.includes("preservation")) {
-      this.rollData.availableDices[idx].location = "preservation"
-    }
-    if (event.srcElement.className.includes("dice-list")) {
-      this.rollData.availableDices[idx].location = "mainpool"
-    }
-
-    if (this.rollData.availableDices.filter(d => d.location == "execution").length == 2 && this.rollData.availableDices.filter(d => d.location == "preservation").length == 2) {
-      this.buttonDisabled = false
+    if ( data.dragType == "dice") {
+      let idx = Number(data.diceIndex)
+      //console.log("DATA", data, event, event.srcElement.className)
+      if (event.srcElement.className.includes("execution") && 
+        this.rollData.availableDices.filter(d => d.location == "execution").length < 2) {
+        this.rollData.availableDices[idx].location = "execution"
+      }
+      if (event.srcElement.className.includes("preservation") && 
+        this.rollData.availableDices.filter(d => d.location == "preservation").length < 2) {
+        this.rollData.availableDices[idx].location = "preservation"
+      }
+      if (event.srcElement.className.includes("dice-list")) {
+        this.rollData.availableDices[idx].location = "mainpool"
+      }
+  
+      if (this.rollData.availableDices.filter(d => d.location == "execution").length == 2 && this.rollData.availableDices.filter(d => d.location == "preservation").length == 2) {
+        this.buttonDisabled = false
+      } else {
+        this.buttonDisabled = true
+      }  
     } else {
-      this.buttonDisabled = true
+      let idx = Number(data.bonusIndex)
+      if (event.srcElement.className.includes("execution")) {
+        this.rollData.confrontBonus[idx].location = "execution"
+      }
+      if (event.srcElement.className.includes("preservation")) {
+        this.rollData.confrontBonus[idx].location = "preservation"
+      }
+      if (event.srcElement.className.includes("bonus-list")) {
+        this.rollData.confrontBonus[idx].location = "mainpool"
+      }
     }
 
     // Manage total values
-    this.computeTotals().catch("Error on dice pools")
+    this.computeTotals()
 
   }
   /* -------------------------------------------- */
@@ -115,20 +140,27 @@ export class EcrymeConfrontDialog extends Dialog {
   }
 
   /* -------------------------------------------- */
-  async computeTotals() {
+  computeTotals() {
     let rollData = this.rollData
     let actor = game.actors.get(rollData.actorId)
 
     rollData.executionTotal = rollData.availableDices.filter(d => d.location == "execution").reduce((previous, current) => {
       return previous + current.result
     }, rollData.skill.value)
+    rollData.executionTotal = rollData.confrontBonus.filter(d => d.location == "execution").reduce((previous, current) => {
+      return previous + 1
+    }, rollData.executionTotal)
+
     rollData.preservationTotal = rollData.availableDices.filter(d => d.location == "preservation").reduce((previous, current) => {
       return previous + current.result
     }, rollData.skill.value)
+    rollData.preservationTotal = rollData.confrontBonus.filter(d => d.location == "preservation").reduce((previous, current) => {
+      return previous + 1
+    }, rollData.preservationTotal)
     this.processTranscendence()
 
     if (rollData.selectedSpecs && rollData.selectedSpecs.length > 0) {
-      rollData.spec = actor.getSpecialization(rollData.selectedSpecs[0])
+      rollData.spec = duplicate(actor.getSpecialization(rollData.selectedSpecs[0]))
       this.rollData.executionTotal += "+2"
       this.rollData.preservationTotal += "+2"
     }
@@ -161,7 +193,7 @@ export class EcrymeConfrontDialog extends Dialog {
     rollData.preservationTotal += rollData.bonusMalusTraits
     rollData.preservationTotal += rollData.bonusMalusPerso
 
-    this.refreshDialog() 
+    this.refreshDialog().catch("Error on refresh confrontation dialog")
   }
 
   /* -------------------------------------------- */

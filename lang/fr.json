@@ -30,7 +30,7 @@
     "ui": {
       "traitType": "Type de trait",
       "niveauTrait": "Niveau du trait",
-      "effect": "Effect",
+      "effect": "Incidence",
       "weight": "Poids",
       "cost": "Prix",
       "costUnit": "Unité",
@@ -106,7 +106,18 @@
       "preservation": "Préservation",
       "dicepool": "Dés disponibles",
       "selectconfront": "Sélectionner pour la Confrontation",
-      "transcendapply": "Appliquer la Transcendence à "
+      "transcendapply": "Appliquer la Transcendence à ",
+      "healthcombat": "Santé&Combat",
+      "name": "Nom",
+      "weapons": "Armes",
+      "weapon": "Arme",
+      "melee": "Mêlée",
+      "ranged": "A Distance",
+      "weapontype": "Type d'arme",
+      "type": "Type",
+      "applyimpact": "Appliquer l'impact",
+      "applybonus": "Appliquer le bonus",
+      "bonuspool": "Bonus disponibles"
     }
   }
 }

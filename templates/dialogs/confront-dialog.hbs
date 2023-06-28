@@ -14,6 +14,8 @@
         <h3>{{localize "ECRY.ui.execution"}} : <span id="execution-total">{{executionTotal}}</span> </h3>
         <div id="confront-execution" class="flexrow confront-area confront-execution-area">
           {{> systems/fvtt-ecryme/templates/dialogs/partial-confront-dice-area.hbs filter="execution"}}
+          <br>
+          {{> systems/fvtt-ecryme/templates/dialogs/partial-confront-bonus-area.hbs filter="execution"}}
         </div>
       </div>
 
@@ -21,15 +23,28 @@
         <h3>{{localize "ECRY.ui.preservation"}} : <span id="preservation-total">{{preservationTotal}}</span></h3>
         <div id="confront-preservation" class="flexrow confront-area confront-preservation-area">
           {{> systems/fvtt-ecryme/templates/dialogs/partial-confront-dice-area.hbs filter="preservation"}}
+          {{> systems/fvtt-ecryme/templates/dialogs/partial-confront-bonus-area.hbs filter="preservation"}}
         </div>
       </div>
 
     </div>
 
     <h4>{{localize "ECRY.ui.dicepool"}}</h4>
-    <div id="confront-dice-pool" class="flexrow confront-area confrontation-dice-list">
+    <div id="confront-dice-pool" class="flexrow confront-area confrontation-dice-list pool-list">
       {{> systems/fvtt-ecryme/templates/dialogs/partial-confront-dice-area.hbs filter="mainpool"}}
     </div>
+
+    <h4>{{localize "ECRY.ui.bonuspool"}} (Total : {{count confrontBonus}})</h4>
+    <div id="confront-bonus-pool" class="flexrow confront-area confrontation-bonus-list pool-list">
+      {{> systems/fvtt-ecryme/templates/dialogs/partial-confront-bonus-area.hbs filter="mainpool"}}
+    </div>
+
+    {{#if weapon}}
+    <div class="flexrow">
+      <span class="roll-dialog-label">{{localize "ECRY.ui.weapon"}} : </span>
+      <span class="roll-dialog-label">{{weapon.name}} ({{localize "ECRY.ui.effect"}} {{weapon.system.effect}})</span>
+    </div>
+    {{/if}}
 
     {{#if impactMalus}}
     <div class="flexrow">

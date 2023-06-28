@@ -1,0 +1,54 @@
+<div class="chat-message-header">
+  {{#if actorImg}}
+  <img class="actor-icon" src="{{actorImg}}" alt="{{alias}}" />
+  {{/if}}
+  <h4 class="chat-actor-name">{{alias}}</h4>
+</div>
+
+<hr>
+
+{{#if img}}
+<div>
+  <img class="chat-icon" src="{{img}}" alt="{{alias}}" />
+</div>
+{{/if}}
+
+<div>
+  <ul>
+    <li>Confrontation : {{rollData1.alias}} vs {{rollData2.alias}}</li>
+    <li>{{localize rollData1.skill.name}} ({{rollData1.skill.value}}) vs {{localize rollData2.skill.name}} ({{rollData2.skill.value}}) </li>
+    <li>{{rollData1.executionTotal}} vs {{rollData2.preservationTotal}} : {{marginExecution}}</li>
+    <li>{{rollData1.preservationTotal}} vs {{rollData2.executionTotal}} : {{marginPreservation}}</li>
+
+    {{#if rollData1.weapon}}
+    <li>{{rollData1.alias}} {{rollData1.weapon.name}} ({{rollData1.weapon.system.effect}})
+    </li>
+    {{/if}}
+
+    {{#if rollData2.weapon}}
+    <li>{{rollData2.alias}} {{rollData2.weapon.name}} ({{rollData2.weapon.system.effect}})</li>
+    {{/if}}
+
+    <li>{{localize "ECRY.ui.effect"}} {{localize "ECRY.ui.execution"}} : {{effectExecution}}</li>
+    {{#if impactExecution}}
+      <li>Impact {{rollData2.alias}} : 1 {{localize (concat "ECRY.ui." impactExecution)}}</li>
+      <button class="button-apply-impact" data-actor-id="{{rollData2.actorId}}" data-impact-type={{rollData1.skill.categKey}} data-impact="{{impactExecution}}">{{localize "ECRY.ui.applyimpact"}}</button>
+    {{/if}}
+    {{#if bonus2}}
+      <li>Bonus {{rollData2.alias}} : {{bonus2}}</li>
+      <button class="button-apply-bonus" data-actor-id="{{rollData2.actorId}}" data-bonus="{{bonus2}}">{{localize "ECRY.ui.applybonus"}}</button>
+    {{/if}}
+    
+    <li>{{localize "ECRY.ui.effect"}} {{localize "ECRY.ui.preservation"}} : {{effectPreservation}}</li>
+    {{#if impactPreservation}}
+      <li>Impact {{rollData1.alias}} : 1 {{localize (concat "ECRY.ui." impactPreservation)}}</li>
+      <button class="button-apply-impact" data-actor-id="{{rollData1.actorId}}" data-impact-type={{rollData1.skill.categKey}} data-impact="{{impactPreservation}}">{{localize "ECRY.ui.applyimpact"}}</button>
+    {{/if}}
+    {{#if bonus1}}
+      <li>Bonus {{rollData1.alias}} : {{bonus1}}</li>
+      <button class="button-apply-bonus" data-actor-id="{{rollData1.actorId}}" data-bonus="{{bonus1}}">{{localize "ECRY.ui.applybonus"}}</button>
+    {{/if}}
+  </ul>
+</div>
+
+</div>

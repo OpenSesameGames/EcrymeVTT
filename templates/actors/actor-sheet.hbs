@@ -50,7 +50,7 @@
   <nav class="sheet-tabs tabs" data-group="primary">
     <a class="item" data-tab="competences">{{localize "ECRY.ui.skills"}}</a>
     <a class="item" data-tab="traits">{{localize "ECRY.ui.traits"}}</a>
-    <a class="item" data-tab="confrontation">{{localize "ECRY.ui.confrontation"}}</a>
+    <a class="item" data-tab="combat">{{localize "ECRY.ui.healthcombat"}}</a>
     <a class="item" data-tab="equipements">{{localize "ECRY.ui.equipment"}}</a>
     <a class="item" data-tab="biodata">{{localize "ECRY.ui.bionotes"}}</a>
   </nav>
@@ -69,7 +69,8 @@
           <ul class="stat-list alternate-list item-list">
             <li class="item flexrow list-item items-title-bg">
               <span class="item-name-label-header impact-title">
-                <h3><label class="items-title-text">{{localize category.name}} ({{valueAtIndex @root.impactsMalus categkey}})</label></h3>
+                <h3><label class="items-title-text">{{localize category.name}} ({{valueAtIndex @root.impactsMalus
+                    categkey}})</label></h3>
               </span>
             </li>
             {{#each category.skilllist as |skill skillkey|}}
@@ -150,7 +151,7 @@
 
     </div>
 
-    <div class="tab confrontation" data-group="primary" data-tab="confrontation">
+    <div class="tab combat" data-group="primary" data-tab="combat">
 
       <div class="flexrow">
         {{> systems/fvtt-ecryme/templates/actors/partial-impacts.hbs impacts=system.impacts.physical
@@ -164,18 +165,31 @@
       <ul class="item-list alternate-list">
         <li class="item flexrow list-item items-title-bg">
           <span class="item-name-label-header-long2">
-            <h3><label class="item-name-label-header-long2">{{localize "ECRY.ui.ongoingconfront"}}</label></h3>
+            <h3><label class="item-name-label-header-long2">{{localize "ECRY.ui.weapons"}}</label></h3>
+          </span>
+          <span class="item-field-label-medium">
+            <label class="item-field-label-medium">{{localize "ECRY.ui.type"}}</label>
+          </span>
+          <span class="item-field-label-medium">
+            <label class="item-field-label-medium">{{localize "ECRY.ui.effect"}}</label>
           </span>
         </li>
-        {{#each confrontations as |confront key|}}
-        <li class="item flexrow list-item list-item-shadow" data-item-id="{{confront._id}}">
+        {{#each weapons as |weapon key|}}
+        <li class="item flexrow list-item list-item-shadow" data-item-id="{{weapon._id}}">
           <a class="item-edit item-name-img" title="Edit Item"><img class="sheet-competence-img"
-              src="{{confront.img}}" /></a>
-          <span class="item-name-label-long2">{{confront.name}}</span>
+              src="{{weapon.img}}" /></a>
+          <span class="item-name-label-long2">
+            <a class="roll-weapon-confront" data-category-key="{{categkey}}" data-skill-key="{{skillkey}}">
+              <i class="fa-regular fa-swords"></i>
+              {{weapon.name}}
+            </a>
+          </span>
+          <span class="item-field-label-medium">{{localize (concat "ECRY.ui." weapon.system.weapontype)}}</span>
+          <span class="item-field-label-medium">{{weapon.system.effect}}</span>
 
           <div class="item-filler">&nbsp;</div>
           <div class="item-controls item-controls-fixed">
-            <a class="item-control item-delete" title="Delete confrontation"><i class="fas fa-trash"></i></a>
+            <a class="item-control item-delete" title="Delete weapon"><i class="fas fa-trash"></i></a>
           </div>
         </li>
         {{/each}}
