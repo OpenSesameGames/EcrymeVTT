@@ -56,6 +56,22 @@ export class EcrymeUtility {
         accum += block.fn(i);
       return accum;
     })
+
+    game.settings.register("fvtt-ecryme", "ecryme-game-level", {
+      name: game.i18n.localize("ECRY.settings.gamelevel"),
+      label: game.i18n.localize("ECRY.settings.gamelevelhelp"),
+      scope: 'world',
+      config: true,
+      type: String,
+      choices: {
+        "level_e": game.i18n.localize("ECRY.settings.cogs"),
+        "level_c": game.i18n.localize("ECRY.settings.cephaly"),
+        "level_b": game.i18n.localize("ECRY.settings.boheme"),
+        "level_a": game.i18n.localize("ECRY.settings.amertume"),
+      },
+      restricted: true
+    })
+
     this.buildSkillConfig()
 
   }

@@ -10,6 +10,12 @@
     }
   },
   "ECRY": {
+    "settings": {
+      "cogs": "Engrenages",
+      "cephaly": "Céphalie",
+      "boheme": "Bohême",
+      "amertume": "Amertume"
+    },
     "chat": {
       "formula": "Formule",
       "difficulty": "Difficulté",

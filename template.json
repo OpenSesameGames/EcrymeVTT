@@ -136,6 +136,36 @@
             "major": 0
           }
         },
+        "cephaly": {
+          "name": "ECRY.ui.cephaly",
+          "skilllist": {
+            "elegy": {
+              "name": "ECRY.ui.elegy",
+              "value": 0,
+              "max": 10
+            },
+            "entelechy": {
+              "name": "ECRY.ui.entelechy",
+              "value": 0,
+              "max": 10
+            },
+            "mekany": {
+              "name": "ECRY.ui.mekany",
+              "value": 0,
+              "max": 10
+            },
+            "psyche": {
+              "name": "ECRY.ui.psyche",
+              "value": 0,
+              "max": 10
+            },
+            "scoria": {
+              "name": "ECRY.ui.scoria",
+              "value": 0,
+              "max": 10
+            }
+          }
+        },
         "internals": {
           "confrontbonus": 0
         }
