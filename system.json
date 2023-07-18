@@ -31,8 +31,7 @@
   "manifest": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme/raw/branch/master/system.json",
   "compatibility": {
     "minimum": "10",
-    "verified": "11",
-    "maximum": "11"
+    "verified": "11"
   },
   "id": "fvtt-ecryme",
   "primaryTokenAttribute": "secondary.health",
