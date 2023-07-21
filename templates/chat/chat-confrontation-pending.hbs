@@ -15,13 +15,47 @@
 
 <div>
   <ul>
+    {{#if (eq mode "cephaly")}}
+    <li>{{localize "ECRY.ui.cephaly"}} : {{localize skill.name}} </li>
+    {{else}}
     <li>Confrontation : {{alias}} </li>
+    {{/if}}
+
     <li>{{localize skill.name}}: {{skill.value}} </li>
     {{#if spec}}
     <li>{{localize "ECRY.chat.specialization"}} {{spec.name}} (+2) </li>
     {{/if}}
+
+    {{#each traitsBonus as |trait idx|}}
+    {{#if trait.activated}}
+    <li>{{localize "ECRY.chat.traitbonus"}}: {{trait.name}} ({{trait.system.level}}) </li>
+    {{/if}}
+    {{/each}}
+    {{#each traitsMalus as |trait idx|}}
+    {{#if trait.activated}}
+    <li>{{localize "ECRY.chat.traitmalus"}}: {{trait.name}} ({{trait.system.level}}) </li>
+    {{/if}}
+    {{/each}}
+    {{#if bonusMalusTraits}}
+    <li>{{localize "ECRY.chat.bonusmalustraits"}}: {{bonusMalusTraits}} </li>
+    {{/if}}
+
   </ul>
-  <button class="button-select-confront">{{localize "ECRY.ui.selectconfront"}}</button>
+  {{#if (isGM)}}
+    {{#if (eq mode "cephaly")}}
+    <div>
+      <span>{{localize "ECRY.chat.difficulty"}}</span>
+      <select id="{{rollId}}-cephaly-difficulty" name="cephaly-difficulty">
+        {{#for 1 20 1}}
+        <option value="{{this}}">{{this}}</option>
+        {{/for}}
+      </select>
+    </div>
+    <button class="button-apply-cephaly-difficulty">{{localize "ECRY.ui.cephalydifficulty"}}</button>
+    {{else}}
+    <button class="button-select-confront">{{localize "ECRY.ui.selectconfront"}}</button>
+    {{/if}}
+  {{/if}}
 </div>
 
 </div>

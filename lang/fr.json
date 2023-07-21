@@ -30,6 +30,19 @@
       "bonusmalustraits": "Bonus/Malus des Traits",
       "spectranscend": "Dépassement de soi : "
     },
+    "rule": {
+      "cephaly-success-12": "Durée : 1 scène - Impact : Superficiel - Bonus : 1 - Elegie : 1",
+      "cephaly-success-34": "Durée : 1 semaine - Impact : Léger - Bonus : 2 - Elegie : 2",
+      "cephaly-success-56": "Durée : 1 mois - Impact : Grave - Bonus : 3 - Elegie : 3",
+      "cephaly-success-78": "Durée : 1 année - Impact : Majeur - Bonus : 4 - Elegie : 4",
+      "cephaly-success-910": "Durée : Permanent - Impact : Mort - Bonus : 5 - Elegie : 5",
+      "cephaly-failure-2": "Durée : 1 scène - Impact : Superficiel - Malus : 1 - Symptôme non visible et sans gravité - Altération bégigne difficilement repérable",
+      "cephaly-failure-4": "Durée : 1 semaine - Impact : Léger - Malus : 2 - Symptôme visible non incapacitant - Altération repérable",
+      "cephaly-failure-6": "Durée : 1 mois - Impact : Grave - Malus : 3 - Symptôme incapacitant - Altération repérable et fâcheuse",
+      "cephaly-failure-8": "Durée : 1 année - Impact : Majeur - Malus : 4 - Symptôme très incapacitant - Altération dangereuse",
+      "cephaly-failure-10": "Durée : Permanent - Impact : Mort/Folie - Malus : 5 - Symptôme spectaculaire et repoussant - Altération dangereuse globalement"
+
+    },
     "warn": {
       "notenoughdice": "L'Accomplissement et la Préservation doivent avoir 2 dés chacun"
     },
@@ -129,7 +142,8 @@
       "entelechy": "Entéléchie",
       "mekany": "Mekanë",
       "psyche": "Psyché",
-      "scoria": "Scorie"
+      "scoria": "Scorie",
+      "cephalydifficulty": "Difficulté de la Céphalie"
     }
   }
 }

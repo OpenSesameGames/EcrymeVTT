@@ -4,7 +4,32 @@ import { EcrymeCommands } from "../app/ecryme-commands.js";
 /* -------------------------------------------- */
 const __maxImpacts = { superficial: 4, light: 3, serious: 2, major: 1 }
 const __nextImpacts = { superficial: "light", light: "serious", serious: "major", major: "major" }
-const __effect2Impact= [ "none", "superficial", "superficial", "light", "light", "serious", "serious", "major", "major" ]
+const __effect2Impact = ["none", "superficial", "superficial", "light", "light", "serious", "serious", "major", "major"]
+const __cephalySuccess = {
+  1: "cephaly-success-2",
+  2: "cephaly-success-2",
+  3: "cephaly-success-4",
+  4: "cephaly-success-4",
+  5: "cephaly-success-6",
+  6: "cephaly-success-6",
+  7: "cephaly-success-8",
+  8: "cephaly-success-8",
+  9: "cephaly-success-9",
+  10: "cephaly-success-10"
+}
+const __cephalyFailure = {
+  1: "cephaly-failure-2",
+  2: "cephaly-failure-2",
+  3: "cephaly-failure-4",
+  4: "cephaly-failure-4",
+  5: "cephaly-failure-6",
+  6: "cephaly-failure-6",
+  7: "cephaly-failure-8",
+  8: "cephaly-failure-8",
+  9: "cephaly-failure-9",
+  10: "cephaly-failure-10"
+}
+
 /* -------------------------------------------- */
 export class EcrymeUtility {
 
@@ -56,6 +81,9 @@ export class EcrymeUtility {
         accum += block.fn(i);
       return accum;
     })
+    Handlebars.registerHelper('isGM', function () {
+      return game.user.isGM
+    })
 
     game.settings.register("fvtt-ecryme", "ecryme-game-level", {
       name: game.i18n.localize("ECRY.settings.gamelevel"),
@@ -81,7 +109,7 @@ export class EcrymeUtility {
     let level = game.settings.get("fvtt-ecryme", "ecryme-game-level")
     return level != "level_e"
   }
-  
+
   /*-------------------------------------------- */
   static buildSkillConfig() {
     game.system.ecryme.config.skills = {}
@@ -141,10 +169,10 @@ export class EcrymeUtility {
     // Compute margin
     confront.marginExecution = this.confrontData1.executionTotal - this.confrontData2.preservationTotal
     confront.marginPreservation = this.confrontData1.preservationTotal - this.confrontData2.executionTotal
-    console.log(confront.marginExecution, confront.marginPreservation)    
+    console.log(confront.marginExecution, confront.marginPreservation)
     // Filter margin
     let maxMargin // Dummy max
-    if ( confront.marginExecution > 0) { // Successful hit
+    if (confront.marginExecution > 0) { // Successful hit
       // Limit with skill+spec
       maxMargin = confront.rollData1.skill.value + ((confront.rollData1.spec) ? 2 : 0)
       confront.marginExecution = Math.min(confront.marginExecution, maxMargin)
@@ -153,7 +181,7 @@ export class EcrymeUtility {
       confront.marginExecution = -Math.min(Math.abs(confront.marginExecution), maxMargin)
     }
 
-    if ( confront.marginPreservation > 0) { // Successful defense
+    if (confront.marginPreservation > 0) { // Successful defense
       // Limit with skill+spec
       maxMargin = confront.rollData1.skill.value + ((confront.rollData1.spec) ? 2 : 0)
       confront.marginPreservation = Math.min(confront.marginPreservation, maxMargin)
@@ -167,8 +195,8 @@ export class EcrymeUtility {
     if (confront.rollData1.weapon && confront.marginExecution > 0) {
       confront.effectExecution += confront.rollData1.weapon.system.effect
       confront.impactExecution = this.getImpactFromEffect(confront.effectExecution)
-    } 
-    if ( confront.marginExecution < 0) {
+    }
+    if (confront.marginExecution < 0) {
       confront.bonus2 = -confront.marginExecution
     }
     confront.effectPreservation = confront.marginPreservation
@@ -176,7 +204,7 @@ export class EcrymeUtility {
       confront.effectPreservation = - (Math.abs(confront.marginPreservation) + confront.rollData2.weapon.system.effect)
       confront.impactPreservation = this.getImpactFromEffect(Math.abs(confront.effectPreservation))
     }
-    if ( confront.marginPreservation > 0) {
+    if (confront.marginPreservation > 0) {
       confront.bonus1 = -confront.marginPreservation
     }
 
@@ -187,6 +215,27 @@ export class EcrymeUtility {
     console.log("Confront result", confront)
 
     this.lastConfront = confront
+  }
+  /* -------------------------------------------- */
+  static async manageCephalyDifficulty(rollData, difficulty) {
+    rollData.difficulty = Number(difficulty)
+    if (rollData.executionTotal > difficulty) {
+      rollData.marginExecution = rollData.executionTotal - difficulty
+      rollData.cephalySuccess = "ECRY.rule." + __cephalySuccess[(rollData.marginExecution > 10) ? 10 : rollData.marginExecution]
+    } else {
+      rollData.marginExecution = -1
+    }
+    if (rollData.preservationTotal < difficulty) {
+      rollData.marginPreservation = difficulty - rollData.preservationTotal
+      rollData.cephalyFailure = "ECRY.rule." + __cephalyFailure[(rollData.marginPreservation > 10) ? 10 : rollData.marginPreservation]
+    } else {
+      rollData.marginPreservation = -1
+    }
+    let msg = await this.createChatWithRollMode(rollData.alias, {
+      content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-cephaly-result.hbs`, rollData)
+    })
+    msg.setFlag("world", "ecryme-rolldata", rollData)
+    console.log("Cephaly result", rollData)
   }
 
   /* -------------------------------------------- */
@@ -243,21 +292,24 @@ export class EcrymeUtility {
       let rollData = message.getFlag("world", "ecryme-rolldata")
       EcrymeUtility.manageConfrontation(rollData)
     })
+    html.on("click", '.button-apply-cephaly-difficulty', event => {
+      let messageId = EcrymeUtility.findChatMessageId(event.currentTarget)
+      let message = game.messages.get(messageId)
+      let rollData = message.getFlag("world", "ecryme-rolldata")
+      let difficulty = $("#" + rollData.rollId + "-cephaly-difficulty").val()
+      EcrymeUtility.manageCephalyDifficulty(rollData, difficulty)
+    })
     html.on("click", '.button-apply-impact', event => {
       let messageId = EcrymeUtility.findChatMessageId(event.currentTarget)
       let message = game.messages.get(messageId)
       let actor = game.actors.get($(event.currentTarget).data("actor-id"))
       actor.modifyImpact($(event.currentTarget).data("impact-type"), $(event.currentTarget).data("impact"), 1)
-    })      
+    })
     html.on("click", '.button-apply-bonus', event => {
       let messageId = EcrymeUtility.findChatMessageId(event.currentTarget)
       let message = game.messages.get(messageId)
       let actor = game.actors.get($(event.currentTarget).data("actor-id"))
-      actor.modifyConfrontBonus( $(event.currentTarget).data("bonus") )
-    })      
-    html.on("click", '.draw-tarot-card', event => {
-      let messageId = EcrymeUtility.findChatMessageId(event.currentTarget)
-      this.drawDeckCard(messageId)
+      actor.modifyConfrontBonus($(event.currentTarget).data("bonus"))
     })
 
   }

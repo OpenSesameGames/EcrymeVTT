@@ -30,6 +30,18 @@
       "bonusmalustraits": "Traits Bonus/Malus",
       "spectranscend": "Self-Transcend : "
     },
+    "rule": {
+      "cephaly-success-2": "Duration : 1 scene - Impact : Superficial - Bonus : 1 - Elegy : 1",
+      "cephaly-success-4": "Duration : 1 week - Impact : Light - Bonus : 2 - Elegy : 2",
+      "cephaly-success-6": "Duration : 1 month - Impact : Serious - Bonus : 3 - Elegy : 3",
+      "cephaly-success-8": "Duration : 1 year - Impact : Major - Bonus : 4 - Elegy : 4",
+      "cephaly-success-10": "Duration : Permanent - Impact : Dead - Bonus : 5 - Elegy : 5",
+      "cephaly-failure-2": "Duration : 1 scene - Impact : Superficial - Malus : 1",
+      "cephaly-failure-4": "Duration : 1 week - Impact : Light - Malus : 2",
+      "cephaly-failure-6": "Duration : 1 month - Impact : Serious - Malus : 3",
+      "cephaly-failure-8": "Duration : 1 year - Impact : Major - Malus : 4",
+      "cephaly-failure-10": "Duration : Permanent - Impact : Death/Madness - Malus : 5"
+    },
     "warn": {
       "notenoughdice": "Execution and Preservation must have 2 dices allocated"
     },
@@ -129,7 +141,8 @@
       "entelechy": "Entelechy",
       "mekany": "Mekany",
       "psyche": "Psyche",
-      "scoria": "Scoria"
+      "scoria": "Scoria",
+      "cephalydifficulty": "Set Cephaly difficulty"
     }
   }
 }

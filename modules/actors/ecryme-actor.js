@@ -393,11 +393,13 @@ export class EcrymeActor extends Actor {
     rollData.title = game.i18n.localize("ECRY.ui.cephaly") + " : " + game.i18n.localize(rollData.skill.name)
     rollData.executionTotal    = rollData.skill.value
     rollData.preservationTotal = rollData.skill.value
+    rollData.traitsBonus = duplicate(rollData.traits)
+    rollData.traitsMalus = duplicate(rollData.traits)
     rollData.applyTranscendence = "execution"
     let confrontStartDialog = await EcrymeConfrontStartDialog.create(this, rollData)
     confrontStartDialog.render(true)
   }
-
+  
   /* -------------------------------------------- */
   async rollWeaponConfront(weaponId) {
     let weapon = this.items.get(weaponId)

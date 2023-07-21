@@ -1,0 +1,30 @@
+<div class="chat-message-header">
+  {{#if actorImg}}
+  <img class="actor-icon" src="{{actorImg}}" alt="{{alias}}" />
+  {{/if}}
+  <h4 class="chat-actor-name">{{alias}}</h4>
+</div>
+
+<hr>
+
+{{#if img}}
+<div>
+  <img class="chat-icon" src="{{img}}" alt="{{alias}}" />
+</div>
+{{/if}}
+
+<div>
+  <ul>
+    <li>{{localize "ECRY.ui.cephaly"}} : {{localize skill.name}}</li>
+    {{#if (gt marginExecution 0)}}    
+    <li>{{localize "ECRY.ui.execution"}} {{executionTotal}} vs {{difficulty}} : {{marginExecution}}</li>
+    <li>{{localize cephalySuccess}}</li>
+    {{/if}}
+    {{#if (gt marginPreservation 0)}}    
+    <li>{{localize "ECRY.ui.preservation"}} {{preservationTotal}} vs {{difficulty}} : {{marginPreservation}}</li>
+    <li>{{localize cephalyFailure}}</li>
+    {{/if}}
+  </ul>
+</div>
+
+</div>
