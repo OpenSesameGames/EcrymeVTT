@@ -11,10 +11,9 @@
     <div class="flexrow">
 
       <div>
-        <h3>{{localize "ECRY.ui.execution"}} : <span id="execution-total">{{executionTotal}}</span> </h3>
+        <h3>{{localize "ECRY.ui.execution"}} : <span id="execution-total">{{executionTotal}}</span> </h3>        
         <div id="confront-execution" class="flexrow confront-area confront-execution-area">
           {{> systems/fvtt-ecryme/templates/dialogs/partial-confront-dice-area.hbs filter="execution"}}
-          <br>
           {{> systems/fvtt-ecryme/templates/dialogs/partial-confront-bonus-area.hbs filter="execution"}}
         </div>
       </div>
@@ -73,20 +72,22 @@
       </select>
     </div>
 
+    {{#if skill.spec}}
     <div class="flexrow">
       <span class="roll-dialog-label">{{localize "ECRY.ui.spec"}} : </span>
       <select class="" id="roll-specialization" data-type="String" multiple>
         {{#each skill.spec as |spec idx|}}
-        <option value="{{spec.id}}">{{spec.name}}</option>
+        <option value="{{spec.id}}"  {{#if (eq spec.name @root.spec.name)}}selected{{/if}}>{{spec.name}}</option>
         {{/each}}
       </select>
     </div>
+    {{/if}}
 
     <div class="flexrow">
       <span class="roll-dialog-label">{{localize "ECRY.ui.traitbonus"}} : </span>
       <select class="" id="roll-trait-bonus" data-type="String" multiple>
-        {{#each traits as | trait idx|}}
-        <option value="{{trait._id}}" {{#if trait.isBonus}}selected{{/if}}>{{trait.name}} ({{trait.system.level}})</option>
+        {{#each traitsBonus as |trait idx|}}
+        <option value="{{trait._id}}" {{#if trait.activated}}selected{{/if}}>{{trait.name}} ({{trait.system.level}})</option>
         {{/each}}
       </select>
     </div>
@@ -94,12 +95,11 @@
     <div class="flexrow">
       <span class="roll-dialog-label">{{localize "ECRY.ui.traitmalus"}} : </span>
       <select class="" id="roll-trait-malus" data-type="String" multiple>
-        {{#each traits as | trait idx|}}
-        <option value="{{trait._id}}" {{#if trait.isMalus}}selected{{/if}}">{{trait.name}} ({{trait.system.level}})</option>
+        {{#each traitsMalus as |trait idx|}}
+        <option value="{{trait._id}}" {{#if trait.activated}}selected{{/if}}>{{trait.name}} ({{trait.system.level}})</option>
         {{/each}}
       </select>
     </div>
-
 
     <div class="flexrow">
       <span class="roll-dialog-label">Bonus/Malus : </span>

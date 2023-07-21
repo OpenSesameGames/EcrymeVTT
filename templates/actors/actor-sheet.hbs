@@ -51,6 +51,9 @@
     <a class="item" data-tab="competences">{{localize "ECRY.ui.skills"}}</a>
     <a class="item" data-tab="traits">{{localize "ECRY.ui.traits"}}</a>
     <a class="item" data-tab="combat">{{localize "ECRY.ui.healthcombat"}}</a>
+    {{#if hasCephaly}}
+    <a class="item" data-tab="cephaly">{{localize "ECRY.ui.cephaly"}}</a>
+    {{/if}}
     <a class="item" data-tab="equipements">{{localize "ECRY.ui.equipment"}}</a>
     <a class="item" data-tab="biodata">{{localize "ECRY.ui.bionotes"}}</a>
   </nav>
@@ -119,6 +122,34 @@
 
     </div>
 
+    {{#if hasCephaly}}
+    {{!-- Cephaly Tab --}}
+    <div class="tab cephaly" data-group="primary" data-tab="cephaly">
+        
+        <div>
+          <ul class="stat-list alternate-list item-list">
+            {{#each cephalySkills as |skill skillkey|}}
+            <li class="item flexrow list-item">
+              <span class="item-name-label-long">
+                <a class="roll-cephaly" data-category-key="cephaly" data-skill-key="{{skillkey}}">
+                  <i class="fa-solid fa-dice-d6"></i>
+                  {{localize skill.name}}
+                </a></span>
+              <select class="item-field-label-short" type="text"
+                name="system.cephaly.skilllist.{{skillkey}}.value" value="{{skill.value}}"
+                data-dtype="Number">
+                {{#select skill.value}}
+                {{#each @root.config.skillLevel as |level key| }}
+                <option value="{{level}}">{{level}}</option>
+                {{/each}}
+                {{/select}}
+              </select>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+    </div>
+    {{/if}}
 
     <div class="tab traits" data-group="primary" data-tab="traits">
 

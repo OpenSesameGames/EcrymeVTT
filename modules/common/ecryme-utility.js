@@ -77,6 +77,12 @@ export class EcrymeUtility {
   }
 
   /*-------------------------------------------- */
+  static hasCephaly() {
+    let level = game.settings.get("fvtt-ecryme", "ecryme-game-level")
+    return level != "level_e"
+  }
+  
+  /*-------------------------------------------- */
   static buildSkillConfig() {
     game.system.ecryme.config.skills = {}
     for (let categKey in game.data.template.Actor.templates.core.skills) {

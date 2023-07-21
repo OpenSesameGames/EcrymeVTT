@@ -46,6 +46,8 @@ export class EcrymeActorSheet extends ActorSheet {
       impactsMalus: this.actor.getImpactsMalus(),
       archetype: duplicate(this.actor.getArchetype()),
       equipements: this.actor.getEquipments(),
+      hasCephaly: EcrymeUtility.hasCephaly(),
+      cephalySkills: this.actor.getCephalySkills(),
       subActors: duplicate(this.actor.getSubActors()),
       description: await TextEditor.enrichHTML(this.object.system.description, { async: true }),
       notes: await TextEditor.enrichHTML(this.object.system.notes, { async: true }),
@@ -121,7 +123,11 @@ export class EcrymeActorSheet extends ActorSheet {
       let categKey = $(event.currentTarget).data("category-key")
       let skillKey = $(event.currentTarget).data("skill-key")
       this.actor.rollSkillConfront(categKey, skillKey)
-    });    
+    });
+    html.find('.roll-cephaly').click((event) => {
+      let skillKey = $(event.currentTarget).data("skill-key")
+      this.actor.rollCephalySkillConfront(skillKey)
+    });
     html.find('.roll-weapon-confront').click((event) => {
       const li = $(event.currentTarget).parents(".item")
       let weaponId = li.data("item-id");

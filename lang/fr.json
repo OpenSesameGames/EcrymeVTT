@@ -123,7 +123,13 @@
       "type": "Type",
       "applyimpact": "Appliquer l'impact",
       "applybonus": "Appliquer le bonus",
-      "bonuspool": "Bonus disponibles"
+      "bonuspool": "Bonus disponibles",
+      "cephaly": "Cephalie",
+      "elegy": "Elégie",
+      "entelechy": "Entéléchie",
+      "mekany": "Mekanë",
+      "psyche": "Psyché",
+      "scoria": "Scorie"
     }
   }
 }

@@ -109,6 +109,11 @@ export class EcrymeActor extends Actor {
     return skills
   }
   /* -------------------------------------------- */
+  getCephalySkills() {
+    let skills = duplicate(this.system.cephaly.skilllist)
+    return skills
+  }
+  /* -------------------------------------------- */
   getImpacts() {
     let comp = duplicate(this.items.filter(item => item.type == 'impact') || [])
     return comp;
@@ -323,7 +328,7 @@ export class EcrymeActor extends Actor {
 
   /* -------------------------------------------- */
   getCommonRollData() {
-    this.system.internals.confrontbonus = 5 // TO BE REMOVED!!!!
+    //this.system.internals.confrontbonus = 5 // TO BE REMOVED!!!!
     let rollData = EcrymeUtility.getBasicRollData()
     rollData.alias = this.name
     rollData.actorImg = this.img
@@ -368,6 +373,24 @@ export class EcrymeActor extends Actor {
     let rollData = this.getCommonSkill(categKey, skillKey)
     rollData.mode = "skill"
     rollData.title = game.i18n.localize("ECRY.ui.confrontation") + " : " + game.i18n.localize(rollData.skill.name)
+    rollData.executionTotal    = rollData.skill.value
+    rollData.preservationTotal = rollData.skill.value
+    rollData.applyTranscendence = "execution"
+    rollData.traitsBonus = duplicate(rollData.traits)
+    rollData.traitsMalus = duplicate(rollData.traits)
+    let confrontStartDialog = await EcrymeConfrontStartDialog.create(this, rollData)
+    confrontStartDialog.render(true)
+  }
+  /* -------------------------------------------- */
+  async rollCephalySkillConfront(skillKey) {
+    let rollData = this.getCommonRollData()
+    rollData.mode = "cephaly"
+    rollData.skill = duplicate(this.system.cephaly.skilllist[skillKey])
+    rollData.img = rollData.skill.img
+    rollData.skill.categKey = "cephaly"
+    rollData.skill.skillKey = skillKey
+    //rollData.impactMalus = this.getImpactMalus(categKey)
+    rollData.title = game.i18n.localize("ECRY.ui.cephaly") + " : " + game.i18n.localize(rollData.skill.name)
     rollData.executionTotal    = rollData.skill.value
     rollData.preservationTotal = rollData.skill.value
     rollData.applyTranscendence = "execution"

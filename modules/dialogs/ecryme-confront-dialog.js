@@ -55,6 +55,25 @@ export class EcrymeConfrontDialog extends Dialog {
   }
 
   /* -------------------------------------------- */
+  async refreshDice() {
+    this.rollData.filter = "execution"
+    let content = await renderTemplate("systems/fvtt-ecryme/templates/dialogs/partial-confront-dice-area.hbs", this.rollData )
+    content += await renderTemplate("systems/fvtt-ecryme/templates/dialogs/partial-confront-bonus-area.hbs", this.rollData )
+    $("#confront-execution").html(content)
+
+    this.rollData.filter = "preservation"
+    content = await renderTemplate("systems/fvtt-ecryme/templates/dialogs/partial-confront-dice-area.hbs", this.rollData )
+    content += await renderTemplate("systems/fvtt-ecryme/templates/dialogs/partial-confront-bonus-area.hbs", this.rollData )
+    $("#confront-preservation").html(content)
+
+    this.rollData.filter = "mainpool"
+    content = await renderTemplate("systems/fvtt-ecryme/templates/dialogs/partial-confront-dice-area.hbs", this.rollData )
+    $("#confront-dice-pool").html(content)
+    content = await renderTemplate("systems/fvtt-ecryme/templates/dialogs/partial-confront-bonus-area.hbs", this.rollData )
+    $("#confront-bonus-pool").html(content)
+    
+  }
+  /* -------------------------------------------- */
   async refreshDialog() {
     const content = await renderTemplate("systems/fvtt-ecryme/templates/dialogs/confront-dialog.hbs", this.rollData)
     this.data.content = content
@@ -69,7 +88,7 @@ export class EcrymeConfrontDialog extends Dialog {
     super._onDragStart(event)
     let dragType = $(event.srcElement).data("drag-type")
     let diceData = {}
-    console.log("DRAGTYPE", dragType)
+    //console.log("DRAGTYPE", dragType)
     if (dragType == "dice") {
       diceData = {
         dragType: "dice",
@@ -157,43 +176,45 @@ export class EcrymeConfrontDialog extends Dialog {
     rollData.preservationTotal = rollData.confrontBonus.filter(d => d.location == "preservation").reduce((previous, current) => {
       return previous + 1
     }, rollData.preservationTotal)
+
     this.processTranscendence()
 
     if (rollData.selectedSpecs && rollData.selectedSpecs.length > 0) {
-      rollData.spec = duplicate(actor.getSpecialization(rollData.selectedSpecs[0]))
-      this.rollData.executionTotal += "+2"
-      this.rollData.preservationTotal += "+2"
+      rollData.spec = duplicate(actor.getSpecialization(rollData.selectedSpecs[0]))    
+      rollData.specApplied = true
+      rollData.executionTotal += 2
+      rollData.preservationTotal += 2
+    }
+    if ( rollData.specApplied && rollData.selectedSpecs.length == 0) {
+      rollData.spec = undefined
+      rollData.specApplied = false
     }
     rollData.bonusMalusTraits = 0
-    for (let t of rollData.traits) {
-      t.isBonus = false
-      t.isMalus = false
+    for (let t of rollData.traitsBonus) {
+      t.activated = false
     }
-    if (rollData.traitsBonus && rollData.traitsBonus.length > 0) {
-      rollData.traitsBonusList = []
-      for (let id of rollData.traitsBonus) {
-        let trait = rollData.traits.find(t => t._id == id)
-        trait.isBonus = true
-        rollData.traitsBonusList.push(trait)
+    for (let t of rollData.traitsMalus) {
+      t.activated = false
+    }
+    if (rollData.traitsBonusSelected && rollData.traitsBonusSelected.length > 0) {
+      for (let id of rollData.traitsBonusSelected) {
+        let trait = rollData.traitsBonus.find(t => t._id == id)
+        trait.activated = true
         rollData.bonusMalusTraits += trait.system.level
       }
     }
-    if (rollData.traitsMalus && rollData.traitsMalus.length > 0) {
-      rollData.traitsMalusList = []
-      for (let id of rollData.traitsMalus) {
-        let trait = rollData.traits.find(t => t._id == id)
-        trait.isMalus = true
-        rollData.traitsMalusList.push(trait)
+    if (rollData.traitsMalusSelected && rollData.traitsMalusSelected.length > 0) {
+      for (let id of rollData.traitsMalusSelected) {
+        let trait = rollData.traitsMalus.find(t => t._id == id)
+        trait.activated = true
         rollData.bonusMalusTraits -= trait.system.level
       }
     }
-    rollData.executionTotal += rollData.bonusMalusTraits
-    rollData.executionTotal += rollData.bonusMalusPerso
 
-    rollData.preservationTotal += rollData.bonusMalusTraits
-    rollData.preservationTotal += rollData.bonusMalusPerso
+    rollData.executionTotal += rollData.bonusMalusTraits + rollData.bonusMalusPerso
+    rollData.preservationTotal += rollData.bonusMalusTraits + rollData.bonusMalusPerso
 
-    this.refreshDialog().catch("Error on refresh confrontation dialog")
+    this.refreshDialog()
   }
 
   /* -------------------------------------------- */
@@ -209,11 +230,11 @@ export class EcrymeConfrontDialog extends Dialog {
       this.computeTotals()
     })
     html.find('#roll-trait-bonus').change((event) => {
-      this.rollData.traitsBonus = $('#roll-trait-bonus').val()
+      this.rollData.traitsBonusSelected = $('#roll-trait-bonus').val()
       this.computeTotals()
     })
     html.find('#roll-trait-malus').change((event) => {
-      this.rollData.traitsMalus = $('#roll-trait-malus').val()
+      this.rollData.traitsMalusSelected = $('#roll-trait-malus').val()
       this.computeTotals()
     })
     html.find('#roll-select-transcendence').change((event) => {
