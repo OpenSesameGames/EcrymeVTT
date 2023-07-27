@@ -4,9 +4,11 @@
       "Personnage": "PC"
     },
     "Item": {
-      "Trait": "Trait",
-      "Weapon": "Weapon",
-      "Equipment": "Equipment"
+      "trait": "Trait",
+      "weapon": "Weapon",
+      "equipment": "Equipment",
+      "maneuver": "Maneuver",
+      "specialization": "Specialization"
     }
   },
   "ECRY": {
@@ -57,7 +59,7 @@
       "goldcoin": "Gold coin",
       "lige": "Lige",
       "hurle": "Howl",
-      "coin": "Coin",
+      "coin": "Penny",
       "notes": "Notes",
       "bio": "Bio",
       "bionotes": "Bio&Notes",

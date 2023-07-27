@@ -4,9 +4,11 @@
       "Personnage": "PJ"
     },
     "Item": {
-      "Trait": "Trait",
-      "Weapon": "Arme",
-      "Equipment": "Equipement"
+      "trait": "Trait",
+      "weapon": "Arme",
+      "equipment": "Equipement",
+      "maneuver": "Manoeuvre",
+      "specialization": "Spécialisation"
     }
   },
   "ECRY": {
