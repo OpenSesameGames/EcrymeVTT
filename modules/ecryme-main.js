@@ -65,6 +65,9 @@ Hooks.once("init", async function () {
 
   EcrymeUtility.init()
 
+  console.log("Babele INIT!")
+  Babele.get().setSystemTranslationsDir("translated");
+
 });
 
 /* -------------------------------------------- */

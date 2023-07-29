@@ -226,6 +226,28 @@
         {{/each}}
       </ul>
 
+      <ul class="item-list alternate-list">
+        <li class="item flexrow list-item items-title-bg">
+          <span class="item-name-label-header-long2">
+            <h3><label class="item-name-label-header-long2">{{localize "ECRY.ui.maneuvers"}}</label></h3>
+          </span>
+        </li>
+        {{#each maneuvers as |maneuver key|}}
+        <li class="item flexrow list-item list-item-shadow" data-item-id="{{maneuver._id}}">
+          <a class="item-edit item-name-img" title="Edit Item"><img class="sheet-competence-img"
+              src="{{maneuver.img}}" /></a>
+          <span class="item-name-label-long2">
+              {{maneuver.name}}
+          </span>
+
+          <div class="item-filler">&nbsp;</div>
+          <div class="item-controls item-controls-fixed">
+            <a class="item-control item-delete" title="Delete maneuver"><i class="fas fa-trash"></i></a>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+
     </div>
 
 

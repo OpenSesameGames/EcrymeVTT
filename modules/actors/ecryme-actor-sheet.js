@@ -43,6 +43,7 @@ export class EcrymeActorSheet extends ActorSheet {
       impacts: this.object.getImpacts(),
       config: duplicate(game.system.ecryme.config),
       weapons: this.actor.getWeapons(),
+      maneuvers: this.actor.getManeuvers(),
       impactsMalus: this.actor.getImpactsMalus(),
       archetype: duplicate(this.actor.getArchetype()),
       equipements: this.actor.getEquipments(),

@@ -124,6 +124,11 @@ export class EcrymeActor extends Actor {
     EcrymeUtility.sortArrayObjectsByName(comp)
     return comp;
   }
+  getManeuvers() {
+    let comp = duplicate(this.items.filter(item => item.type == 'maneuver') || [])
+    EcrymeUtility.sortArrayObjectsByName(comp)
+    return comp;
+  }
   /* -------------------------------------------- */
   getItemById(id) {
     let item = this.items.find(item => item.id == id);

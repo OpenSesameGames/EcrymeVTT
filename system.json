@@ -26,6 +26,54 @@
     }
   ],
   "packs": [
+    {
+      "label": "Spécialisation",
+      "type": "Item",
+      "name": "specialisation",
+      "path": "packs/specialisation",
+      "system": "fvtt-ecryme",
+      "flags": {},
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "label": "Equipment",
+      "type": "Item",
+      "name": "equipment",
+      "path": "packs/equipment",
+      "system": "fvtt-ecryme",
+      "flags": {},
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "label": "Traits",
+      "type": "Item",
+      "name": "traits",
+      "path": "packs/traits",
+      "system": "fvtt-ecryme",
+      "flags": {},
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "label": "Maneuvers",
+      "type": "Item",
+      "name": "maneuvers",
+      "path": "packs/maneuvers",
+      "system": "fvtt-ecryme",
+      "flags": {},
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
   ],
   "license": "LICENSE.txt",
   "manifest": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme/raw/branch/master/system.json",
@@ -42,7 +90,7 @@
   ],
   "title": "Ecryme, le Jeu de Rôles",
   "url": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme",
-  "version": "11.0.8",
-  "download": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme/archive/fvtt-ecryme-v11.0.8.zip",
+  "version": "11.0.9",
+  "download": "https://www.uberwald.me/gitea/uberwald/fvtt-ecryme/archive/fvtt-ecryme-v11.0.9.zip",
   "background": "systems/fvtt-ecryme/images/assets/ecryme_extract_panel_01.webp"
 }
