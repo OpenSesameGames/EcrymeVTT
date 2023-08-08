@@ -1,0 +1,138 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <div class="header-fields">
+      <div class="flexrow">
+
+        <div class="profile-img-container">
+          <img class="profile-img" src="{{img}}" data-edit="img" title="{{name}}" />
+        </div>
+
+        <div class="flexcol">
+          <h1 class="charname margin-right"><input name="name" type="text" value="{{name}}" placeholder="Name" /></h1>
+
+          <div class="flexrow">
+            <ul>
+              <li class="flexrow item" data-item-id="{{spleen.id}}">
+                <label class="item-name-label-medium">Description :</label>
+                <textarea class="textarea-default" rows="3" name="system.base.description">{{system.base.description}}</textarea>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    {{#if hasCephaly}}
+    <a class="item" data-tab="annency">{{localize "ECRY.ui.annency"}}</a>
+    {{/if}}
+    {{#if hasBoheme}}
+    <a class="item" data-tab="boheme">{{localize "ECRY.ui.boheme"}}</a>
+    {{/if}}
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{#if hasCephaly}}
+    {{!-- Cephaly Tab --}}
+    <div class="tab annency" data-group="primary" data-tab="annency">
+
+      <div class="grid grid-2col">
+
+        <div>
+
+          <h3>{{localize "ECRY.ui.annency"}}</h3>
+          <ul class="stat-list alternate-list item-list">        
+            <li class="item flexrow list-item">
+              <span class="item-name-label-short">
+                  {{localize "ECRY.ui.iscollective"}}
+              </span>
+              <input type="checkbox" class="item-field-label-short" name="system.base.iscollective"
+                  value="{{system.base.iscollective}}" {{checked system.base.iscollective}} />
+              <span class="item-name-label-short">
+                  {{localize "ECRY.ui.ismultiple"}}
+              </span>
+              <input type="checkbox" class="item-field-label-short" name="system.base.ismultiple"
+                  value="{{system.base.ismultiple}}" {{checked system.base.ismultiple}} />
+            </li>
+          </ul>
+
+          <h3>{{localize "ECRY.ui.characters"}}</h3>
+          <ul class="stat-list alternate-list item-list">        
+            {{#each characters as |character id|}}
+            <li class="item flexrow " data-actor-id="{{character.id}}" >
+              <img class="item-name-img" src="{{character.img}}" />
+              <span class="item-name-label competence-name">{{character.name}}</span>
+              <div class="item-filler">&nbsp;</div>
+              <div class="item-controls item-controls-fixed">
+                <a class="item-control actor-edit" title="Edit Actor"><i class="fas fa-edit"></i></a>
+                <a class="item-control actor-delete" title="Delete Actor"><i class="fas fa-trash"></i></a>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+
+        </div>
+
+        <div>
+          <h3>{{localize "ECRY.ui.location"}}</h3>
+          <ul class="stat-list alternate-list item-list">        
+            {{#each system.base.location as |location index|}}
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">
+                  {{localize "ECRY.ui.location"}} {{index}}
+              </span>
+              <textarea class="textarea-default" rows="3" name="system.base.location.{{index}}">{{location}}</textarea>
+            </li>
+            {{/each}}
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">
+                  {{localize "ECRY.ui.enhancements"}}
+              </span>
+              <textarea class="textarea-default" rows="3" name="system.base.enhancements">{{system.base.enhancements}}</textarea>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+    {{/if}}
+    
+    {{#if hasBoheme}}
+    <div class="tab boheme" data-group="primary" data-tab="boheme">
+        
+        <h3>{{localize "ECRY.ui.oniricform"}}</h3>
+          <ul class="stat-list alternate-list item-list">        
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">{{localize "ECRY.ui.name"}}</span>
+              <input type="text" class="item-field-label-long" name="system.boheme.name" value="{{system.boheme.name}}" data-dtype="String"/>          
+            </li>
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">{{localize "ECRY.ui.ideals"}}</span>
+              <input type="text" class="item-field-label-long" name="system.boheme.ideals" value="{{system.boheme.ideals}}" data-dtype="String"/>          
+            </li>
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">{{localize "ECRY.ui.politic"}}</span>
+              <input type="text" class="item-field-label-long" name="system.boheme.politic" value="{{system.boheme.politic}}" data-dtype="String"/>          
+            </li>
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">{{localize "ECRY.ui.description"}}</span>
+              <textarea class="textarea-default" rows="3" name="system.boheme.description">{{system.boheme.description}}</textarea>
+            </li>
+          </ul>
+
+    </div>
+    {{/if}}
+
+
+  </section>
+</form>

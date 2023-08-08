@@ -52,6 +52,7 @@ export class EcrymeActorSheet extends ActorSheet {
       hasAmertume: EcrymeUtility.hasAmertume(),
       cephalySkills: this.actor.getCephalySkills(),
       subActors: duplicate(this.actor.getSubActors()),
+      annency: this.actor.getAnnency(),
       description: await TextEditor.enrichHTML(this.object.system.description, { async: true }),
       notes: await TextEditor.enrichHTML(this.object.system.notes, { async: true }),
       equipementlibre: await TextEditor.enrichHTML(this.object.system.equipementlibre, { async: true }),
@@ -78,6 +79,12 @@ export class EcrymeActorSheet extends ActorSheet {
     html.bind("keydown", function(e) { // Ignore Enter in actores sheet
       if (e.keyCode === 13) return false;
     });  
+
+    html.find('.open-annency').click(ev => {
+      let actorId = $(ev.currentTarget).data("annency-id")
+      const actor = game.actors.get(actorId)
+      actor.sheet.render(true)
+    })
 
     // Update Inventory Item
     html.find('.item-edit').click(ev => {

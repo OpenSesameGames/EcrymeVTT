@@ -1,7 +1,7 @@
 {
   "Actor": {
     "types": [
-      "pc"
+      "pc","annency"
     ],
     "templates": {
       "biodata": {
@@ -136,20 +136,6 @@
             "major": 0
           }
         },
-        "annency": {
-          "iscollective": false,
-          "ismultiple": false,
-          "characters": "",
-          "location": {"1": "", "2": "", "3":"", "4":"", "5":"" },
-          "description": "",
-          "enhancements": "",
-          "boheme": {
-            "name": "",
-            "ideals": "",
-            "politic": "",
-            "description": ""
-          }
-        },
         "cephaly": {
           "name": "ECRY.ui.cephaly",
           "skilllist": {
@@ -187,7 +173,28 @@
       "npccore": {
         "npctype": "",
         "description": ""
+      },
+      "annency": {
+        "base": {
+          "iscollective": false,
+          "ismultiple": false,
+          "characters": [],
+          "location": {"1": "", "2": "", "3":"", "4":"", "5":"" },
+          "description": "",
+          "enhancements": ""
+        },
+        "boheme": {
+          "name": "",
+          "ideals": "",
+          "politic": "",
+          "description": ""
+        }  
       }
+    },
+    "annency": {
+      "templates": [
+        "annency"
+      ]
     },
     "pc": {
       "templates": [

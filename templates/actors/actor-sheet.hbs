@@ -151,74 +151,20 @@
             {{/each}}
           </ul>
 
-          <h3>{{localize "ECRY.ui.annency"}}</h3>
-          <ul class="stat-list alternate-list item-list">        
-            <li class="item flexrow list-item">
-              <span class="item-name-label-medium">
-                  {{localize "ECRY.ui.iscollective"}}
-              </span>
-              <input type="checkbox" class="item-field-label-short" name="system.annency.iscollective"
-                  value="{{system.annency.iscollective}}" {{checked system.annency.iscollective}} />
-              <span class="item-name-label-medium">
-                  {{localize "ECRY.ui.ismultiple"}}
-              </span>
-              <input type="checkbox" class="item-field-label-short" name="system.annency.ismultiple"
-                  value="{{system.annency.ismultiple}}" {{checked system.annency.ismultiple}} />
-            </li>
-            <li class="item flexrow list-item">
-              <span class="item-name-label-medium">
-                  {{localize "ECRY.ui.description"}}
-              </span>
-              <textarea class="textarea-default" rows="3" name="system.annency.description">{{system.annency.description}}</textarea>
-            </li>
-            <li class="item flexrow list-item">
-              <span class="item-name-label-medium">
-                  {{localize "ECRY.ui.characters"}}
-              </span>
-              <textarea class="textarea-default" rows="3" name="system.annency.characters">{{system.annency.characters}}</textarea>
-            </li>
-          </ul>
-
-          <h3>{{localize "ECRY.ui.oniricform"}}</h3>
-          <ul class="stat-list alternate-list item-list">        
-            <li class="item flexrow list-item">
-              <span class="item-name-label-medium">{{localize "ECRY.ui.name"}}</span>
-              <input type="text" class="item-field-label-long" name="system.annency.boheme.name" value="{{system.annency.boheme.name}}" data-dtype="String"/>          
-            </li>
-            <li class="item flexrow list-item">
-              <span class="item-name-label-medium">{{localize "ECRY.ui.ideals"}}</span>
-              <input type="text" class="item-field-label-long" name="system.annency.boheme.ideals" value="{{system.annency.boheme.ideals}}" data-dtype="String"/>          
-            </li>
-            <li class="item flexrow list-item">
-              <span class="item-name-label-medium">{{localize "ECRY.ui.politic"}}</span>
-              <input type="text" class="item-field-label-long" name="system.annency.boheme.politic" value="{{system.annency.boheme.politic}}" data-dtype="String"/>          
-            </li>
-            <li class="item flexrow list-item">
-              <span class="item-name-label-medium">{{localize "ECRY.ui.description"}}</span>
-              <textarea class="textarea-default" rows="3" name="system.annency.boheme.description">{{system.annency.boheme.description}}</textarea>
-            </li>
-          </ul>
-
         </div>
 
         <div>
-          <h3>{{localize "ECRY.ui.annency"}}</h3>
-          <ul class="stat-list alternate-list item-list">        
-            {{#each system.annency.location as |location index|}}
+          {{#if annency}}
+          <h3>{{localize "ECRY.ui.annency"}} : <a class="open-annency" data-annency-id="{{annency.id}}">{{annency.name}}<i class="fas fa-edit"></i></a></h3>
+          <ul class="stat-list alternate-list item-list">
             <li class="item flexrow list-item">
-              <span class="item-name-label-medium">
-                  {{localize "ECRY.ui.location"}} {{index}}
+              <span class="item-name-label-long">
+                {{annency.system.base.description}}
               </span>
-              <textarea class="textarea-default" rows="3" name="system.annency.location.{{index}}">{{location}}</textarea>
-            </li>
-            {{/each}}
-            <li class="item flexrow list-item">
-              <span class="item-name-label-medium">
-                  {{localize "ECRY.ui.enhancements"}}
-              </span>
-              <textarea class="textarea-default" rows="3" name="system.annency.enhancements">{{system.annency.enhancements}}</textarea>
             </li>
           </ul>
+          {{/if}}
+
         </div>
 
       </div>

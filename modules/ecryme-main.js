@@ -11,6 +11,7 @@
 import { EcrymeActor } from "./actors/ecryme-actor.js";
 import { EcrymeItemSheet } from "./items/ecryme-item-sheet.js";
 import { EcrymeActorSheet } from "./actors/ecryme-actor-sheet.js";
+import { EcrymeAnnencySheet } from "./actors/ecryme-annency-sheet.js";
 import { EcrymeUtility } from "./common/ecryme-utility.js";
 import { EcrymeCombat } from "./app/ecryme-combat.js";
 import { EcrymeItem } from "./items/ecryme-item.js";
@@ -58,7 +59,7 @@ Hooks.once("init", async function () {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("fvtt-ecryme", EcrymeActorSheet, { types: ["pc"], makeDefault: true });
-  //Actors.registerSheet("fvtt-ecryme", EcrymeNPCSheet, { types: ["pnj"], makeDefault: false });
+  Actors.registerSheet("fvtt-ecryme", EcrymeAnnencySheet, { types: ["annency"], makeDefault: false });
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("fvtt-ecryme", EcrymeItemSheet, { makeDefault: true });

@@ -68,6 +68,31 @@ export class EcrymeActor extends Actor {
 
     return comp;
   }
+
+  /* -------------------------------------------- */
+  buildAnnencyActorList() {
+    let membersFull = {}
+    for(let id of this.system.base.characters) {
+      let actor = game.actors.get(id)
+      membersFull[id] = { name: actor.name, id: actor.id, img: actor.img }
+    }
+    return membersFull
+  }
+  /* -----------------------  --------------------- */
+  addAnnencyActor(actorId) {
+    let members = duplicate(this.system.base.characters)
+    members.push(actorId)
+    this.update({ 'system.base.characters': members })
+  }
+  async removeAnnencyActor(actorId) {
+    let members = this.system.base.characters.filter(id => id != actorId)
+    this.update({ 'system.base.characters': members })
+  }
+
+  /* -------------------------------------------- */
+  getAnnency() {
+    return game.actors.find(a => a.type == 'annency' && a.system.base.characters.includes(this.id))
+  }
   /* -------------------------------------------- */
   getConfrontations() {
     return this.items.filter(it => it.type == "confrontation")
