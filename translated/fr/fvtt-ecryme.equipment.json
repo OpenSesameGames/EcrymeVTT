@@ -1,20 +1,23 @@
 {
 	"label": "Equipement",
+  "mapping": {
+    "description": "system.description"
+  },
 	"entries": {
 		"Absinthe": {
 			"name": "Absinthe",
 			"description": "<p>A 5 pence deposit is paid for bottles. This sum is paid back if the empty bottle is returned.</p>"
 		},
 		"Accordion": {
-			"name": "Accordion",
+			"name": "Accordéon",
 			"description": ""
 		},
 		"Airship": {
-			"name": "Airship",
+			"name": "Dirigeable",
 			"description": ""
 		},
 		"Animal skin parchment": {
-			"name": "Animal skin parchment",
+			"name": "Parchemin de peau",
 			"description": ""
 		},
 		"Automobile": {
@@ -22,75 +25,75 @@
 			"description": ""
 		},
 		"Axe": {
-			"name": "Axe",
+			"name": "Hache",
 			"description": ""
 		},
 		"Bag": {
-			"name": "Bag",
+			"name": "Sac",
 			"description": ""
 		},
 		"Ball of string": {
-			"name": "Ball of string",
+			"name": "Pelote de ficelle",
 			"description": ""
 		},
 		"Bar of base metal (1 kg)": {
-			"name": "Bar of base metal (1 kg)",
+			"name": "Lingot de vil métal (1 kg)",
 			"description": ""
 		},
 		"Bare hand": {
-			"name": "Bare hand",
+			"name": "Mains nues",
 			"description": ""
 		},
 		"Barrel organ": {
-			"name": "Barrel organ",
+			"name": "Orgue",
 			"description": ""
 		},
 		"Battleaxe": {
-			"name": "Battleaxe",
+			"name": "Hache de bataille",
 			"description": ""
 		},
 		"Beer (1 glass)": {
-			"name": "Beer (1 glass)",
+			"name": "Bière (1 verre)",
 			"description": "<p>A 5 pence deposit is paid for bottles. This sum is paid back if the empty bottle is returned.</p>"
 		},
 		"Beet stein": {
-			"name": "Beet stein",
+			"name": "Chope (étain)",
 			"description": ""
 		},
 		"Bicycle": {
-			"name": "Bicycle",
+			"name": "Vélo",
 			"description": ""
 		},
 		"Blacksmith's toolkit": {
-			"name": "Blacksmith's toolkit",
+			"name": "Outils de forgeron",
 			"description": ""
 		},
 		"Blanket": {
-			"name": "Blanket",
+			"name": "Couverture",
 			"description": ""
 		},
 		"Blowpipe": {
-			"name": "Blowpipe",
+			"name": "Sarbacane",
 			"description": ""
 		},
 		"Blunderbuss": {
-			"name": "Blunderbuss",
+			"name": "Tromblon",
 			"description": ""
 		},
 		"Book (printed)": {
-			"name": "Book (printed)",
+			"name": "Livre (imprimé)",
 			"description": ""
 		},
 		"Bow": {
-			"name": "Bow",
+			"name": "Arc",
 			"description": ""
 		},
 		"Bower hat": {
-			"name": "Bower hat",
+			"name": "Chapeau melon",
 			"description": ""
 		},
 		"Box camera": {
-			"name": "Box camera",
+			"name": "Appareil photographique (boîtier)",
 			"description": ""
 		},
 		"Bracelet": {
@@ -102,27 +105,27 @@
 			"description": "<p>A 5 pence deposit is paid for bottles. This sum is paid back if the empty bottle is returned.</p>"
 		},
 		"Brooch": {
-			"name": "Brooch",
+			"name": "Broche",
 			"description": ""
 		},
 		"Butter": {
-			"name": "Butter",
+			"name": "Beurre",
 			"description": ""
 		},
 		"Butterfly net": {
-			"name": "Butterfly net",
+			"name": "Filet à papillons",
 			"description": ""
 		},
 		"Cake": {
-			"name": "Cake",
+			"name": "Gâteau",
 			"description": ""
 		},
 		"Candle": {
-			"name": "Candle",
+			"name": "Bougie",
 			"description": ""
 		},
 		"Cane": {
-			"name": "Cane",
+			"name": "Canne",
 			"description": ""
 		},
 		"Cape": {
@@ -130,23 +133,23 @@
 			"description": ""
 		},
 		"Carriage": {
-			"name": "Carriage",
+			"name": "Carriole",
 			"description": ""
 		},
 		"Cestus": {
-			"name": "Cestus",
+			"name": "Ceste",
 			"description": ""
 		},
 		"Chain": {
-			"name": "Chain",
+			"name": "Chaîne",
 			"description": ""
 		},
 		"Chain mail": {
-			"name": "Chain mail",
+			"name": "Chemise de maille",
 			"description": ""
 		},
 		"Chestpplate": {
-			"name": "Chestpplate",
+			"name": "Cuirasse",
 			"description": ""
 		},
 		"Cigarettes": {
@@ -154,11 +157,11 @@
 			"description": ""
 		},
 		"Coffee, tea": {
-			"name": "Coffee, tea",
+			"name": "Café, thé",
 			"description": ""
 		},
 		"Compass": {
-			"name": "Compass",
+			"name": "Boussole",
 			"description": ""
 		},
 		"Corset": {
@@ -166,155 +169,155 @@
 			"description": ""
 		},
 		"Crowbar": {
-			"name": "Crowbar",
+			"name": "Pied de biche",
 			"description": ""
 		},
 		"Crude oil (1 l)": {
-			"name": "Crude oil (1 l)",
+			"name": "Huile lourde (1 l)",
 			"description": ""
 		},
 		"Cudgel": {
-			"name": "Cudgel",
+			"name": "Gourdin",
 			"description": ""
 		},
 		"Dagger": {
-			"name": "Dagger",
+			"name": "Dague",
 			"description": ""
 		},
 		"Dirk": {
-			"name": "Dirk",
+			"name": "Poignard",
 			"description": ""
 		},
 		"Disk": {
-			"name": "Disk",
+			"name": "Disque",
 			"description": ""
 		},
 		"Dissection kit": {
-			"name": "Dissection kit",
+			"name": "Nécessaire de dissection ",
 			"description": ""
 		},
 		"Dress, skirt": {
-			"name": "Dress, skirt",
+			"name": "Robe, jupe",
 			"description": ""
 		},
 		"Drum": {
-			"name": "Drum",
+			"name": "Tambour",
 			"description": ""
 		},
 		"Earrings (pair)": {
-			"name": "Earrings (pair)",
+			"name": "Boucles d'oreille (paire)",
 			"description": ""
 		},
 		"Egg": {
-			"name": "Egg",
+			"name": "Oeuf",
 			"description": ""
 		},
 		"Evening dress": {
-			"name": "Evening dress",
+			"name": "Robe de soirée",
 			"description": ""
 		},
 		"Evening shirt": {
-			"name": "Evening shirt",
+			"name": "Chemise de soirée",
 			"description": ""
 		},
 		"Film": {
-			"name": "Film",
+			"name": "Pellicule, développement et tirage",
 			"description": ""
 		},
 		"Flail": {
-			"name": "Flail",
+			"name": "Fléau",
 			"description": ""
 		},
 		"Flat cap": {
-			"name": "Flat cap",
+			"name": "Casquette gavroche",
 			"description": ""
 		},
 		"Glasses": {
-			"name": "Glasses",
+			"name": "Lunettes",
 			"description": ""
 		},
 		"Grappling hook": {
-			"name": "Grappling hook",
+			"name": "Grapin",
 			"description": ""
 		},
 		"Halberd": {
-			"name": "Halberd",
+			"name": "Hallebarde",
 			"description": ""
 		},
 		"Hammer and chisel": {
-			"name": "Hammer and chisel",
+			"name": "Marteau et burin",
 			"description": ""
 		},
 		"Handbag": {
-			"name": "Handbag",
+			"name": "Sac à main",
 			"description": ""
 		},
 		"Handheld crossbow": {
-			"name": "Handheld crossbow",
+			"name": "Arbalète de poing",
 			"description": ""
 		},
 		"Handheld lamp": {
-			"name": "Handheld lamp",
+			"name": "Lampe tempête",
 			"description": ""
 		},
 		"Harpsichord": {
-			"name": "Harpsichord",
+			"name": "Clavecin",
 			"description": ""
 		},
 		"High heels shoes": {
-			"name": "High heels shoes",
+			"name": "Escarpins",
 			"description": ""
 		},
 		"Horse-drawn cart": {
-			"name": "Horse-drawn cart",
+			"name": "Chariot",
 			"description": ""
 		},
 		"Hot air balloon": {
-			"name": "Hot air balloon",
+			"name": "Ballon",
 			"description": ""
 		},
 		"Illustrated manuscript (cheap)": {
-			"name": "Illustrated manuscript (cheap)",
+			"name": "Manuscrit enluminé (bon marché) ",
 			"description": ""
 		},
 		"Illustrated manuscript (rich)": {
-			"name": "Illustrated manuscript (rich)",
+			"name": "Manuscrit enluminé (cher)",
 			"description": ""
 		},
 		"Improvised weapon": {
-			"name": "Improvised weapon",
+			"name": "Armes improvisées",
 			"description": ""
 		},
 		"Inkpot": {
-			"name": "Inkpot",
+			"name": "Encrier",
 			"description": ""
 		},
 		"Iron flask": {
-			"name": "Iron flask",
+			"name": "Flasque de fer",
 			"description": ""
 		},
 		"Jar (glass)": {
-			"name": "Jar (glass)",
+			"name": "Conserve (verre)",
 			"description": ""
 		},
 		"Jaw harp": {
-			"name": "Jaw harp",
+			"name": "Guimbarde",
 			"description": ""
 		},
 		"Kettle": {
-			"name": "Kettle",
+			"name": "Bouilloire",
 			"description": ""
 		},
 		"Knife": {
-			"name": "Knife",
+			"name": "Couteau",
 			"description": ""
 		},
 		"Lamp oil": {
-			"name": "Lamp oil",
+			"name": "Huile (lamp)",
 			"description": ""
 		},
 		"Lantern": {
-			"name": "Lantern",
+			"name": "Lanterne",
 			"description": ""
 		},
 		"Leather boots (pair)": {
@@ -322,27 +325,27 @@
 			"description": ""
 		},
 		"Leather chest piece": {
-			"name": "Leather chest piece",
+			"name": "Gilet de cuir",
 			"description": ""
 		},
 		"Leather overcoat": {
-			"name": "Leather overcoat",
+			"name": "Manteau de conduite en cuir ",
 			"description": ""
 		},
 		"Lighter": {
-			"name": "Lighter",
+			"name": "Briquet",
 			"description": ""
 		},
 		"Loaf of bread": {
-			"name": "Loaf of bread",
+			"name": "Miche de pain",
 			"description": ""
 		},
 		"Log": {
-			"name": "Log",
+			"name": "Bûche",
 			"description": ""
 		},
 		"Lute": {
-			"name": "Lute",
+			"name": "Luth",
 			"description": ""
 		},
 		"Lyre": {
@@ -350,179 +353,179 @@
 			"description": ""
 		},
 		"Mace": {
-			"name": "Mace",
+			"name": "Masse d'armes",
 			"description": ""
 		},
 		"Magnifying glass": {
-			"name": "Magnifying glass",
+			"name": "Lunette, télescope",
 			"description": ""
 		},
 		"Mander parchment": {
-			"name": "Mander parchment",
+			"name": "Parchemin de mandre",
 			"description": ""
 		},
 		"Mandolin": {
-			"name": "Mandolin",
+			"name": "Mandoline",
 			"description": ""
 		},
 		"Meat (beef, horse, chicken)": {
-			"name": "Meat (beef, horse, chicken)",
+			"name": "Viande (boeuf, cheval, poulet)",
 			"description": ""
 		},
 		"Meat (fullige, snake, pigeon) (Copy)": {
-			"name": "Meat (fullige, snake, pigeon) (Copy)",
+			"name": "Viande (fulige, serpent, pigeon)",
 			"description": ""
 		},
 		"Meat (rat)": {
-			"name": "Meat (rat)",
+			"name": "Viande (rat)",
 			"description": ""
 		},
 		"Messenger bag": {
-			"name": "Messenger bag",
+			"name": "Besace",
 			"description": ""
 		},
 		"Metal crossbow": {
-			"name": "Metal crossbow",
+			"name": "Arbalète métallique",
 			"description": ""
 		},
 		"Metal cutlery": {
-			"name": "Metal cutlery",
+			"name": "Couverts en métal",
 			"description": ""
 		},
 		"Metal plaque": {
-			"name": "Metal plaque",
-			"description": "<p>+8 coins as deposit</p>"
+			"name": "Plaque de métal",
+			"description": "<p>(+8 de caution)</p>"
 		},
 		"Mushroom bread": {
-			"name": "Mushroom bread",
+			"name": "Pain de champignons",
 			"description": ""
 		},
 		"Mushroom spirit": {
-			"name": "Mushroom spirit",
-			"description": "<p>A 5 pence deposit is paid for bottles. This sum is paid back if the empty bottle is returned.</p>"
+			"name": "Eau-de-vie de champignons",
+			"description": "<p>Les bouteilles vides sont consignées, 5 sous par bouteille</p>"
 		},
 		"Musical saw": {
-			"name": "Musical saw",
+			"name": "Scie musicale",
 			"description": ""
 		},
 		"Musket": {
-			"name": "Musket",
+			"name": "Mousquet",
 			"description": ""
 		},
 		"Necklace": {
-			"name": "Necklace",
+			"name": "Collier",
 			"description": ""
 		},
 		"Organ": {
-			"name": "Organ",
+			"name": "Orgue",
 			"description": ""
 		},
 		"Overcoat": {
-			"name": "Overcoat",
+			"name": "Manteau",
 			"description": ""
 		},
 		"Pack of cards": {
-			"name": "Pack of cards",
+			"name": "Jeu de cartes",
 			"description": ""
 		},
 		"Petticoat": {
-			"name": "Petticoat",
+			"name": "Jupon",
 			"description": ""
 		},
 		"Phonographic recorder": {
-			"name": "Phonographic recorder",
+			"name": "phonoéditeur",
 			"description": ""
 		},
 		"Pike": {
-			"name": "Pike",
+			"name": "Pique",
 			"description": ""
 		},
 		"Pistol": {
-			"name": "Pistol",
+			"name": "Pistolet",
 			"description": ""
 		},
 		"Pocket watch": {
-			"name": "Pocket watch",
+			"name": "Montre à gousset",
 			"description": ""
 		},
 		"Poor quality stilts": {
-			"name": "Poor quality stilts",
+			"name": "Chaussures à talons-aiguille de basse qualité",
 			"description": ""
 		},
 		"Port, wine": {
-			"name": "Port, wine",
-			"description": "<p>A 5 pence deposit is paid for bottles. This sum is paid back if the empty bottle is returned.</p>"
+			"name": "Porto, vin",
+			"description": "<p>Les bouteilles vides sont consignées, 5 sous par bouteille</p>"
 		},
 		"Portable first aid kit": {
-			"name": "Portable first aid kit",
+			"name": "Trousse médicale de voyage ",
 			"description": ""
 		},
 		"Portable phonographic recorder": {
-			"name": "Portable phonographic recorder",
+			"name": "Phonoenregistreur de voyage",
 			"description": ""
 		},
 		"Portable stove": {
-			"name": "Portable stove",
+			"name": "Réchaud à alcool",
 			"description": ""
 		},
 		"Pot of jam": {
-			"name": "Pot of jam",
+			"name": "Pot de confiture",
 			"description": ""
 		},
 		"Quill": {
-			"name": "Quill",
+			"name": "Plume",
 			"description": ""
 		},
 		"Rapier": {
-			"name": "Rapier",
+			"name": "Rapière",
 			"description": ""
 		},
 		"Razor blade": {
-			"name": "Razor blade",
+			"name": "Lame de rasoir",
 			"description": ""
 		},
 		"Recorder": {
-			"name": "Recorder",
+			"name": "Flûte à bec",
 			"description": ""
 		},
 		"Revolver": {
-			"name": "Revolver",
+			"name": "Révolver",
 			"description": ""
 		},
 		"Riding boots (pair)": {
-			"name": "Riding boots (pair)",
+			"name": "Botte de cavalier (paire)",
 			"description": ""
 		},
 		"Ring": {
-			"name": "Ring",
+			"name": "Anneau",
 			"description": ""
 		},
 		"Rope (hemp)": {
-			"name": "Rope (hemp)",
+			"name": "Corde (chanvre)",
 			"description": ""
 		},
 		"Rum": {
-			"name": "Rum",
-			"description": "<p>A 5 pence deposit is paid for bottles. This sum is paid back if the empty bottle is returned.</p>"
+			"name": "Rhum",
+			"description": "<p>Les bouteilles vides sont consignées, 5 sous par bouteille</p>"
 		},
 		"Scarf, shawl": {
-			"name": "Scarf, shawl",
+			"name": "Echarpe, châle",
 			"description": ""
 		},
 		"Shoes": {
-			"name": "Shoes",
+			"name": "Chaussures",
 			"description": ""
 		},
 		"Sighted rifle": {
-			"name": "Sighted rifle",
+			"name": "Fusil à lunette",
 			"description": ""
 		},
 		"Silk stockings": {
-			"name": "Silk stockings",
+			"name": "Bas de soie",
 			"description": ""
 		},
 		"Silver bar": {
-			"name": "Silver bar",
+			"name": "Lingot d’argent ",
 			"description": ""
 		},
 		"Skis": {
@@ -530,59 +533,59 @@
 			"description": ""
 		},
 		"Sleeping bag": {
-			"name": "Sleeping bag",
+			"name": "Sac de couchage",
 			"description": ""
 		},
 		"Sling": {
-			"name": "Sling",
+			"name": "Fronde",
 			"description": ""
 		},
 		"Soft brimmed hat": {
-			"name": "Soft brimmed hat",
+			"name": "Chapeau mou",
 			"description": ""
 		},
 		"Spear": {
-			"name": "Spear",
+			"name": "Lance",
 			"description": ""
 		},
 		"Spirit": {
-			"name": "Spirit",
-			"description": "<p>A 5 pence deposit is paid for bottles. This sum is paid back if the empty bottle is returned.</p>"
+			"name": "Liqueur",
+			"description": "<p>Les bouteilles vides sont consignées, 5 sous par bouteille</p>"
 		},
 		"Staff": {
-			"name": "Staff",
+			"name": "Bâton",
 			"description": ""
 		},
 		"Stylus for wax plaque": {
-			"name": "Stylus for wax plaque",
+			"name": "Stylet pour plaque de cire",
 			"description": ""
 		},
 		"Sword": {
-			"name": "Sword",
+			"name": "Epée",
 			"description": ""
 		},
 		"Tambourine": {
-			"name": "Tambourine",
+			"name": "Tambourin",
 			"description": ""
 		},
 		"Telescope": {
-			"name": "Telescope",
+			"name": "Télescope",
 			"description": ""
 		},
 		"Telescopic stilts": {
-			"name": "Telescopic stilts",
+			"name": "Échasses télescopiques",
 			"description": ""
 		},
 		"Thief's toolkit": {
-			"name": "Thief's toolkit",
+			"name": "Outils de voleur",
 			"description": ""
 		},
 		"Top hat": {
-			"name": "Top hat",
+			"name": "Haut-de-forme",
 			"description": ""
 		},
 		"Torch": {
-			"name": "Torch",
+			"name": "Torche",
 			"description": ""
 		},
 		"Train (locomotive)": {
@@ -594,67 +597,67 @@
 			"description": ""
 		},
 		"Trumpet": {
-			"name": "Trumpet",
+			"name": "Trompette",
 			"description": ""
 		},
 		"Truncheon": {
-			"name": "Truncheon",
+			"name": "Matraque",
 			"description": ""
 		},
 		"Underwear": {
-			"name": "Underwear",
+			"name": "Sous-vêtements",
 			"description": ""
 		},
 		"Uniform": {
-			"name": "Uniform",
+			"name": "Uniforme",
 			"description": ""
 		},
 		"Viol": {
-			"name": "Viol",
+			"name": "Viole",
 			"description": ""
 		},
 		"Violin": {
-			"name": "Violin",
+			"name": "Violon",
 			"description": ""
 		},
 		"Walking stick": {
-			"name": "Walking stick",
+			"name": "Bâton de marche",
 			"description": ""
 		},
 		"Watch": {
-			"name": "Watch",
+			"name": "Montre",
 			"description": ""
 		},
 		"Wax plaque": {
-			"name": "Wax plaque",
-			"description": "<p>+3 coins as deposit</p>"
+			"name": "Plaque de cire",
+			"description": "<p>+3 de caution</p>"
 		},
 		"Whiskey": {
-			"name": "Whiskey",
-			"description": "<p>A 5 pence deposit is paid for bottles. This sum is paid back if the empty bottle is returned.</p>"
+			"name": "Whisky",
+			"description": "<p>Les bouteilles vides sont consignées, 5 sous par bouteille</p>"
 		},
 		"Whistle": {
-			"name": "Whistle",
+			"name": "Sifflet",
 			"description": ""
 		},
 		"White shirt": {
-			"name": "White shirt",
+			"name": "Chemise blanche",
 			"description": ""
 		},
 		"Wooden crossbow": {
-			"name": "Wooden crossbow",
+			"name": "Arbalète en bois",
 			"description": ""
 		},
 		"Wooden sedan chair": {
-			"name": "Wooden sedan chair",
+			"name": "Chaise à porteurs (bois)",
 			"description": ""
 		},
 		"Wooden trunk": {
-			"name": "Wooden trunk",
+			"name": "Malle de bois",
 			"description": ""
 		},
 		"Writing material": {
-			"name": "Writing material",
+			"name": "Matériel d’écriture",
 			"description": ""
 		}
 	}

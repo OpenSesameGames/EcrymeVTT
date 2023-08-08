@@ -125,8 +125,12 @@
     {{#if hasCephaly}}
     {{!-- Cephaly Tab --}}
     <div class="tab cephaly" data-group="primary" data-tab="cephaly">
-        
+
+      <div class="grid grid-2col">
+
         <div>
+
+          <h3>{{localize "ECRY.ui.cephaly"}}</h3>
           <ul class="stat-list alternate-list item-list">
             {{#each cephalySkills as |skill skillkey|}}
             <li class="item flexrow list-item">
@@ -135,9 +139,8 @@
                   <i class="fa-solid fa-dice-d6"></i>
                   {{localize skill.name}}
                 </a></span>
-              <select class="item-field-label-short" type="text"
-                name="system.cephaly.skilllist.{{skillkey}}.value" value="{{skill.value}}"
-                data-dtype="Number">
+              <select class="item-field-label-short" type="text" name="system.cephaly.skilllist.{{skillkey}}.value"
+                value="{{skill.value}}" data-dtype="Number">
                 {{#select skill.value}}
                 {{#each @root.config.skillLevel as |level key| }}
                 <option value="{{level}}">{{level}}</option>
@@ -147,7 +150,79 @@
             </li>
             {{/each}}
           </ul>
+
+          <h3>{{localize "ECRY.ui.annency"}}</h3>
+          <ul class="stat-list alternate-list item-list">        
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">
+                  {{localize "ECRY.ui.iscollective"}}
+              </span>
+              <input type="checkbox" class="item-field-label-short" name="system.annency.iscollective"
+                  value="{{system.annency.iscollective}}" {{checked system.annency.iscollective}} />
+              <span class="item-name-label-medium">
+                  {{localize "ECRY.ui.ismultiple"}}
+              </span>
+              <input type="checkbox" class="item-field-label-short" name="system.annency.ismultiple"
+                  value="{{system.annency.ismultiple}}" {{checked system.annency.ismultiple}} />
+            </li>
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">
+                  {{localize "ECRY.ui.description"}}
+              </span>
+              <textarea class="textarea-default" rows="3" name="system.annency.description">{{system.annency.description}}</textarea>
+            </li>
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">
+                  {{localize "ECRY.ui.characters"}}
+              </span>
+              <textarea class="textarea-default" rows="3" name="system.annency.characters">{{system.annency.characters}}</textarea>
+            </li>
+          </ul>
+
+          <h3>{{localize "ECRY.ui.oniricform"}}</h3>
+          <ul class="stat-list alternate-list item-list">        
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">{{localize "ECRY.ui.name"}}</span>
+              <input type="text" class="item-field-label-long" name="system.annency.boheme.name" value="{{system.annency.boheme.name}}" data-dtype="String"/>          
+            </li>
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">{{localize "ECRY.ui.ideals"}}</span>
+              <input type="text" class="item-field-label-long" name="system.annency.boheme.ideals" value="{{system.annency.boheme.ideals}}" data-dtype="String"/>          
+            </li>
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">{{localize "ECRY.ui.politic"}}</span>
+              <input type="text" class="item-field-label-long" name="system.annency.boheme.politic" value="{{system.annency.boheme.politic}}" data-dtype="String"/>          
+            </li>
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">{{localize "ECRY.ui.description"}}</span>
+              <textarea class="textarea-default" rows="3" name="system.annency.boheme.description">{{system.annency.boheme.description}}</textarea>
+            </li>
+          </ul>
+
         </div>
+
+        <div>
+          <h3>{{localize "ECRY.ui.annency"}}</h3>
+          <ul class="stat-list alternate-list item-list">        
+            {{#each system.annency.location as |location index|}}
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">
+                  {{localize "ECRY.ui.location"}} {{index}}
+              </span>
+              <textarea class="textarea-default" rows="3" name="system.annency.location.{{index}}">{{location}}</textarea>
+            </li>
+            {{/each}}
+            <li class="item flexrow list-item">
+              <span class="item-name-label-medium">
+                  {{localize "ECRY.ui.enhancements"}}
+              </span>
+              <textarea class="textarea-default" rows="3" name="system.annency.enhancements">{{system.annency.enhancements}}</textarea>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
     </div>
     {{/if}}
 
@@ -237,7 +312,7 @@
           <a class="item-edit item-name-img" title="Edit Item"><img class="sheet-competence-img"
               src="{{maneuver.img}}" /></a>
           <span class="item-name-label-long2">
-              {{maneuver.name}}
+            {{maneuver.name}}
           </span>
 
           <div class="item-filler">&nbsp;</div>

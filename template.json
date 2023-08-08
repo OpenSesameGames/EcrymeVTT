@@ -136,6 +136,20 @@
             "major": 0
           }
         },
+        "annency": {
+          "iscollective": false,
+          "ismultiple": false,
+          "characters": "",
+          "location": {"1": "", "2": "", "3":"", "4":"", "5":"" },
+          "description": "",
+          "enhancements": "",
+          "boheme": {
+            "name": "",
+            "ideals": "",
+            "politic": "",
+            "description": ""
+          }
+        },
         "cephaly": {
           "name": "ECRY.ui.cephaly",
           "skilllist": {
@@ -188,9 +202,6 @@
       "trait",
       "weapon",
       "specialization",
-      "annency",
-      "boheme",
-      "contact",
       "maneuver"
     ],
     "templates": {

@@ -48,6 +48,8 @@ export class EcrymeActorSheet extends ActorSheet {
       archetype: duplicate(this.actor.getArchetype()),
       equipements: this.actor.getEquipments(),
       hasCephaly: EcrymeUtility.hasCephaly(),
+      hasBoheme: EcrymeUtility.hasBoheme(),
+      hasAmertume: EcrymeUtility.hasAmertume(),
       cephalySkills: this.actor.getCephalySkills(),
       subActors: duplicate(this.actor.getSubActors()),
       description: await TextEditor.enrichHTML(this.object.system.description, { async: true }),

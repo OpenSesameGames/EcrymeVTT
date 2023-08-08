@@ -146,7 +146,17 @@
       "psyche": "Psyché",
       "scoria": "Scorie",
       "cephalydifficulty": "Difficulté de la Céphalie",
-      "maneuvers": "Manoeuvres"
+      "maneuvers": "Manoeuvres",
+      "annency": "Anence",
+      "iscollective": "Collective",
+      "ismultiple": "Multiple",
+      "description": "Description",
+      "location": "Lieu",
+      "characters": "Personnages",
+      "enhancements": "Améliorations",
+      "oniricform": "Forme Onorique (Bohême)",
+      "ideals": "Idéaux",
+      "politic": "Idéaux politiques"
     }
   }
 }

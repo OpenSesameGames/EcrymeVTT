@@ -109,7 +109,17 @@ export class EcrymeUtility {
     let level = game.settings.get("fvtt-ecryme", "ecryme-game-level")
     return level != "level_e"
   }
-
+  /*-------------------------------------------- */
+  static hasBoheme() {
+    let level = game.settings.get("fvtt-ecryme", "ecryme-game-level")
+    return level == "level_b" || level == "level_a"
+  }
+  /*-------------------------------------------- */
+  static hasAmertume() {
+    let level = game.settings.get("fvtt-ecryme", "ecryme-game-level")
+    return level == "level_a"
+  }
+  
   /*-------------------------------------------- */
   static buildSkillConfig() {
     game.system.ecryme.config.skills = {}

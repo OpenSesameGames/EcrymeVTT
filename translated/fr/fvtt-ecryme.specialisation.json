@@ -1,0 +1,388 @@
+{
+	"label": "Spécialisation",
+  "mapping": {
+    "description": "system.description"
+  },
+	"entries": {
+		"Aircraft": {
+			"name": "brûleur d’aérostat",
+			"description": ""
+		},
+		"Airplane": {
+			"name": "Aéroplane",
+			"description": ""
+		},
+		"Airship": {
+			"name": "Dirigeable",
+			"description": ""
+		},
+		"Amputation": {
+			"name": "Amputation",
+			"description": ""
+		},
+		"Architecture": {
+			"name": "Architecture",
+			"description": ""
+		},
+		"Armlock": {
+			"name": "Clef de bras",
+			"description": ""
+		},
+		"Automobile": {
+			"name": "Automobile",
+			"description": ""
+		},
+		"Axe": {
+			"name": "Hache",
+			"description": ""
+		},
+		"Bartering": {
+			"name": "Marchander",
+			"description": ""
+		},
+		"Blowpipe": {
+			"name": "Sarbacane",
+			"description": ""
+		},
+		"Bow": {
+			"name": "Arc",
+			"description": ""
+		},
+		"Boxing": {
+			"name": "Boxe",
+			"description": ""
+		},
+		"Camouflage": {
+			"name": "Camouflage",
+			"description": ""
+		},
+		"Carriage": {
+			"name": "Calèche",
+			"description": ""
+		},
+		"Carrying": {
+			"name": "Porter",
+			"description": "<p>Le personnage a la force et l'habitude de porter des charges lourdes.</p>"
+		},
+		"Cavalry saber": {
+			"name": "Sabre de cavalerie",
+			"description": ""
+		},
+		"Charm": {
+			"name": "Charmer",
+			"description": ""
+		},
+		"Chemystry": {
+			"name": "Chimie",
+			"description": ""
+		},
+		"Clarinet": {
+			"name": "Clarinette",
+			"description": ""
+		},
+		"Climbing": {
+			"name": "Escalader",
+			"description": "<p>Le personnage a appris à escalader différents types de surfaces.</p>"
+		},
+		"Clocks": {
+			"name": "Horloges",
+			"description": ""
+		},
+		"Collecting gossip": {
+			"name": "Collecter des ragots",
+			"description": ""
+		},
+		"Communication": {
+			"name": "Communication",
+			"description": ""
+		},
+		"Dagger": {
+			"name": "Dague",
+			"description": ""
+		},
+		"Decoction": {
+			"name": "Décoction",
+			"description": ""
+		},
+		"Dosage of medicine": {
+			"name": "Posologie",
+			"description": ""
+		},
+		"Electric": {
+			"name": "Electric",
+			"description": ""
+		},
+		"Environment (Alley)": {
+			"name": "Environnement (ruelle)",
+			"description": ""
+		},
+		"Environment (traverse)": {
+			"name": "Environnement (traverse)",
+			"description": ""
+		},
+		"Escape": {
+			"name": "Filer",
+			"description": ""
+		},
+		"Foil": {
+			"name": "Fleuret",
+			"description": ""
+		},
+		"Giving commands": {
+			"name": "Commander",
+			"description": ""
+		},
+		"Glider": {
+			"name": "Cerf-volant",
+			"description": ""
+		},
+		"Halberd": {
+			"name": "Hallebarde",
+			"description": ""
+		},
+		"Herbalism": {
+			"name": "Herbalisme",
+			"description": ""
+		},
+		"History": {
+			"name": "Histoire",
+			"description": ""
+		},
+		"Horse": {
+			"name": "Cheval",
+			"description": ""
+		},
+		"Hot air balloon": {
+			"name": "Ballon",
+			"description": ""
+		},
+		"Hydrocryme production": {
+			"name": "Production d'hydrocryme",
+			"description": ""
+		},
+		"Hydropower": {
+			"name": "Hydraulique",
+			"description": ""
+		},
+		"Impressing people": {
+			"name": "Impressionner",
+			"description": ""
+		},
+		"Improvised combat": {
+			"name": "Combat improvisé",
+			"description": ""
+		},
+		"Interrogation": {
+			"name": "Interrogation",
+			"description": ""
+		},
+		"Intervention": {
+			"name": "Intervention",
+			"description": ""
+		},
+		"Intimidation": {
+			"name": "Intimidation",
+			"description": ""
+		},
+		"Investigation": {
+			"name": "Investigation",
+			"description": ""
+		},
+		"Iron work": {
+			"name": "Ferronnerie",
+			"description": ""
+		},
+		"Jumping": {
+			"name": "sauter",
+			"description": "<p>Le personnage a la dextérité et la coordination pour sauter loin, haut, et atterrir sur ses pieds.</p>"
+		},
+		"Kickboxing": {
+			"name": "Savate",
+			"description": ""
+		},
+		"Lock picking": {
+			"name": "Crocheter",
+			"description": ""
+		},
+		"Lock systems": {
+			"name": "Serrures",
+			"description": ""
+		},
+		"Locomotive": {
+			"name": "Locomotive",
+			"description": ""
+		},
+		"Locomotives": {
+			"name": "Locomotives",
+			"description": ""
+		},
+		"Lying": {
+			"name": "Mentir",
+			"description": ""
+		},
+		"Making a good impression": {
+			"name": "Faire une bonne impression",
+			"description": ""
+		},
+		"Making mushroom paper": {
+			"name": "Fabriquer du papier à base de champignons",
+			"description": ""
+		},
+		"Milieu knowledge": {
+			"name": "Connaissance du milieu (...)",
+			"description": ""
+		},
+		"Music": {
+			"name": "Musique",
+			"description": ""
+		},
+		"Musical composition": {
+			"name": "Composition musicale",
+			"description": ""
+		},
+		"Musket": {
+			"name": "Mousquet",
+			"description": ""
+		},
+		"Neighborhood knowledge": {
+			"name": "Connaissance du quartier",
+			"description": ""
+		},
+		"Opera": {
+			"name": "Opéra",
+			"description": ""
+		},
+		"Organ": {
+			"name": "Orgue",
+			"description": ""
+		},
+		"Painting": {
+			"name": "Peinture",
+			"description": ""
+		},
+		"Pharmacology": {
+			"name": "Pharmacologie",
+			"description": ""
+		},
+		"Playwriting": {
+			"name": "Ecriture théâtrale",
+			"description": ""
+		},
+		"Pottery": {
+			"name": "Poterie",
+			"description": ""
+		},
+		"Rapier": {
+			"name": "Rapière",
+			"description": ""
+		},
+		"Religion": {
+			"name": "Religion",
+			"description": ""
+		},
+		"Rhetoric": {
+			"name": "Rhétorique",
+			"description": ""
+		},
+		"Running": {
+			"name": "Courir",
+			"description": "<p>Le personnage peut courir vite et longtemps.</p>"
+		},
+		"Sculpture": {
+			"name": "Sculpture",
+			"description": ""
+		},
+		"Sleight of hand": {
+			"name": "Escamoter",
+			"description": ""
+		},
+		"Sling": {
+			"name": "Fronde",
+			"description": ""
+		},
+		"Spear": {
+			"name": "Lance",
+			"description": ""
+		},
+		"Spreading false information": {
+			"name": "Propager de fausses informations",
+			"description": ""
+		},
+		"Strangling": {
+			"name": "Etrangler",
+			"description": ""
+		},
+		"Streetcar": {
+			"name": "Tramway",
+			"description": ""
+		},
+		"Surgery": {
+			"name": "Chirurgie",
+			"description": ""
+		},
+		"Swordstick": {
+			"name": "Canne-épée",
+			"description": ""
+		},
+		"Theater": {
+			"name": "Théâtre",
+			"description": ""
+		},
+		"Thermal": {
+			"name": "Thermique",
+			"description": ""
+		},
+		"Threatening": {
+			"name": "Menacer",
+			"description": ""
+		},
+		"Throwing knife": {
+			"name": "Couteau de lancer",
+			"description": ""
+		},
+		"Traverse architecture": {
+			"name": "Architecture des traverses",
+			"description": ""
+		},
+		"Traverse geography": {
+			"name": "Géographie des traverses",
+			"description": ""
+		},
+		"Traverse History": {
+			"name": "Histoire des traverses",
+			"description": ""
+		},
+		"Traverse mapmaking": {
+			"name": "Cartographie des traverses",
+			"description": ""
+		},
+		"Traverse mythology": {
+			"name": "Mythologie des traverses",
+			"description": ""
+		},
+		"Traverse sociology": {
+			"name": "Socilogie des traverses",
+			"description": ""
+		},
+		"Traverser flute": {
+			"name": "Flute des traverses",
+			"description": ""
+		},
+		"Tripping": {
+			"name": "Croc-en-jambe",
+			"description": ""
+		},
+		"Wind power": {
+			"name": "Eolien",
+			"description": ""
+		},
+		"Wrestling": {
+			"name": "Lutte",
+			"description": ""
+		},
+		"Writing": {
+			"name": "Ecriture",
+			"description": ""
+		}
+	}
+}

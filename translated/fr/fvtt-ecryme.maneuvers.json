@@ -1,65 +1,68 @@
 {
 	"label": "Manoeuvres",
+  "mapping": {
+    "description": "system.description"
+  },
 	"entries": {
 		"Coup de Jarnac": {
 			"name": "Coup de Jarnac",
-			"description": "<p>Execution Margin of 4</p>\n<p>This is a violent, treacherous, and wicked blow made famous by Guy Chabot de Jarnac, who used it for the first time in a judiciary duel in Aeolus in 954. It involves wounding the opponent&rsquo;s leg or Achilles tendon, which prevents them from being able to move normally. As well as the Impact, the victim also receives the Trait: <em>Lame -1</em>.</p>"
+			"description": "<p>Marge de 4 en Accomplissement </p>\n<p>Ce coup violent, déloyal et pernicieux, a été rendu célèbre par Guy Chabot de Jarnac, qui l’a porté pour la première fois lors d’un duel judiciaire, à Éole, en 954. Il consiste à blesser la jambe ou le tendon d’Achille de l’adversaire, l’empêchant de se déplacer normalement. En plus de l’Impact, la victime se voit affublée du Trait <em>Estropié -1</em>.</p>"
 		},
 		"Doesn’t even hurt": {
-			"name": "Doesn’t even hurt",
-			"description": "<p>Through breathing control and unshakable willpower, the combatant learns to ignore their injuries. Not only do they not receive any penalty from Impacts inflicted upon them, but even better, those Impacts allow them to unlock their inner strength and become bonuses. Therefore, instead of suffering from a penalty of -4 for a major Impact, the character receives a bonus of +4. they may surpass the Margin limit set by their Skill level.</p>"
+			"name": "Même pas mal",
+			"description": "<p>Par le contrôle de sa respiration et une volonté inébranlable, le combattant apprend à faire fi de ses blessures. Non seulement il ne souffre d’aucun malus dû aux Impacts subis mais, mieux encore, ces derniers lui permettent de se surpasser et deviennent des bonus proportionnels. Ainsi, au lieu de subir un malus de -4 pour un Impact majeur, le personnage bénéficiera d’un bonus de +4. Il peut dépasser la Marge autorisée par sa Compétence.</p>"
 		},
 		"Double impact": {
 			"name": "Double impact",
-			"description": "<p>Aggressive</p>\n<p>Two weapons needed</p>\n<p>This technique requires extreme speed on the user&rsquo;s part, increasing the number of attacks they can deliver. In a single exchange of blows, they can inflict an Impact twice (two serious Impacts rather than one for example). However, this can turn against them and be very dangerous, since due to their excessive aggressiveness, the character exposes themself. They also suffer from double Impacts.</p>"
+			"description": "<p>Aggressif</p>\n<p>deux armes sont nécessaires</p>\n<p>Cette botte demande une extrême célérité au maître d’armes qui augmente sa cadence de frappe. Durant un même échange de coups, il est ainsi capable d’infliger son Impact deux fois (deux Impacts graves au lieu d’un par exemple). Le retour de flamme est cependant périlleux, car, par son agressivité, le maître d’armes se découvre. Lui aussi subit des Impacts doublés.</p>"
 		},
 		"It's the winning, not the taking part that counts": {
-			"name": "It's the winning, not the taking part that counts",
-			"description": "<p>Impossible to use this technique in a duel</p>\n<p>The sword fighter has learned to take advantage of all situations, by prioritizing efficiency over style. They use whatever they have at hand to gain an advantage. Any improvised weapon they use has an Effect of +3, but breaks after use.</p>"
+			"name": "L’important n’est pas de participer mais de gagner",
+			"description": "<p>impossibilité d’utiliser cette botte en duel</p>\n<p>L’escrimeur a appris à tirer profit de toutes les occasions, privilégiant l’efficacité au style. Il se sert de tout ce qui lui tombe sous la main pour en tirer avantage. Entre ses mains, un élément improvisé utilisé pour se battre est doté d’une Incidence de +3, mais il se brise après usage.</p>"
 		},
 		"Perforation": {
 			"name": "Perforation",
-			"description": "<p>This maneuver is particularly favored on stitch estates where it is still common to wear armor. The sword fighter uses a precise blow to target the weak point of their opponent&rsquo;s protection and runs through it, discarding any bonus granted by the armor.</p>"
+			"description": "<p>Cette manœuvre est particulièrement usitée au sein des seigneuries traversières, où les armures demeurent courantes. D’un coup précis, le maître d’armes cible le point faible de la protection de son opposant et s’y engouffre, faisant fi du bonus de cette dernière.</p>"
 		},
 		"Point blank": {
-			"name": "Point blank",
-			"description": "<p>Requires <em>Musket</em> Specialization</p>\n<p>The combatant is a martial artist able to use their musket in close range combat. In a single exchange of blows, they can deliver a bayonet blow (Effect of a dagger) and fire with the musket (Effect of a firearm).</p>"
+			"name": "À bout portant",
+			"description": "<p>nécessite Spécialization <em>Mousquet</em></p>\n<p>Le maître d’armes est un artiste martial, capable de faire feu avec son mousquet lors d’un combat au corps à corps. Durant un même échange de coups, il peut porter un coup de baïonnette (Incidence du poignard) et faire feu avec le mousquet (Incidence d’arme à feu).</p>"
 		},
 		"Ribbon Dance": {
-			"name": "Ribbon Dance",
-			"description": "<p>Aggressive</p>\n<p>Requires a Specialization with a non rigid weapon (whip, chain, flail, ribbons lined with lead or metal blades), succeeding one&rsquo;s Preservation test, and enough space to fight&ndash;By spinning around with long, skilled movements, the combatant creates a deadly rotating sphere around themself. they can then add their Preservation Margin to their Execution Margin 2 points at a time. The Execution Margin then causes many superficial injuries (1 for each Margin of 2).</p>"
+			"name": "Danse des rubans",
+			"description": "<p>Agressif</p>\n<p>Par tranche de 2, nécessite une Spécialisation en arme articulée (fouet, chaînes, fléaux, rubans lestés de plomb ou lames métalliques), de réussir son test de Préservation et d’avoir suffisamment de place pour se battre – En effectuant de longues et complexes arabesques, le maître d’armes produit une sphère mortelle tournoyante autour de lui. Il peut alors ajouter sa Marge de Préservation, par tranche de 2, à sa Marge d’Accomplissement. La Marge d’Accomplissement produit alors de nombreuses blessures superficielles (1 par Marge de 2).</p>"
 		},
 		"The Chimeric Defense": {
-			"name": "The Chimeric Defense",
-			"description": "<p>&ldquo;Defensive moves only&rdquo;&ndash;by blocks of 2&ndash;</p>\n<p>To successfully carry out this maneuver, the character must obtain a Margin of at least 4 in both Execution and Preservation. If it succeeds, it allows the character to add all or part of their Preservation Margin to their Execution Margin in blocks of 2. while dodging or parrying the defender simultaneously lands a blow with a limb, an improvised weapon, or a shield etc. This requires tactical thinking, because using this technique weakens Preservation. The combattant may exceed the normal Margin limit set by Skill level.</p>"
+			"name": "Défense chimérique",
+			"description": "<p>&ldquo;Défensif uniquement &rdquo;&ndash;par tranches de 2&ndash;</p>\n<p>Pour réussir cette manœuvre, le personnage doit obtenir une Marge d’au moins 4 en Accomplissement ET en Préservation. En cas de réussite, elle permet d’ajouter tout ou partie de sa Marge de Préservation, par tranches de 2, à sa Marge d’Accomplissement. Alors qu’il esquive ou pare, le défenseur en profite pour porter un coup à l’aide d’un membre, d’un élément improvisé, d’un bouclier, etc. Cela demande une réflexion tactique, car augmenter son Accomplissement en recourant à cette botte affaiblit sa Préservation. Le combattant peut dépasser la Marge autorisée par sa Compétence.</p>"
 		},
 		"The Dead man’s Hold": {
-			"name": "The Dead man’s Hold",
-			"description": "<p>The sword fighter allows themself to take attacks by opting for a low Preservation score. By accepting these Impacts, they can take advantage of their opponent&rsquo;s lowered guard to inflict identical damage on them, in addition to normal damage inflicted during that turn, for a total which can surpass the normal Margin limit set by their Skill level.</p>"
+			"name": "L’étreinte de l’homme mort",
+			"description": "<p>L’escrimeur choisit de subir des blessures en optant pour un score de Préservation bas. En acceptant ces Impacts, il est en retour capable de déjouer la garde de son adversaire et lui fait subir en retour des dégâts identiques, en plus de ceux qu’il a infligés normalement durant cette passe d’armes, pour un total pouvant dépasser sa Marge autorisée de Compétence.</p>"
 		},
 		"The jeering master": {
-			"name": "The jeering master",
-			"description": "<p>This technique can be used to provoke the opponent, and even humiliate them, before finishing them off. Using mockery, the combattant forces the opponent to use their highest score in Execution, which greatly reduces their Preservation (for minor characters, it becomes +4/-4 by default).</p>"
+			"name": "Maître persifleur",
+			"description": "<p>Cette technique permet de provoquer son adversaire, voire de l’humilier, avant de l’achever. Par ses piques et ses railleries, le maître d’armes impose à son adversaire de placer son plus haut score possible en Accomplissement, ce qui dégarnit grandement sa Préservation (pour les seconds rôles, faites +4/-4 par défaut). </p>"
 		},
 		"The Madman’s step": {
-			"name": "The Madman’s step",
-			"description": "<p>Rojo style is not taught in judi-duelist schools, but in traverser caravans. The sword fighter employs a style made up of erratic and unpredictable movements that disorient the opponent and make the user difficult to touch. The swordfighter adds +4 to their Preservation and can surpass the normal Margin limit set by their Skill level.</p>"
+			"name": "Le pas de l’homme fou",
+			"description": "<p>Le style Rojo n’est pas enseigné par dans les écoles d’avocats-duellistes, mais dans les caravanes traversières. L’escrimeur adopte un style fait de mouvements erratiques et imprévisibles, désorientant son adversaire et le rendant plus difficile à toucher. Le bretteur ajoute +4 à sa Préservation et peut dépasser la Marge autorisée par sa Compétence.</p>"
 		},
 		"The Nevers Attack": {
-			"name": "The Nevers Attack",
-			"description": "<p>Execution Margin of 4 and the opponent&rsquo;s head must be unprotected</p>\n<p>Invented by Parisian swordfighter Philippe de Nevers, this attack requires extreme precision but is absolutely devastating. If it succeeds, the user eliminates their opponent instantly by inflicting an injury between their eyes (equivalent to a major Impact).</p>"
+			"name": "La botte de Nevers",
+			"description": "<p>Marge de 4 en Accomplissement et l’adversaire ne doit pas posséder de protection à la tête</p>\n<p>Inventée par Philippe de Nevers, un sabreur parisien, cette botte exige une extrême précision mais se révèle dévastatrice. En cas de réussite, l’épéiste élimine son adversaire sur le coup en lui infligeant une blessure entre les deux yeux (équivalent d’un Impact majeur).</p>"
 		},
 		"The partner switch": {
-			"name": "The partner switch",
-			"description": "<p>This technique can be used by a sword fighter facing multiple opponents. The attacker can include an extra target at the last second (before Effects are calculated). They may ask the storyteller to direct the attack on a character within range of their blade or choose the opponent with the highest or lowest Preservation score. The swordfighter&rsquo;s own Preservation score applies to both of the targeted opponents.</p>"
+			"name": "Changement de partenaire",
+			"description": "<p>Cette botte peut être employée par un escrimeur confronté à plusieurs adversaires. Ce dernier a la possibilité d’engager une cible supplémentaire au dernier moment (avant le calcul des Incidences). Il peut demander au conteur de l’orienter vers un personnage à portée de fleuret ou de désigner son opposant avec le plus faible ou le plus fort score en Préservation. Le score de Préservation de l’escrimeur s’applique aux deux adversaires désignés.</p>"
 		},
 		"The Scarlet Dance": {
-			"name": "The Scarlet Dance",
-			"description": "<p>This move was invented by the duelist Bramon of Aeolus. The nemesis of Marcel Rubempr&eacute;, and fencing instructor for the old nobility before they were chased out onto the traverses, Bramon&rsquo;s technique became legendary during the industrial revolution. It is a combination of dance steps, thrusts, and slashes. The swordfighter lets themself be taken away by their own inner music, and enters into a trance like state which allows them to add their <em>Athletics </em>score to the Effect. They can exceed the normal Margin limit set by their Skill level.</p>"
+			"name": "La danse écarlate",
+			"description": "<p>Cette botte est l’invention de la duelliste Bramon d’Éole. Véritable némésis de Marcel Rubempré, maître d’armes des anciens nobles avant qu’ils ne soient chassés sur les traverses, sa technique entra dans la légende lors de la révolution industrielle. Elle combine un mélange de pas de danse et de coups d’estoc et de taille. Se laissant aller au rythme de sa musique intérieure, l’épéiste finit dans un état de transe lui permettant d’ajouter son score d’Athlétisme à son Incidence. Il peut dépasser la Marge autorisée par sa Compétence.</p>"
 		},
 		"Two-handed attack": {
-			"name": "Two-handed attack",
-			"description": "<p>Blow delivered with both hands grasping the sword's hilt, Execution score higher than one&rsquo;s Preservation score required&ndash;The combatant &nbsp;strikes with all their strength to break through the opponent&rsquo;s defense. This move allows characters to replace the Effect with their <em>Athletics</em> score.</p>"
+			"name": "À deux mains",
+			"description": "<p>Porter le coup avec les deux mains sur le pommeau de l’arme, avoir un score d’Accomplissement supérieur à celui de Préservation – Le combattant frappe de toutes ses forces afin de percer la défense de son adversaire. Il peut remplacer l’Incidence de son arme par son score en <em>Athlétisme</em>.</p>"
 		}
 	}
 }

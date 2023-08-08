@@ -1,0 +1,104 @@
+{
+	"label": "Traits",
+  "mapping": {
+    "description": "system.description"
+  },
+	"entries": {
+		"Ability to stay calm": {
+			"name": "Facilité à rester calme",
+			"description": ""
+		},
+		"Comfortable on airships": {
+			"name": "A l'aise en dirigeable",
+			"description": ""
+		},
+		"Comfortable using a mapmaker's helmet": {
+			"name": "Virtuose du casque de cartographe",
+			"description": ""
+		},
+		"Comfortable walking on stilts": {
+			"name": "A l'aise en échasses",
+			"description": ""
+		},
+		"Cultured": {
+			"name": "Cultivé",
+			"description": ""
+		},
+		"Deaf": {
+			"name": "Sourd",
+			"description": "<p>Le personnage a grandi dans une usine, et le vacarme permanent des machines l'a rendu sourd. (-3).</p>"
+		},
+		"Disregard for death": {
+			"name": "Ne craint pas la mort",
+			"description": ""
+		},
+		"Excellent glider pilot": {
+			"name": "Excellent pilote de cerf-volant",
+			"description": ""
+		},
+		"Extremely good eyesight": {
+			"name": "Excellente vue",
+			"description": "<p>La vue de ce personnage est si développée qu'elle lui permet de &ldquo;lire&rdquo; les disques&nbsp;</p>"
+		},
+		"Famous with (...)": {
+			"name": "Connu dans le milieu des (...)",
+			"description": ""
+		},
+		"Foremimes language": {
+			"name": "Connait le langage des contremimes",
+			"description": ""
+		},
+		"Guild member": {
+			"name": "Membre de la guilde (...)",
+			"description": ""
+		},
+		"Guild member (high rank)": {
+			"name": "Membre de haut rang de la guilde (...)",
+			"description": ""
+		},
+		"Intuitively feels the damage on their vehicle": {
+			"name": "Sent intuitivement les dommages sur son véhicule",
+			"description": ""
+		},
+		"Keen intellect": {
+			"name": "Intellect affûté",
+			"description": ""
+		},
+		"Knowledge of upper classes of their city": {
+			"name": "Connaissance des classes huppées de la ville (...)",
+			"description": ""
+		},
+		"Knows how to encircle a target": {
+			"name": "Sait encercler une cible",
+			"description": ""
+		},
+		"Lipreading": {
+			"name": "Lit sur les lèvres",
+			"description": ""
+		},
+		"Preacher": {
+			"name": "Prêcheur",
+			"description": ""
+		},
+		"Preacher (great)": {
+			"name": "Prêcheur (excellent)",
+			"description": ""
+		},
+		"Rational mind": {
+			"name": "Rationnel",
+			"description": ""
+		},
+		"Rich": {
+			"name": "Riche",
+			"description": ""
+		},
+		"Sharpshooter": {
+			"name": "Tireur d'élite",
+			"description": "<p>Le personnage sait tirer partie d'un fusil à lunette.</p>"
+		},
+		"Skilled with explosives": {
+			"name": "Manieur d'explosifs",
+			"description": ""
+		}
+	}
+}
