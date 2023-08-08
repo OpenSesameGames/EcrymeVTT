@@ -416,6 +416,7 @@ export class EcrymeActor extends Actor {
     let rollData = this.getCommonRollData()
     rollData.mode = "cephaly"
     rollData.skill = duplicate(this.system.cephaly.skilllist[skillKey])
+    rollData.annency = duplicate(this.getAnnency())
     rollData.img = rollData.skill.img
     rollData.skill.categKey = "cephaly"
     rollData.skill.skillKey = skillKey

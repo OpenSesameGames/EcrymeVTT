@@ -245,7 +245,9 @@ export class EcrymeConfrontDialog extends Dialog {
       this.rollData.applyTranscendence = $('#roll-apply-transcendence').val()
       this.computeTotals()
     })
-
+    html.find('#annency-bonus').change((event) => {
+      this.rollData.annencyBonus = Number(event.currentTarget.value)
+    })
 
   }
 }

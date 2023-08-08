@@ -1,7 +1,8 @@
 {
   "TYPES": {
     "Actor": {
-      "Personnage": "PC"
+      "character": "PC",
+      "annency": "Annency"
     },
     "Item": {
       "trait": "Trait",
@@ -156,7 +157,8 @@
       "oniricform": "Oniric shape (Boheme)",
       "ideals": "Ideals",
       "politic": "Political ideal",
-      "boheme": "Boheme"
+      "boheme": "Boheme",
+      "annencybonus": "Annency bonus"
     }
   }
 }

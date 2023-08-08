@@ -221,7 +221,7 @@ export class EcrymeUtility {
     let msg = await this.createChatWithRollMode(this.confrontData1.alias, {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-confrontation-result.hbs`, confront)
     })
-    msg.setFlag("world", "ecryme-rolldata", confront)
+    await msg.setFlag("world", "ecryme-rolldata", confront)
     console.log("Confront result", confront)
 
     this.lastConfront = confront
@@ -539,6 +539,9 @@ export class EcrymeUtility {
     diceFormula += "+" + rollData.bonusMalusTraits
     diceFormula += "+" + rollData.bonusMalusPerso
     diceFormula += "+" + rollData.impactMalus
+    if (rollData.annency) {
+      diceFormula += "+" + rollData.annencyBonus
+    }
     rollData.diceFormula = diceFormula
     return diceFormula
   }
@@ -567,7 +570,7 @@ export class EcrymeUtility {
     let msg = await this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-generic-result.hbs`, rollData)
     })
-    msg.setFlag("world", "ecryme-rolldata", rollData)
+    await msg.setFlag("world", "ecryme-rolldata", rollData)
     console.log("Rolldata result", rollData)
   }
 
@@ -584,7 +587,7 @@ export class EcrymeUtility {
     let msg = await this.createChatWithRollMode(rollData.alias, {
       content: await renderTemplate(`systems/fvtt-ecryme/templates/chat/chat-generic-result.hbs`, rollData)
     })
-    msg.setFlag("world", "ecryme-rolldata", rollData)
+    await msg.setFlag("world", "ecryme-rolldata", rollData)
   }
 
   /* -------------------------------------------- */
@@ -684,6 +687,7 @@ export class EcrymeUtility {
       bonusMalusPerso: 0,
       bonusMalusSituation: 0,
       bonusMalusDef: 0,
+      annencyBonus: 0,
       bonusMalusPortee: 0,
       skillTranscendence: 0,
       rollMode: game.settings.get("core", "rollMode"),

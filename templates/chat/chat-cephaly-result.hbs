@@ -16,14 +16,21 @@
 <div>
   <ul>
     <li>{{localize "ECRY.ui.cephaly"}} : {{localize skill.name}}</li>
+    
+    {{#if annency}}
+    <li>{{localize "ECRY.ui.annencybonus"}} {{annency.name}}: {{annencyBonus}}</li>
+    {{/if}}
+    
     {{#if (gt marginExecution 0)}}    
     <li>{{localize "ECRY.ui.execution"}} {{executionTotal}} vs {{difficulty}} : {{marginExecution}}</li>
     <li>{{localize cephalySuccess}}</li>
     {{/if}}
+    
     {{#if (gt marginPreservation 0)}}    
     <li>{{localize "ECRY.ui.preservation"}} {{preservationTotal}} vs {{difficulty}} : {{marginPreservation}}</li>
     <li>{{localize cephalyFailure}}</li>
     {{/if}}
+  
   </ul>
 </div>
 

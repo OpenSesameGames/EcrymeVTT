@@ -1,7 +1,8 @@
 {
   "TYPES": {
     "Actor":{
-      "Personnage": "PJ"
+      "character": "Personnage",
+      "annency": "Anence"
     },
     "Item": {
       "trait": "Trait",
@@ -157,7 +158,8 @@
       "oniricform": "Forme Onorique (Bohême)",
       "ideals": "Idéaux",
       "politic": "Idéaux politiques",
-      "boheme": "Bohême"
+      "boheme": "Bohême",
+      "annencybonus": "Bonus d'Anence"
     }
   }
 }
