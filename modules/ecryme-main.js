@@ -59,6 +59,7 @@ Hooks.once("init", async function () {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("fvtt-ecryme", EcrymeActorSheet, { types: ["pc"], makeDefault: true });
+  Actors.registerSheet("fvtt-ecryme", EcrymeActorSheet, { types: ["npc"], makeDefault: true });
   Actors.registerSheet("fvtt-ecryme", EcrymeAnnencySheet, { types: ["annency"], makeDefault: false });
 
   Items.unregisterSheet("core", ItemSheet);
