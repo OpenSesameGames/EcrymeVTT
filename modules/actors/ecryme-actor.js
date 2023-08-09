@@ -55,6 +55,18 @@ export class EcrymeActor extends Actor {
   }
 
   /* -------------------------------------------- */
+  async _preCreate(data, options, user) {
+    await super._preCreate(data, options, user);
+
+    // Configure prototype token settings
+    const prototypeToken = {};
+    if (this.type === "pc") Object.assign(prototypeToken, {
+      sight: { enabled: true }, actorLink: true, disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY
+    });
+    this.updateSource({ prototypeToken });
+  }
+
+  /* -------------------------------------------- */
   getMoneys() {
     let comp = this.items.filter(item => item.type == 'money');
     EcrymeUtility.sortArrayObjectsByName(comp)

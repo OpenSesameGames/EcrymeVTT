@@ -1,7 +1,7 @@
 {
   "Actor": {
     "types": [
-      "pc","annency"
+      "pc","annency", "npc"
     ],
     "templates": {
       "biodata": {
@@ -194,6 +194,12 @@
     "annency": {
       "templates": [
         "annency"
+      ]
+    },
+    "npc": {
+      "templates": [
+        "biodata",
+        "core"
       ]
     },
     "pc": {
