@@ -25,10 +25,10 @@ jobs:
         version: ${{steps.get_version.outputs.version-without-v}}
         url: https://github.com/${{github.repository}}
         manifest: https://github.com/${{github.repository}}/releases/latest/download/module.json
-        download: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.zip
+        download: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/fvtt-ecryme.zip
 
     # Create a zip file with all files required by the module to add to the release
-    - run: zip -r ./module.zip module.json LICENSE styles/ scripts/ templates/ languages/ icons/ packs/
+    - run: zip -r ./fvtt-ecryme.zip system.json template.json LICENSE.txt README.md fonts/ images/ lang/ modules/ packs/ styles/ templates/ translated/
 
     # Create a release for this specific version
     - name: Update Release with Files
@@ -40,6 +40,6 @@ jobs:
         draft: ${{ github.event.release.unpublished }}
         prerelease: ${{ github.event.release.prerelease }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: './module.json, ./module.zip'
+        artifacts: './system.json, ./fvtt-ecryme.zip'
         tag: ${{ github.event.release.tag_name }}
         body: ${{ github.event.release.body }}
